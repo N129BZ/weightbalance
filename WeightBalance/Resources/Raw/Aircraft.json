@@ -1,0 +1,340 @@
+[
+  {
+    "Name": "CH 6XX",
+    "ImagePath": "ch650_light.png",
+    "ChartImagePath": "bevelchart.png",
+    "CgRectangle": [ -19, -12, 30, 110 ],
+    "Unit": 0,
+    "CoGUnits": [
+      {
+        "Name": "Left Main",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Right Main",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Nose Wheel",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Pilot",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Passenger",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Fuel",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Left Wing Locker",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Right Wing Locker",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Baggage",
+        "Weight": 0,
+        "Arm": 0
+      }
+    ]
+  },
+  {
+    "Name": "CH 6XX TD",
+    "ImagePath": "ch650td_light.png",
+    "ChartImagePath": "nobevelchart.png",
+    "CgRectangle": [ -16, -34, 30, 110 ],
+    "Unit": 0,
+    "CoGUnits": [
+      {
+        "Name": "Left Main",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Right Main",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Tail Wheel",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Pilot",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Passenger",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Fuel",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Left Wing Locker",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Right Wing Locker",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Baggage",
+        "Weight": 0,
+        "Arm": 0
+      }
+    ]
+  },
+  {
+    "Name": "CH 701",
+    "ImagePath": "ch701_light.png",
+    "ChartImagePath": "bevelchart.png",
+    "CgRectangle": [ -29, 8, 30, 110 ],
+    "Unit": 0,
+    "CoGUnits": [
+      {
+        "Name": "Left Main",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Right Main",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Nose Wheel",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Pilot",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Passenger",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Fuel",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Left Wing Locker",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Right Wing Locker",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Baggage",
+        "Weight": 0,
+        "Arm": 0
+      }
+    ]
+  },
+  {
+    "Name": "CH 750",
+    "ImagePath": "ch750_light.png",
+    "ChartImagePath": "bevelchart.png",
+    "CgRectangle": [ -29, 8, 30, 110 ],
+    "Unit": 0,
+    "CoGUnits": [
+      {
+        "Name": "Left Main",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Right Main",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Nose Wheel",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Pilot",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Passenger",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Fuel",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Baggage",
+        "Weight": 0,
+        "Arm": 0
+      }
+    ]
+  },
+  {
+    "Name": "CH CruZer",
+    "ImagePath": "chcruzer_light.png",
+    "ChartImagePath": "bevelchart.png",
+    "CgRectangle": [ -26, -16, 30, 100 ],
+    "Unit": 0,
+    "CoGUnits": [
+      {
+        "Name": "Left Main",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Right Main",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Nose Wheel",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Pilot",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Passenger",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Fuel",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Baggage",
+        "Weight": 0,
+        "Arm": 0
+      }
+    ]
+  },
+  {
+    "Name": "RV 9",
+    "ImagePath": "rv9_light.png",
+    "ChartImagePath": "nobevelchart.png",
+    "CgRectangle": [ -29, 8, 30, 110 ],
+    "Unit": 0,
+    "CoGUnits": [
+      {
+        "Name": "Left Main",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Right Main",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Tail Wheel",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Pilot",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Passenger",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Fuel",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Baggage",
+        "Weight": 0,
+        "Arm": 0
+      }
+    ]
+  },
+  {
+    "Name": "RV 9A",
+    "ImagePath": "rv9a_light.png",
+    "ChartImagePath": "nobevelchart.png",
+    "CgRectangle": [ -29, 8, 30, 110 ],
+    "Unit": 0,
+    "CoGUnits": [
+      {
+        "Name": "Left Main",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Right Main",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Nose Wheel",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Pilot",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Passenger",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Fuel",
+        "Weight": 0,
+        "Arm": 0
+      },
+      {
+        "Name": "Baggage",
+        "Weight": 0,
+        "Arm": 0
+      }
+    ]
+  }
+]

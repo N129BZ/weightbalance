@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dg="clr-namespace:Maui.DataGrid;assembly=Maui.DataGrid"
+             x:Class="WeightBalance.Views.Questions">
+
+    <!--<Grid RowDefinitions="20,*">
+        <dg:DataGrid Grid.Row="1" ItemsSource="{Binding CoGUnits}" SelectionMode="Single"
+            RowHeight="20" HeaderHeight="20" BorderColor="{StaticResource GridBorderColor}"
+            HeaderBackground="{StaticResource GridHeaderBgColor}"
+            ActiveRowColor="{StaticResource ActiveRowColor}">
+            <dg:DataGrid.Columns>
+                <dg:DataGridColumn Title="Name" PropertyName="Name" Width="0.25*" SortingEnabled="False" />
+                <dg:DataGridColumn Title="Weight" PropertyName="Weight" Width="0.25*"  SortingEnabled="False"/>
+                <dg:DataGridColumn Title="Arm" PropertyName="Arm" Width="0.25*"  SortingEnabled="False"/>
+                <dg:DataGridColumn Title="Moment" PropertyName="Moment" Width="0.25*" SortingEnabled="False"/>
+            </dg:DataGrid.Columns>
+            <dg:DataGrid.RowsBackgroundColorPalette>
+                <dg:PaletteCollection>
+                    <Color>#F2F2F2</Color>
+                    <Color>#FFFFFF</Color>
+                </dg:PaletteCollection>
+            </dg:DataGrid.RowsBackgroundColorPalette>
+        </dg:DataGrid>
+    </Grid>-->
+</ContentView>
