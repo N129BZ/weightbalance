@@ -57,27 +57,41 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="akgul.Maui.DataGrid" Version="4.0.4" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.21" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	  <None Remove="Resources\Images\bevelchart.png" />
+	  <None Remove="Resources\Images\ch650td_dark.png" />
+	  <None Remove="Resources\Images\ch650td_light.png" />
+	  <None Remove="Resources\Images\ch650_dark.png" />
+	  <None Remove="Resources\Images\ch650_light.png" />
+	  <None Remove="Resources\Images\ch701_dark.png" />
+	  <None Remove="Resources\Images\ch701_light.png" />
+	  <None Remove="Resources\Images\ch750_dark.png" />
+	  <None Remove="Resources\Images\ch750_light.png" />
+	  <None Remove="Resources\Images\chartspacer.png" />
+	  <None Remove="Resources\Images\chcruzer_dark.png" />
+	  <None Remove="Resources\Images\chcruzer_light.png" />
+	  <None Remove="Resources\Images\nobevelchart.png" />
+	  <None Remove="Resources\Images\rv9a_dark.png" />
+	  <None Remove="Resources\Images\rv9a_light.png" />
+	  <None Remove="Resources\Images\rv9_dark.png" />
+	  <None Remove="Resources\Images\rv9_light.png" />
+	  <None Remove="Resources\raw\Aircraft.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="AircraftPage.xaml.cs">
-	    <DependentUpon>AircraftPage.xaml</DependentUpon>
-	  </Compile>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.21" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="UraniumUI" Version="2.8.1" />
+		<PackageReference Include="UraniumUI.Material" Version="2.8.1" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="AircraftPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Questions.xaml">
+	  <MauiXaml Update="CoGPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
-
-	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionWeightBalanceHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>

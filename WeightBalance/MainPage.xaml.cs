@@ -1,32 +1,35 @@
 ﻿using System.Collections.ObjectModel;
-using System.IO;
+using System.Text;
 using System.Text.Json;
+using WeightBalance.Models;
 
 namespace WeightBalance
-{ 
-    
+{
     public partial class MainPage : ContentPage
     {
         public bool IsRefreshing { get; set; }
-        public ObservableCollection<Aircraft>? TheHangar { get; set; }
+
+        private ObservableCollection<Aircraft>? _thehangar;
+        public ObservableCollection<Aircraft>? TheHangar
+        {
+            get { return _thehangar; }
+            set { _thehangar = value; }
+        }
+
         public Aircraft? SelectedAircraft { get; set; }
 
         public MainPage()
         {
             InitializeComponent();
 
-            TheHangar = Task.Run(() => LoadAircraft()).Result;
+            _thehangar = LoadAircraft();
+
             BindingContext = this;
         }
 
-        public async Task<ObservableCollection<Aircraft>> LoadAircraft ()
+        public ObservableCollection<Aircraft> LoadAircraft()
         {
             var filePath = Path.Combine(FileSystem.AppDataDirectory, "Aircraft.json");
-        
-            if (!File.Exists(filePath))
-            {
-                await CopyAircraftJsonToAppDataDirectory();
-            }
             var json = File.ReadAllText(filePath);
             return JsonSerializer.Deserialize<ObservableCollection<Aircraft>>(json)!;
         }
@@ -37,18 +40,14 @@ namespace WeightBalance
             using var inputStream = await FileSystem.OpenAppPackageFileAsync("Aircraft.json");
             using var outputStream = File.Create(fpath);
             await inputStream.CopyToAsync(outputStream);
-
         }
 
-        private void AircraftSelected(object sender, EventArgs e)
-        {
-            Console.WriteLine(e.ToString());
-        }
 
-        private void listView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            AircraftPage ap = new AircraftPage((Aircraft)e.Item);
-            Navigation.PushAsync(ap);
+            var aircraft = (Aircraft)e.Item;
+            CoGPage cog = new CoGPage(aircraft);
+            Navigation.PushAsync(cog);
         }
     }
 }
