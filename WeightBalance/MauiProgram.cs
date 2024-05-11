@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using UraniumUI;
+using SkiaSharp.Views.Maui.Controls.Hosting;
+using CommunityToolkit.Maui;
 
 namespace WeightBalance
 {
@@ -10,6 +12,8 @@ namespace WeightBalance
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
+                .UseSkiaSharp()
                 .UseUraniumUI()
                 .UseUraniumUIMaterial()
                 .ConfigureFonts(fonts =>

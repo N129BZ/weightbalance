@@ -1,137 +1,99 @@
 using WeightBalance.Models;
+using WeightBalance.Drawables;
+using SkiaSharp.Views.Maui.Controls;
 
 namespace WeightBalance
 {
-
     public partial class AircraftPage : ContentPage
     {
-        internal class RectangleDrawable : IDrawable
-        {
-            private float[] _cgrect = [];
-            public RectangleDrawable(float[] cgrect)
-            {
-                _cgrect = cgrect;
-            }
+        private string _actitle = String.Empty;
 
-            public void Draw(ICanvas canvas, RectF dirtyRect)
-            {
-                canvas.StrokeColor = Colors.DarkGreen;
-                canvas.StrokeSize = 2;
-                canvas.DrawRectangle(_cgrect[0], _cgrect[1], _cgrect[2], _cgrect[3]);
-            }
-        }
+        public string AcTitle { get { return _actitle; } }
 
-        public AircraftPage(Aircraft? aircraft)
+        public AircraftPage(Aircraft aircraft)
         {
+            _actitle = $"{aircraft.Name.ToUpper()} MAX GROSS: {aircraft.MaxGross}";
+            
+            InitializeComponent();
+
             if (aircraft == null)
             {
                 throw new Exception("selectedAircraft cannot be null!");
             }
             else
             {
-                var acd = new RectangleDrawable(aircraft.CgRectangle);
-                var chartdot = new ChartDot();
-                var aircraftdot = new AircraftDot();
-                
-                GraphicsView acrect = new GraphicsView
+                //var page = new AircraftSkiaPage(aircraft);
+
+                Grid views = new Grid();
+                views.RowDefinitions = new RowDefinitionCollection
+                    {
+                        new RowDefinition(new GridLength(220)),
+                        new RowDefinition(new GridLength(480)),
+                        new RowDefinition(new GridLength(100))
+                    };
+                //SKCanvasView acchart = new SKCanvasView();
+
+                GraphicsView acchart = new GraphicsView
                 {
-                    Drawable = acd,
-                    HeightRequest = 120,
-                    WidthRequest = 120
+                    Drawable = new AircraftChart(aircraft) as IDrawable
                 };
 
-                GraphicsView chdot = new GraphicsView
-                {
-                    Drawable = chartdot,
-                    HeightRequest = 200,
-                    WidthRequest = 10
-                };
+                views.Add(aircraft.AircraftImage, 0, 0);
+                views.Add(acchart, 0, 0);
 
-                GraphicsView acdot = new GraphicsView
+                GraphicsView mainchart = new GraphicsView
                 {
-                    Drawable = aircraftdot,
-                    HeightRequest = 200,
-                    WidthRequest = 10
+                    Drawable = new MainChart(aircraft) as IDrawable,
                 };
+                views.Add(mainchart, 0, 1);
 
-                Grid acgrid = new Grid
-                {
-                    aircraft.AcImage,
-                    acrect,
-                    acdot
-                };
-
-                Grid spacer = new Grid
-                {
-                    aircraft.Spacer
-                };
-
-                Grid chartgrid = new Grid
-                {
-                    aircraft.ChartImage,
-                    chdot
-                };
-
-                Button backbtn = new Button
+                HorizontalStackLayout buttonLayout = new HorizontalStackLayout { HorizontalOptions = LayoutOptions.Center };
+                Button StationPageButton = new Button
                 {
                     Text = "View Stations",
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.Center,
+                    Padding = 6,
+                    Margin = 6,
+                    WidthRequest = 150
                 };
-                backbtn.Clicked += Button_Clicked;
+                StationPageButton.Clicked += StationPageButton_Clicked;
+                buttonLayout.Add(StationPageButton);
 
-                Grid btngrid = new Grid
-                {   
-                    HeightRequest = 100,
-                    VerticalOptions = LayoutOptions.End,
+                Button MainPageButton = new Button
+                {
+                    Text = "Select Aircraft",
+                    VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.Center,
+                    Padding = 6,
+                    Margin = 6,
+                    WidthRequest = 150
                 };
-                btngrid.Children.Add(backbtn);
+                MainPageButton.Clicked += MainPageButton_Clicked;
+                buttonLayout.Add(MainPageButton);
+
+                views.Add(buttonLayout, 0, 2);
 
                 Content = new VerticalStackLayout
                 {
+                    BackgroundColor = Colors.White,
                     Children = {
-                        new Label
-                        {
-                            HorizontalOptions = LayoutOptions.Center,
-                            VerticalOptions = LayoutOptions.Center,
-                            FontAttributes = FontAttributes.Bold,
-                            Text = $"{aircraft.Name.ToUpper()} MAX GROSS: {aircraft.MaxGross}"
-                        },
-                        acgrid,
-                        spacer,
-                        chartgrid,
-                        btngrid
+                        views
                     }
                 };
             }
+
+            BindingContext = this;  
         }
 
-        private void Button_Clicked(object? sender, EventArgs e)
+        private void StationPageButton_Clicked(object? sender, EventArgs e)
         {
             Shell.Current.Navigation.PopAsync();
         }
 
-        internal class ChartDot : IDrawable 
+        private void MainPageButton_Clicked(object? sender, EventArgs e)
         {
-            public void Draw(ICanvas canvas, RectF dirtyRect)
-            {
-                canvas.StrokeColor = Colors.Black;
-                canvas.StrokeSize = 1;
-                canvas.FillColor = Colors.DarkGreen;
-                canvas.FillCircle(80, 180, 6);
-            }
-        }
-
-        internal class AircraftDot : IDrawable //(float weight, float moment, Color bgcolor, Color fgcolor)
-        {
-            public void Draw(ICanvas canvas, RectF dirtyRect)
-            {
-                canvas.StrokeColor = Colors.Black;
-                canvas.StrokeSize = 1;
-                canvas.FillColor = Colors.Red;
-                canvas.FillCircle(-20, 80, 6);
-            }
+            Shell.Current.Navigation.PopToRootAsync();
         }
     }
 }

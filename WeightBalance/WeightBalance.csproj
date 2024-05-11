@@ -57,6 +57,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\bevelchart.png" />
+	  <MauiImage Remove="Resources\Images\nobevelchart.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Images\bevelchart.png" />
 	  <None Remove="Resources\Images\ch650td_dark.png" />
 	  <None Remove="Resources\Images\ch650td_light.png" />
@@ -66,7 +71,6 @@
 	  <None Remove="Resources\Images\ch701_light.png" />
 	  <None Remove="Resources\Images\ch750_dark.png" />
 	  <None Remove="Resources\Images\ch750_light.png" />
-	  <None Remove="Resources\Images\chartspacer.png" />
 	  <None Remove="Resources\Images\chcruzer_dark.png" />
 	  <None Remove="Resources\Images\chcruzer_light.png" />
 	  <None Remove="Resources\Images\nobevelchart.png" />
@@ -78,9 +82,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Images\bevelchart.png" />
+	  <EmbeddedResource Include="Resources\Images\nobevelchart.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.21" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="SkiaSharp" Version="2.88.8" />
+		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="2.88.8" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.8" />
 		<PackageReference Include="UraniumUI" Version="2.8.1" />
 		<PackageReference Include="UraniumUI.Material" Version="2.8.1" />
 	</ItemGroup>
@@ -92,6 +106,10 @@
 	  <MauiXaml Update="CoGPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Templates\" />
 	</ItemGroup>
 
 </Project>

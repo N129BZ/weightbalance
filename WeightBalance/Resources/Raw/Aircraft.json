@@ -1,8 +1,9 @@
 [
   {
+    "ID": 1,
     "Name": "CH 6XX",
     "MaxGross": 1320,
-    "ImagePath": "ch650_light.png",
+    "AircraftImagePath": "ch650_light.png",
     "ChartImagePath": "bevelchart.png",
     "CgRectangle": [ -19, -12, 30, 110 ],
     "Unit": 0,
@@ -10,54 +11,55 @@
       {
         "Station": "LeftMain",
         "Weight": 292,
-        "Arm": 300
+        "Arm": 25
       },
       {
         "Station": "RightMain",
         "Weight": 284,
-        "Arm": 300
+        "Arm": 25
       },
       {
         "Station": "NoseWheel",
         "Weight": 260,
-        "Arm": -120
+        "Arm": -21
       },
       {
         "Station": "Pilot",
         "Weight": 210,
-        "Arm": 700
+        "Arm": 28
       },
       {
         "Station": "Passenger",
         "Weight": 0,
-        "Arm": 700
+        "Arm": 28
       },
       {
         "Station": "Fuel",
         "Weight": 144,
-        "Arm": 26
+        "Arm": 7
       },
       {
         "Station": "LeftWLock",
         "Weight": 0,
-        "Arm": 60
+        "Arm": 15
       },
       {
         "Station": "RightWLock",
         "Weight": 0,
-        "Arm": 60
+        "Arm": 15
       },
       {
         "Station": "Baggage",
         "Weight": 10,
-        "Arm": 160
+        "Arm": 63
       }
     ]
   },
   {
+    "ID": 2,
     "Name": "CH 6XX TD",
     "MaxGross": 1320,
-    "ImagePath": "ch650td_light.png",
+    "AircraftImagePath": "ch650td_light.png",
     "ChartImagePath": "nobevelchart.png",
     "CgRectangle": [ -16, -34, 30, 110 ],
     "Unit": 0,
@@ -110,9 +112,10 @@
     ]
   },
   {
+    "ID": 3,
     "Name": "CH 701",
     "MaxGross": 1200,
-    "ImagePath": "ch701_light.png",
+    "AircraftImagePath": "ch701_light.png",
     "ChartImagePath": "bevelchart.png",
     "CgRectangle": [ -29, 8, 30, 110 ],
     "Unit": 0,
@@ -155,9 +158,10 @@
     ]
   },
   {
+    "ID": 4,
     "Name": "CH 750",
     "MaxGross": 1320,
-    "ImagePath": "ch750_light.png",
+    "AircraftImagePath": "ch750_light.png",
     "ChartImagePath": "bevelchart.png",
     "CgRectangle": [ -29, 8, 30, 110 ],
     "Unit": 0,
@@ -200,9 +204,10 @@
     ]
   },
   {
+    "ID": 5,
     "Name": "CH CruZer",
     "MaxGross": 1320,
-    "ImagePath": "chcruzer_light.png",
+    "AircraftImagePath": "chcruzer_light.png",
     "ChartImagePath": "bevelchart.png",
     "CgRectangle": [ -26, -16, 30, 100 ],
     "Unit": 0,
@@ -245,9 +250,10 @@
     ]
   },
   {
+    "ID": 6,
     "Name": "RV 9",
     "MaxGross": 1475,
-    "ImagePath": "rv9_light.png",
+    "AircraftImagePath": "rv9_light.png",
     "ChartImagePath": "nobevelchart.png",
     "CgRectangle": [ -29, 8, 30, 110 ],
     "Unit": 0,
@@ -290,9 +296,10 @@
     ]
   },
   {
+    "ID": 7,
     "Name": "RV 9A",
     "MaxGross": 1475,
-    "ImagePath": "rv9a_light.png",
+    "AircraftImagePath": "rv9a_light.png",
     "ChartImagePath": "nobevelchart.png",
     "CgRectangle": [ -29, 8, 30, 110 ],
     "Unit": 0,

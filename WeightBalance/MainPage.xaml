@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:ac="clr-namespace:WeightBalance.Models"
              x:Class="WeightBalance.MainPage">
 
     <Shell.TitleView>
@@ -13,24 +15,39 @@
         </Grid>
     </Shell.TitleView>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <mct:ImageResourceConverter x:Key="ImageResourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ScrollView>
         <ListView x:Name="listView"
               ItemsSource="{Binding TheHangar}"
-              ItemTapped="ListView_ItemTapped">
+              ItemTapped="ListView_ItemTapped" 
+              SeparatorColor="DarkBlue"
+              RowHeight="100">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="ac:Aircraft">
                     <ViewCell>
-                        <Grid Padding="10" BackgroundColor="White">
+                        <Grid Padding="10" BackgroundColor="White" Margin="4">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="1" 
+                            <Label Grid.Column="0" 
                                Text="{Binding Name}" 
                                FontAttributes="Bold"
-                               TextColor="Black"/>
+                               Margin="5"
+                               TextColor="Black"
+                               HeightRequest="100"/>
+                            <Image Grid.Column="1" 
+                                   Source="{Binding AircraftImagePath}"
+                                   HeightRequest="80"
+                                   VerticalOptions="Start"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

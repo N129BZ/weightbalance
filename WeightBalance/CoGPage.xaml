@@ -2,11 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             xmlns:plain="clr-namespace:Plainer.Maui.Controls;assembly=Plainer.Maui"
              x:Class="WeightBalance.CoGPage">
 
     <Shell.TitleView>
         <Grid>
-            <Label Text="{Binding Title}" 
+            <Label Text="{Binding PageTitle}" 
                    FontSize="Title"
                    FontAttributes="Bold"
                    HorizontalOptions="StartAndExpand" 
@@ -24,15 +25,38 @@
                                UseAutoColumns="True" 
                                HorizontalOptions="Center"
                                Margin="3">
+                <material:DataGrid.CellItemTemplate>
+                    <DataTemplate>
+                        <Editor Margin="10" Text="{material:DataGridValueBinding Mode=TwoWay}"/>
+                    </DataTemplate>
+                </material:DataGrid.CellItemTemplate>
+                <material:DataGrid.Columns>
+                    <material:DataGridColumn ValueBinding="{Binding Station}" Title="Station" />
+                    <material:DataGridColumn ValueBinding="{Binding Weight}" Title="Weight"/>
+                    <material:DataGridColumn ValueBinding="{Binding Arm}" Title="Arm"/>
+                    <material:DataGridColumn ValueBinding="{Binding Moment}" Title="Moment"/>
+                </material:DataGrid.Columns>
             </material:DataGrid>
-            <Button x:Name="ViewChart" 
-                    Grid.Row="1" 
-                    Text="View Chart" 
-                    WidthRequest="150"
-                    VerticalOptions="End"
-                    Clicked="ViewChart_Clicked" />     
+        </Grid>
+        <Grid>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button x:Name="ViewChart" 
+                        Text="View Chart" 
+                        Padding="6"
+                        Margin="6"
+                        WidthRequest="150"
+                        VerticalOptions="End"
+                        Clicked="ViewChart_Clicked" />
+                <Button x:Name="Back" 
+                        Text="Select Aircraft" 
+                        Padding="6"
+                        Margin="6"
+                        WidthRequest="150"
+                        VerticalOptions="End"
+                        Clicked="Back_Clicked" />          
+            </HorizontalStackLayout>
         </Grid>
     </StackLayout>
-
+    
 
 </ContentPage>
