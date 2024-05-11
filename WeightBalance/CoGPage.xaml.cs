@@ -31,7 +31,7 @@ namespace WeightBalance
 
         private void ViewChart_Clicked(object sender, EventArgs e)
         {
-			var ap = new AircraftPage(_aircraft);
+			var ap = new AircraftSkiaPage(_aircraft);
 			Navigation.PushAsync(ap);
         }
 

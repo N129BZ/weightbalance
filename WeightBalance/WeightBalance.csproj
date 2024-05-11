@@ -58,7 +58,21 @@
 
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\bevelchart.png" />
+	  <MauiImage Remove="Resources\Images\ch650td_dark.png" />
+	  <MauiImage Remove="Resources\Images\ch650td_light.png" />
+	  <MauiImage Remove="Resources\Images\ch650_dark.png" />
+	  <MauiImage Remove="Resources\Images\ch650_light.png" />
+	  <MauiImage Remove="Resources\Images\ch701_dark.png" />
+	  <MauiImage Remove="Resources\Images\ch701_light.png" />
+	  <MauiImage Remove="Resources\Images\ch750_dark.png" />
+	  <MauiImage Remove="Resources\Images\ch750_light.png" />
+	  <MauiImage Remove="Resources\Images\chcruzer_dark.png" />
+	  <MauiImage Remove="Resources\Images\chcruzer_light.png" />
 	  <MauiImage Remove="Resources\Images\nobevelchart.png" />
+	  <MauiImage Remove="Resources\Images\rv9a_dark.png" />
+	  <MauiImage Remove="Resources\Images\rv9a_light.png" />
+	  <MauiImage Remove="Resources\Images\rv9_dark.png" />
+	  <MauiImage Remove="Resources\Images\rv9_light.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -83,7 +97,21 @@
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Resources\Images\bevelchart.png" />
+	  <EmbeddedResource Include="Resources\Images\ch650td_dark.png" />
+	  <EmbeddedResource Include="Resources\Images\ch650td_light.png" />
+	  <EmbeddedResource Include="Resources\Images\ch650_dark.png" />
+	  <EmbeddedResource Include="Resources\Images\ch650_light.png" />
+	  <EmbeddedResource Include="Resources\Images\ch701_dark.png" />
+	  <EmbeddedResource Include="Resources\Images\ch701_light.png" />
+	  <EmbeddedResource Include="Resources\Images\ch750_dark.png" />
+	  <EmbeddedResource Include="Resources\Images\ch750_light.png" />
+	  <EmbeddedResource Include="Resources\Images\chcruzer_dark.png" />
+	  <EmbeddedResource Include="Resources\Images\chcruzer_light.png" />
 	  <EmbeddedResource Include="Resources\Images\nobevelchart.png" />
+	  <EmbeddedResource Include="Resources\Images\rv9a_dark.png" />
+	  <EmbeddedResource Include="Resources\Images\rv9a_light.png" />
+	  <EmbeddedResource Include="Resources\Images\rv9_dark.png" />
+	  <EmbeddedResource Include="Resources\Images\rv9_light.png" />
 	</ItemGroup>
 
 	<ItemGroup>

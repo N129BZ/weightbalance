@@ -4,8 +4,6 @@ using System.Reflection;
 
 namespace WeightBalance.Models
 {
-
-
     public class Aircraft
     {
         public enum UnitSelector
@@ -139,5 +137,14 @@ namespace WeightBalance.Models
         public Image AircraftImage { get { return new Image { Source = _acimgpath }; } }
 
         public Image ChartImage { get { return new Image { Source = _chartimgpath }; } }
+
+        public ImageSource AircraftImageSource
+        {
+            get
+            {
+                var srcname = $"WeightBalance.Resources.Images.{_acimgpath}";
+                return ImageSource.FromResource(srcname, typeof(Aircraft).GetTypeInfo().Assembly);
+            }
+        }
     }
 }

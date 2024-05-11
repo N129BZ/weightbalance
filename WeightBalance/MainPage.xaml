@@ -45,7 +45,7 @@
                                TextColor="Black"
                                HeightRequest="100"/>
                             <Image Grid.Column="1" 
-                                   Source="{Binding AircraftImagePath}"
+                                   Source="{Binding AircraftImageSource}"
                                    HeightRequest="80"
                                    VerticalOptions="Start"/>
                         </Grid>
