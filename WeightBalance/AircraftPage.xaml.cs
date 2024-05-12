@@ -67,7 +67,10 @@ namespace WeightBalance
                     HorizontalOptions = LayoutOptions.Center,
                     Padding = 6,
                     Margin = 6,
-                    WidthRequest = 150
+                    WidthRequest = 150,
+                    BackgroundColor = Colors.Navy,
+                    TextColor = Colors.White,
+                    FontAttributes = FontAttributes.Bold
                 };
                 StationPageButton.Clicked += StationPageButton_Clicked;
                 buttonLayout.Add(StationPageButton);
@@ -79,7 +82,10 @@ namespace WeightBalance
                     HorizontalOptions = LayoutOptions.Center,
                     Padding = 6,
                     Margin = 6,
-                    WidthRequest = 150
+                    WidthRequest = 150,
+                    BackgroundColor = Colors.Navy,
+                    TextColor = Colors.White,
+                    FontAttributes = FontAttributes.Bold
                 };
                 MainPageButton.Clicked += MainPageButton_Clicked;
                 buttonLayout.Add(MainPageButton);

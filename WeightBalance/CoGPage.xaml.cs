@@ -8,32 +8,25 @@ namespace WeightBalance
 	{
 		private ObservableCollection<CoGUnit> _cogunits;
 		
-		public ObservableCollection<CoGUnit> CoGUnits
-		{
-			get
-			{
-				return _cogunits;
-			}
-		}
-		private string _title;
-		public string PageTitle { get { return _title; } }
+		public ObservableCollection<CoGUnit> CoGUnits { get { return _cogunits;	} }
+		
+		private Aircraft aircraft;
 
-		private Aircraft _aircraft;
-
-		public CoGPage(Aircraft aircraft)
+		public CoGPage(Aircraft selectedaircraft)
 		{
-			_aircraft = aircraft;
+			aircraft = selectedaircraft;
 			_cogunits = aircraft.CoGUnits;
 
             InitializeComponent();
             
 			this.Title = $"{aircraft.Name} CG Stations";
+	
             BindingContext = this;
 		}
 
         private void ViewChart_Clicked(object sender, EventArgs e)
         {
-			var ap = new AircraftPage(_aircraft);
+			var ap = new AircraftPage(aircraft);
 			Navigation.PushAsync(ap);
         }
 

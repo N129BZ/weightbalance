@@ -11,7 +11,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <material:DataGrid Grid.Row="0" ItemsSource="{ Binding CoGUnits }" 
+            <material:DataGrid x:Name="StationGrid" Grid.Row="0" ItemsSource="{ Binding CoGUnits }" 
                                UseAutoColumns="True" 
                                HorizontalOptions="Center"
                                Margin="3">
@@ -21,7 +21,7 @@
                     </DataTemplate>
                 </material:DataGrid.CellItemTemplate>
                 <material:DataGrid.Columns>
-                    <material:DataGridColumn ValueBinding="{Binding Station}" Title="Station" />
+                    <material:DataGridColumn ValueBinding="{Binding Station}" Title="Station"/>
                     <material:DataGridColumn ValueBinding="{Binding Weight}" Title="Weight"/>
                     <material:DataGridColumn ValueBinding="{Binding Arm}" Title="Arm"/>
                     <material:DataGridColumn ValueBinding="{Binding Moment}" Title="Moment"/>
@@ -35,6 +35,9 @@
                         Padding="6"
                         Margin="6"
                         WidthRequest="150"
+                        BackgroundColor="Navy"
+                        TextColor="White"
+                        FontAttributes="Bold"
                         VerticalOptions="End"
                         Clicked="ViewChart_Clicked" />
                 <Button x:Name="Back" 
@@ -42,6 +45,9 @@
                         Padding="6"
                         Margin="6"
                         WidthRequest="150"
+                        BackgroundColor="Navy"
+                        TextColor="White"
+                        FontAttributes="Bold"
                         VerticalOptions="End"
                         Clicked="Back_Clicked" />          
             </HorizontalStackLayout>
