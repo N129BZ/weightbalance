@@ -22,56 +22,63 @@ namespace WeightBalance.Models
         public string Name { get { return _name; } set { _name = value; } }
 
         [field: JsonIgnore]
+        private double _maxgross;
+        public double MaxGross { get { return _maxgross; } set { _maxgross = value; } }
+
+        [field: JsonIgnore]
+        private double _mingross;
+        public double MinGross { get { return _mingross; } set { _mingross = value; } }
+
+        [field: JsonIgnore]
+        private double _mincg;
+        public double MinCg { get { return _mincg; } set { _mincg = value; } }
+
+        [field: JsonIgnore]
+        private double _maxcg;
+        public double MaxCg { get { return _maxcg; } set { _maxcg = value; } }
+
+        [field: JsonIgnore]
         private float _emptyWeight;
         [property: JsonIgnore]
-        public float EmptyWeight { get { return _emptyWeight; } }
+        public float EmptyWeight { get { return _emptyWeight; } set { _emptyWeight = value; } }
 
         [field: JsonIgnore]
-        private float _emptyArm;
+        private double _emptyArm;
         [property: JsonIgnore]
-        public float EmptyArm { get { return _emptyArm; } }
+        public double EmptyArm { get { return _emptyArm; } set { _emptyArm = value; } }
 
         [field: JsonIgnore]
-        private float _emptyMoment;
+        private double _emptyMoment;
         [property: JsonIgnore]
-        public float EmptyMoment { get { return _emptyMoment; } }
+        public double EmptyMoment { get { return _emptyMoment; } set { _emptyMoment = value; } }
 
         [field: JsonIgnore]
-        private float _loadWeight;
+        private double _loadWeight;
         [property: JsonIgnore]
-        public float LoadWeight { get { return _loadWeight; } }
+        public double LoadWeight { get { return _loadWeight; } set { _loadWeight = value; } }
 
         [field: JsonIgnore]
-        private float _loadArm;
+        private double _loadArm;
         [property: JsonIgnore]
-        public float LoadArm { get { return _loadArm; } }
+        public double LoadArm { get { return _loadArm; } set { _loadArm = value; } }
 
         [field: JsonIgnore]
-        private float _loadMoment;
+        private double _loadMoment;
         [property: JsonIgnore]
-        public float LoadMoment { get { return _loadMoment; } }
+        public double LoadMoment { get { return _loadMoment; } set { _loadMoment = value; } }
 
         [property: JsonIgnore]
-        public float TotalWeight { get { return _emptyWeight + _loadWeight; } }
+        public double TotalWeight { get { return _emptyWeight + _loadWeight; } }
 
         [property: JsonIgnore]
-        public float TotalArm { get { return _emptyArm + _loadArm; } }
+        public double TotalArm { get { return _emptyArm + _loadArm; } }
 
         [property: JsonIgnore]
-        public float TotalMoment { get { return _emptyMoment + _loadMoment; } }
-
-        [field: JsonIgnore]
-        private float _cog;
-        [property: JsonIgnore]
-        public float CoG { get { return _cog; } }
+        public double TotalMoment { get { return _emptyMoment + _loadMoment; } }
 
         [field: JsonIgnore]
         private string _dispname = String.Empty;
         public string DisplayName { get { return _dispname; } set { _dispname = value; } }
-
-        [field: JsonIgnore]
-        private float _maxgross;
-        public float MaxGross { get { return _maxgross; } set { _maxgross = value; } }
 
         [field: JsonIgnore]
         private string _acimgpath = String.Empty;
@@ -82,8 +89,24 @@ namespace WeightBalance.Models
         public string ChartImagePath { get { return _chartimgpath; } set { _chartimgpath = value; } }
 
         [field: JsonIgnore]
-        private float[] _cgrect = new float[4];
-        public float[] CgRectangle { get { return _cgrect; } set { _cgrect = value; } }
+        private double[] _cgrectcoords = new double[4];
+        public double[] CgRectCoordinates { get { return _cgrectcoords; } set { _cgrectcoords = value; } }
+
+        [property: JsonIgnore]
+        public Rect CgRectangle 
+        { 
+            get 
+            {
+                Rect rect = new Rect
+                {
+                    X = _cgrectcoords[0],
+                    Y = _cgrectcoords[1],
+                    Width = _cgrectcoords[2],
+                    Height = _cgrectcoords[3]
+                };
+                return rect;
+            } 
+        }
 
         [field: JsonIgnore]
         private UnitSelector _unitSelector = UnitSelector.Unknown;
@@ -95,11 +118,17 @@ namespace WeightBalance.Models
         public ObservableCollection<CoGUnit> CoGUnits { get { return _cogs; } set { _cogs = value; } }
 
         [property: JsonIgnore]
-        public float CalculatedCoG
+        public double CoG
         {
             get
             {
-                float cog = 0;
+                double cog = 0;
+                _loadWeight = 0;
+                _loadArm = 0;
+                _loadMoment = 0;
+                _emptyWeight = 0;
+                _emptyArm = 0;
+                _emptyMoment = 0;
 
                 if (_cogs != null)
                 {
@@ -122,28 +151,30 @@ namespace WeightBalance.Models
                         }
                     }
 
-                    var totwt = _emptyWeight + _loadWeight;
-                    var totarm = _emptyArm + _loadArm;
-                    var totmoment = _emptyMoment + _loadMoment;
-
-                    cog = totmoment / totarm;
-
+                    cog = TotalMoment / TotalWeight;
                 }
-
                 return cog;
             }
         }
 
-        public Image AircraftImage { get { return new Image { Source = _acimgpath }; } }
+        [property: JsonIgnore]
+        public string AircraftResourcePath { get { return $"WeightBalance.Resources.Images.{_acimgpath}"; } }
 
-        public Image ChartImage { get { return new Image { Source = _chartimgpath }; } }
+        [property: JsonIgnore]
+        public string ChartResourcePath { get { return $"WeightBalance.Resources.Images.{_chartimgpath}"; } }
 
+        [property: JsonIgnore]
+        public string GreenDotResourcePath { get { return $"WeightBalance.Resources.Images.greendot.png"; } }
+
+        [property: JsonIgnore]
+        public string RedDotResourcePath { get { return $"WeightBalance.Resources.Images.reddot.png"; } }
+
+        [property: JsonIgnore]
         public ImageSource AircraftImageSource
         {
             get
             {
-                var srcname = $"WeightBalance.Resources.Images.{_acimgpath}";
-                return ImageSource.FromResource(srcname, typeof(Aircraft).GetTypeInfo().Assembly);
+                return ImageSource.FromResource(AircraftResourcePath, typeof(Aircraft).GetTypeInfo().Assembly);
             }
         }
     }

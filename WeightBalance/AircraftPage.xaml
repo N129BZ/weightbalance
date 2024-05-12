@@ -3,17 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              xmlns:local="clr-namespace:WeightBalance"
-             x:Class="WeightBalance.AircraftPage"
-             Title="Weight and Balance">
-
-    <Shell.TitleView>
-        <Grid>
-            <Label Text="{Binding AcTitle}" 
-           FontSize="Header"
-           FontAttributes="Bold"
-           HorizontalOptions="Center" 
-           VerticalOptions="Center" />
-        </Grid>
-    </Shell.TitleView>
+             x:Class="WeightBalance.AircraftPage">
 
 </ContentPage>

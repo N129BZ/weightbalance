@@ -6,13 +6,13 @@ namespace WeightBalance
 {
     public partial class AircraftPage : ContentPage
     {
-        private string _actitle = String.Empty;
-
-        public string AcTitle { get { return _actitle; } }
+        private string actitle = String.Empty;
+        public string AcTitle { get { return actitle; } }
 
         public AircraftPage(Aircraft aircraft)
         {
-            _actitle = $"{aircraft.Name.ToUpper()} MAX GROSS: {aircraft.MaxGross}";
+            var cg = Math.Round(aircraft.CoG, 2);
+            actitle = $"GROSS WT: {aircraft.TotalWeight}, CG: {cg}";
             
             InitializeComponent();
 
@@ -22,31 +22,43 @@ namespace WeightBalance
             }
             else
             {
-                //var page = new AircraftSkiaPage(aircraft);
+                this.Title = actitle;
 
                 Grid views = new Grid();
                 views.RowDefinitions = new RowDefinitionCollection
-                    {
-                        new RowDefinition(new GridLength(220)),
-                        new RowDefinition(new GridLength(480)),
-                        new RowDefinition(new GridLength(100))
-                    };
-                //SKCanvasView acchart = new SKCanvasView();
-
-                GraphicsView acchart = new GraphicsView
                 {
-                    Drawable = new AircraftChart(aircraft) as IDrawable
+                    new RowDefinition(new GridLength(220)),
+                    new RowDefinition(new GridLength(480)),
+                    new RowDefinition(new GridLength(100))
+                };
+                ImageSource acimgsrc = ImageSource.FromResource(aircraft.AircraftResourcePath);
+                Image acimage = new Image
+                {
+                    Source = acimgsrc,
+                    Aspect = Aspect.AspectFit
                 };
 
-                views.Add(aircraft.AircraftImage, 0, 0);
-                views.Add(acchart, 0, 0);
-
-                GraphicsView mainchart = new GraphicsView
+                ImageSource chimgsrc = ImageSource.FromResource(aircraft.ChartResourcePath);
+                Image chimage = new Image
                 {
-                    Drawable = new MainChart(aircraft) as IDrawable,
+                    Source = chimgsrc,
+                    Aspect = Aspect.AspectFit
                 };
-                views.Add(mainchart, 0, 1);
+                
+                GraphicsView acoverlay = new GraphicsView
+                {
+                    Drawable = new AircraftOverlay(aircraft)
+                };
 
+                GraphicsView chartoverlay = new GraphicsView
+                {
+                    Drawable = new ChartOverlay(aircraft)
+                };
+
+                views.Add(acimage, 0, 0);
+                views.Add(chartoverlay, 0, 1);
+                views.Add(acoverlay);
+                
                 HorizontalStackLayout buttonLayout = new HorizontalStackLayout { HorizontalOptions = LayoutOptions.Center };
                 Button StationPageButton = new Button
                 {
@@ -73,7 +85,7 @@ namespace WeightBalance
                 buttonLayout.Add(MainPageButton);
 
                 views.Add(buttonLayout, 0, 2);
-
+                
                 Content = new VerticalStackLayout
                 {
                     BackgroundColor = Colors.White,

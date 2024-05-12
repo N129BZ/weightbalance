@@ -23,15 +23,17 @@ namespace WeightBalance
 		public CoGPage(Aircraft aircraft)
 		{
 			_aircraft = aircraft;
-			_title = $"{aircraft.Name} CG Stations";
 			_cogunits = aircraft.CoGUnits;
+
             InitializeComponent();
+            
+			this.Title = $"{aircraft.Name} CG Stations";
             BindingContext = this;
 		}
 
         private void ViewChart_Clicked(object sender, EventArgs e)
         {
-			var ap = new AircraftSkiaPage(_aircraft);
+			var ap = new AircraftPage(_aircraft);
 			Navigation.PushAsync(ap);
         }
 

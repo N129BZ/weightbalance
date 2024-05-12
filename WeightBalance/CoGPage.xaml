@@ -5,16 +5,6 @@
              xmlns:plain="clr-namespace:Plainer.Maui.Controls;assembly=Plainer.Maui"
              x:Class="WeightBalance.CoGPage">
 
-    <Shell.TitleView>
-        <Grid>
-            <Label Text="{Binding PageTitle}" 
-                   FontSize="Title"
-                   FontAttributes="Bold"
-                   HorizontalOptions="StartAndExpand" 
-                   VerticalOptions="Center" />
-        </Grid>
-    </Shell.TitleView>
-
     <StackLayout>
         <Grid>
             <Grid.RowDefinitions>

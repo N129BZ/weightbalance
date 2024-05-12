@@ -68,7 +68,9 @@
 	  <MauiImage Remove="Resources\Images\ch750_light.png" />
 	  <MauiImage Remove="Resources\Images\chcruzer_dark.png" />
 	  <MauiImage Remove="Resources\Images\chcruzer_light.png" />
+	  <MauiImage Remove="Resources\Images\greendot.png" />
 	  <MauiImage Remove="Resources\Images\nobevelchart.png" />
+	  <MauiImage Remove="Resources\Images\reddot.png" />
 	  <MauiImage Remove="Resources\Images\rv9a_dark.png" />
 	  <MauiImage Remove="Resources\Images\rv9a_light.png" />
 	  <MauiImage Remove="Resources\Images\rv9_dark.png" />
@@ -87,7 +89,9 @@
 	  <None Remove="Resources\Images\ch750_light.png" />
 	  <None Remove="Resources\Images\chcruzer_dark.png" />
 	  <None Remove="Resources\Images\chcruzer_light.png" />
+	  <None Remove="Resources\Images\greendot.png" />
 	  <None Remove="Resources\Images\nobevelchart.png" />
+	  <None Remove="Resources\Images\reddot.png" />
 	  <None Remove="Resources\Images\rv9a_dark.png" />
 	  <None Remove="Resources\Images\rv9a_light.png" />
 	  <None Remove="Resources\Images\rv9_dark.png" />
@@ -107,7 +111,9 @@
 	  <EmbeddedResource Include="Resources\Images\ch750_light.png" />
 	  <EmbeddedResource Include="Resources\Images\chcruzer_dark.png" />
 	  <EmbeddedResource Include="Resources\Images\chcruzer_light.png" />
+	  <EmbeddedResource Include="Resources\Images\greendot.png" />
 	  <EmbeddedResource Include="Resources\Images\nobevelchart.png" />
+	  <EmbeddedResource Include="Resources\Images\reddot.png" />
 	  <EmbeddedResource Include="Resources\Images\rv9a_dark.png" />
 	  <EmbeddedResource Include="Resources\Images\rv9a_light.png" />
 	  <EmbeddedResource Include="Resources\Images\rv9_dark.png" />
@@ -134,10 +140,6 @@
 	  <MauiXaml Update="CoGPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Templates\" />
 	</ItemGroup>
 
 </Project>

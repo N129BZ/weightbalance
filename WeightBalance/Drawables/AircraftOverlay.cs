@@ -1,0 +1,46 @@
+﻿using Microsoft.Maui.Graphics.Platform;
+using IImage = Microsoft.Maui.Graphics.IImage;
+using System.Reflection;
+using WeightBalance.Models;
+
+namespace WeightBalance.Drawables
+{
+    internal class AircraftOverlay : IDrawable
+    {
+        private Aircraft aircraft;
+        private double[] position = new double[2];
+
+        public AircraftOverlay(Aircraft selectedaircraft)
+        {
+            aircraft = selectedaircraft;
+        }
+
+        public void Draw(ICanvas canvas, RectF dirtyRect)
+        {
+            string dotpath = aircraft.GreenDotResourcePath;
+            
+            var cog = aircraft.CoG;
+
+            if ((aircraft.TotalWeight > aircraft.MaxGross) ||
+                cog <= aircraft.MinCg || cog >= aircraft.MaxCg)
+            {
+                dotpath = aircraft.RedDotResourcePath;
+            }
+
+            IImage dot;
+            Assembly assembly = GetType().GetTypeInfo().Assembly;
+            using (Stream stream = assembly.GetManifestResourceStream(dotpath))
+            {
+                dot = PlatformImage.FromStream(stream);
+            }
+
+            canvas.StrokeColor = Colors.Green;
+            canvas.StrokeSize = 2;
+            canvas.DrawRectangle(aircraft.CgRectangle);
+            
+            PointF point = Plotter.PlotAircraftPoint(cog, aircraft);
+            
+            canvas.DrawImage(dot, point.X, point.Y, 15, 15);
+        }
+    }
+}

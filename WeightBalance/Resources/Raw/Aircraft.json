@@ -1,11 +1,14 @@
 [
   {
     "ID": 1,
-    "Name": "CH 6XX",
+    "Name": "CH Zodiac",
     "MaxGross": 1320,
+    "MinGross": 720,
     "AircraftImagePath": "ch650_light.png",
     "ChartImagePath": "bevelchart.png",
-    "CgRectangle": [ -19, -12, 30, 110 ],
+    "CgRectCoordinates": [ 119, 20, 36, 100 ],
+    "MinCg": 10.6,
+    "MaxCg": 18,
     "Unit": 0,
     "CoGUnits": [
       {
@@ -57,11 +60,14 @@
   },
   {
     "ID": 2,
-    "Name": "CH 6XX TD",
+    "Name": "CH Zodiac TD",
     "MaxGross": 1320,
+    "MinGross": 720,
     "AircraftImagePath": "ch650td_light.png",
     "ChartImagePath": "nobevelchart.png",
-    "CgRectangle": [ -16, -34, 30, 110 ],
+    "CgRectCoordinates": [ 119, 22, 36, 100 ],
+    "MinCg": 10.6,
+    "MaxCg": 18,
     "Unit": 0,
     "CoGUnits": [
       {
@@ -115,9 +121,12 @@
     "ID": 3,
     "Name": "CH 701",
     "MaxGross": 1200,
+    "MinGross": 680,
     "AircraftImagePath": "ch701_light.png",
     "ChartImagePath": "bevelchart.png",
-    "CgRectangle": [ -29, 8, 30, 110 ],
+    "CgRectCoordinates": [ 110, 32, 36, 100 ],
+    "MinCg": 10.6,
+    "MaxCg": 18,
     "Unit": 0,
     "CoGUnits": [
       {
@@ -161,9 +170,12 @@
     "ID": 4,
     "Name": "CH 750",
     "MaxGross": 1320,
+    "MinGross": 720,
     "AircraftImagePath": "ch750_light.png",
     "ChartImagePath": "bevelchart.png",
-    "CgRectangle": [ -29, 8, 30, 110 ],
+    "CgRectCoordinates": [ 110, 32, 36, 100 ],
+    "MinCg": 10.6,
+    "MaxCg": 18,
     "Unit": 0,
     "CoGUnits": [
       {
@@ -207,9 +219,12 @@
     "ID": 5,
     "Name": "CH CruZer",
     "MaxGross": 1320,
+    "MinGross": 720,
     "AircraftImagePath": "chcruzer_light.png",
     "ChartImagePath": "bevelchart.png",
-    "CgRectangle": [ -26, -16, 30, 100 ],
+    "CgRectCoordinates": [ 110, 36, 36, 100 ],
+    "MinCg": 10.6,
+    "MaxCg": 18,
     "Unit": 0,
     "CoGUnits": [
       {
@@ -253,9 +268,12 @@
     "ID": 6,
     "Name": "RV 9",
     "MaxGross": 1475,
+    "MinGross": 830,
     "AircraftImagePath": "rv9_light.png",
     "ChartImagePath": "nobevelchart.png",
-    "CgRectangle": [ -29, 8, 30, 110 ],
+    "CgRectCoordinates": [ 106, 30, 36, 100 ],
+    "MinCg": 10.6,
+    "MaxCg": 18,
     "Unit": 0,
     "CoGUnits": [
       {
@@ -299,9 +317,12 @@
     "ID": 7,
     "Name": "RV 9A",
     "MaxGross": 1475,
+    "MinGross": 830,
     "AircraftImagePath": "rv9a_light.png",
     "ChartImagePath": "nobevelchart.png",
-    "CgRectangle": [ -29, 8, 30, 110 ],
+    "CgRectCoordinates": [ 106, 32, 36, 100 ],
+    "MinCg": 10.6,
+    "MaxCg": 18,
     "Unit": 0,
     "CoGUnits": [
       {
