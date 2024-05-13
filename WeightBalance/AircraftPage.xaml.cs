@@ -1,6 +1,5 @@
 using WeightBalance.Models;
 using WeightBalance.Drawables;
-using SkiaSharp.Views.Maui.Controls;
 
 namespace WeightBalance
 {
@@ -22,7 +21,7 @@ namespace WeightBalance
             }
             else
             {
-                this.Title = actitle;
+                this.Title = AcTitle;
 
                 Grid views = new Grid();
                 views.RowDefinitions = new RowDefinitionCollection
@@ -31,33 +30,32 @@ namespace WeightBalance
                     new RowDefinition(new GridLength(480)),
                     new RowDefinition(new GridLength(100))
                 };
+                
                 ImageSource acimgsrc = ImageSource.FromResource(aircraft.AircraftResourcePath);
                 Image acimage = new Image
                 {
                     Source = acimgsrc,
                     Aspect = Aspect.AspectFit
                 };
-
+                GraphicsView acoverlay = new GraphicsView
+                {
+                    Drawable = new AircraftOverlay(aircraft)
+                };
+                
                 ImageSource chimgsrc = ImageSource.FromResource(aircraft.ChartResourcePath);
                 Image chimage = new Image
                 {
                     Source = chimgsrc,
                     Aspect = Aspect.AspectFit
                 };
-                
-                GraphicsView acoverlay = new GraphicsView
-                {
-                    Drawable = new AircraftOverlay(aircraft)
-                };
-
                 GraphicsView chartoverlay = new GraphicsView
                 {
                     Drawable = new ChartOverlay(aircraft)
                 };
 
-                views.Add(acimage, 0, 0);
-                views.Add(chartoverlay, 0, 1);
+                views.Add(acimage);
                 views.Add(acoverlay);
+                views.Add(chartoverlay, 0, 1);
                 
                 HorizontalStackLayout buttonLayout = new HorizontalStackLayout { HorizontalOptions = LayoutOptions.Center };
                 Button StationPageButton = new Button

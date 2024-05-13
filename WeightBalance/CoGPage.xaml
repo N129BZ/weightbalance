@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
-             xmlns:plain="clr-namespace:Plainer.Maui.Controls;assembly=Plainer.Maui"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:local="clr-namespace:WeightBalance"
              x:Class="WeightBalance.CoGPage">
 
     <StackLayout>
@@ -11,22 +11,37 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <material:DataGrid x:Name="StationGrid" Grid.Row="0" ItemsSource="{ Binding CoGUnits }" 
-                               UseAutoColumns="True" 
-                               HorizontalOptions="Center"
-                               Margin="3">
-                <material:DataGrid.CellItemTemplate>
-                    <DataTemplate>
-                        <Editor Margin="10" Text="{material:DataGridValueBinding Mode=TwoWay}"/>
-                    </DataTemplate>
-                </material:DataGrid.CellItemTemplate>
-                <material:DataGrid.Columns>
-                    <material:DataGridColumn ValueBinding="{Binding Station}" Title="Station"/>
-                    <material:DataGridColumn ValueBinding="{Binding Weight}" Title="Weight"/>
-                    <material:DataGridColumn ValueBinding="{Binding Arm}" Title="Arm"/>
-                    <material:DataGridColumn ValueBinding="{Binding Moment}" Title="Moment"/>
-                </material:DataGrid.Columns>
-            </material:DataGrid>
+            <sf:SfDataGrid x:Name="StationGrid" 
+                           AutoGenerateColumnsMode="None"
+                           SelectionMode="Single"
+                           NavigationMode="Cell" 
+                           ItemsSource="{Binding CoGUnits}" 
+                           GridLinesVisibility="Both"
+                           HeaderGridLinesVisibility="Horizontal"
+                           AlternationRowCount="2"
+                           EditTapAction="OnTap"
+                           Grid.Row="0" 
+                           HorizontalOptions="Center" 
+                           HeightRequest="700"
+                           WidthRequest="410"
+                           Margin="10"
+                           Padding="2">
+                <sf:SfDataGrid.DefaultStyle>
+                    <sf:DataGridStyle AlternateRowBackground="#E8F8F5"
+                                      GridLineStrokeThickness="4"
+                                      HeaderRowBackground="Navy"
+                                      HeaderRowTextColor="White"
+                                      SelectionBackground="LightYellow" 
+                                      HeaderRowFontAttributes="Bold"
+                                      HeaderRowFontSize="16"/>
+                </sf:SfDataGrid.DefaultStyle>
+                <sf:SfDataGrid.Columns>
+                    <sf:DataGridTextColumn HeaderText="Station" MappingName="Station" AllowEditing="False" Width="110"/>
+                    <sf:DataGridNumericColumn HeaderText="Weight" MappingName="Weight" AllowEditing="True"/>
+                    <sf:DataGridNumericColumn HeaderText="Arm" MappingName="Arm" AllowEditing="True"/>
+                    <sf:DataGridNumericColumn HeaderText="Moment" MappingName="Moment" AllowEditing="False"/>
+                </sf:SfDataGrid.Columns>
+            </sf:SfDataGrid>
         </Grid>
         <Grid>
             <HorizontalStackLayout HorizontalOptions="Center">

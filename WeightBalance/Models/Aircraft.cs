@@ -6,13 +6,6 @@ namespace WeightBalance.Models
 {
     public class Aircraft
     {
-        public enum UnitSelector
-        {
-            Unknown = -1,
-            Imperial = 0,
-            Metric = 1
-        }
-
         [field: JsonIgnore]
         public long _id;
         public long ID { get { return _id; } set { _id = value; } }
@@ -109,8 +102,8 @@ namespace WeightBalance.Models
         }
 
         [field: JsonIgnore]
-        private UnitSelector _unitSelector = UnitSelector.Unknown;
-        public UnitSelector Unit { get { return _unitSelector; } set { _unitSelector = value; } }
+        private bool _isdefault = false;
+        public bool IsDefault { get { return _isdefault; } set { _isdefault = value; } }
 
         [field: JsonIgnore]
         private ObservableCollection<CoGUnit> _cogs = [];
@@ -170,12 +163,6 @@ namespace WeightBalance.Models
         public string RedDotResourcePath { get { return $"WeightBalance.Resources.Images.reddot.png"; } }
 
         [property: JsonIgnore]
-        public ImageSource AircraftImageSource
-        {
-            get
-            {
-                return ImageSource.FromResource(AircraftResourcePath, typeof(Aircraft).GetTypeInfo().Assembly);
-            }
-        }
+        public ImageSource AircraftImageSource { get { return ImageSource.FromResource(AircraftResourcePath, typeof(Aircraft).GetTypeInfo().Assembly); } }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using UraniumUI;
-using SkiaSharp.Views.Maui.Controls.Hosting;
+using Syncfusion.Maui.Core.Hosting;
 using CommunityToolkit.Maui;
 
 namespace WeightBalance
@@ -13,9 +12,6 @@ namespace WeightBalance
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
-                .UseSkiaSharp()
-                .UseUraniumUI()
-                .UseUraniumUIMaterial()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -25,6 +21,8 @@ namespace WeightBalance
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+            builder.ConfigureSyncfusionCore();
 
             return builder.Build();
         }

@@ -1,5 +1,4 @@
-﻿using WeightBalance.Data;
-
+﻿
 namespace WeightBalance
 {
     public partial class App : Application
@@ -7,6 +6,9 @@ namespace WeightBalance
         public App()
         {
             InitializeComponent();
+
+            //Register Syncfusion license
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NBaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXpfcnVWRmJZV0xwXEQ=");
 
             Task.Run(() => CopyResourceFiles()).Wait();
             

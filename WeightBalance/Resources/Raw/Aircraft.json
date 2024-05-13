@@ -9,7 +9,7 @@
     "CgRectCoordinates": [ 119, 20, 36, 100 ],
     "MinCg": 10.6,
     "MaxCg": 18,
-    "Unit": 0,
+    "IsDefault": true,
     "CoGUnits": [
       {
         "Station": "LeftMain",
@@ -68,7 +68,7 @@
     "CgRectCoordinates": [ 119, 22, 36, 100 ],
     "MinCg": 10.6,
     "MaxCg": 18,
-    "Unit": 0,
+    "IsDefault": false,
     "CoGUnits": [
       {
         "Station": "LeftMain",
@@ -127,7 +127,7 @@
     "CgRectCoordinates": [ 110, 32, 36, 100 ],
     "MinCg": 10.6,
     "MaxCg": 18,
-    "Unit": 0,
+    "IsDefault": false,
     "CoGUnits": [
       {
         "Station": "LeftMain",
@@ -176,7 +176,7 @@
     "CgRectCoordinates": [ 110, 32, 36, 100 ],
     "MinCg": 10.6,
     "MaxCg": 18,
-    "Unit": 0,
+    "IsDefault": false,
     "CoGUnits": [
       {
         "Station": "LeftMain",
@@ -225,7 +225,7 @@
     "CgRectCoordinates": [ 110, 36, 36, 100 ],
     "MinCg": 10.6,
     "MaxCg": 18,
-    "Unit": 0,
+    "IsDefault": false,
     "CoGUnits": [
       {
         "Station": "LeftMain",
@@ -274,7 +274,7 @@
     "CgRectCoordinates": [ 106, 30, 36, 100 ],
     "MinCg": 10.6,
     "MaxCg": 18,
-    "Unit": 0,
+    "IsDefault": false,
     "CoGUnits": [
       {
         "Station": "LeftMain",
@@ -323,7 +323,7 @@
     "CgRectCoordinates": [ 106, 32, 36, 100 ],
     "MinCg": 10.6,
     "MaxCg": 18,
-    "Unit": 0,
+    "IsDefault": false,
     "CoGUnits": [
       {
         "Station": "LeftMain",

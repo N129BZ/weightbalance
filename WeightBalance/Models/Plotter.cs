@@ -37,7 +37,7 @@ namespace WeightBalance.Models
 
         }
 
-        public static Point PlotChartPoint(double cog, Aircraft aircraft)
+        public static Point PlotChartPoint(double cog, Rect chartrect, Aircraft aircraft)
         {
             /************************************************* 
              * chart X = 20, Y = 120, W = 370, H = 360
@@ -53,10 +53,10 @@ namespace WeightBalance.Models
             var maxcg = aircraft.MaxCg;
             var mincg = aircraft.MinCg;
 
-            Rect rect = new Rect(20, 120, 370, 360);
+            //Rect rect = new Rect(20, 60, 370, 360);
 
-            double dotX = PlotX(rect, maxcg, mincg, cog);
-            double dotY = PlotY(rect, aircraft.MaxGross, aircraft.MinGross, aircraft.TotalWeight);
+            double dotX = PlotX(chartrect, maxcg, mincg, cog);
+            double dotY = PlotY(chartrect, aircraft.MaxGross, aircraft.MinGross, aircraft.TotalWeight);
 
             PointF point = new Point(dotX, dotY);
             return point;

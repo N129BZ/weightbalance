@@ -8,7 +8,6 @@ namespace WeightBalance.Drawables
     internal class AircraftOverlay : IDrawable
     {
         private Aircraft aircraft;
-        private double[] position = new double[2];
 
         public AircraftOverlay(Aircraft selectedaircraft)
         {
@@ -29,15 +28,19 @@ namespace WeightBalance.Drawables
 
             IImage dot;
             Assembly assembly = GetType().GetTypeInfo().Assembly;
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             using (Stream stream = assembly.GetManifestResourceStream(dotpath))
             {
                 dot = PlatformImage.FromStream(stream);
             }
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
-            canvas.StrokeColor = Colors.Green;
-            canvas.StrokeSize = 2;
+            canvas.FillColor = Color.FromRgba("#E8F8F570");
+            canvas.StrokeColor = Colors.DarkGreen;
+            canvas.StrokeSize = 1.4f;
             canvas.DrawRectangle(aircraft.CgRectangle);
-            
+            canvas.FillRectangle(aircraft.CgRectangle);
+
             PointF point = Plotter.PlotAircraftPoint(cog, aircraft);
             
             canvas.DrawImage(dot, point.X, point.Y, 15, 15);

@@ -20,38 +20,76 @@
             <mct:ImageResourceConverter x:Key="ImageResourceConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    
-    <ScrollView>
-        <ListView x:Name="listView"
-              ItemsSource="{Binding TheHangar}"
-              ItemTapped="ListView_ItemTapped" 
-              SeparatorColor="DarkBlue"
-              RowHeight="98">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="ac:Aircraft">
-                    <ViewCell>
-                        <Grid Padding="10" BackgroundColor="White" Margin="4">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" 
-                                   Text="{Binding Name}" 
-                                   FontAttributes="Bold"
-                                   Margin="5"
-                                   TextColor="Black"
-                                   HeightRequest="100"/>
-                            <Image Grid.Column="1" 
-                                   Source="{Binding AircraftImageSource}"
-                                   HeightRequest="80"
-                                   VerticalOptions="Start"/>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </ScrollView>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="720"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <ScrollView Grid.Row="0">
+            <ListView x:Name="AircraftList"
+                  ItemsSource="{Binding TheHangar}"
+                  ItemTapped="ListView_ItemTapped" 
+                  SeparatorColor="DarkBlue"
+                  RowHeight="98">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="ac:Aircraft">
+                        <ViewCell>
+                            <Grid Padding="4" BackgroundColor="White" Margin="4">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" 
+                                       Text="{Binding Name}" 
+                                       FontAttributes="Bold"
+                                       Margin="5"
+                                       TextColor="Black"
+                                       HeightRequest="100"/>
+                                <Image Grid.Column="1" 
+                                       Source="{Binding AircraftImageSource}"
+                                       HeightRequest="80"
+                                       VerticalOptions="Start"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+        <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="820">
+            <Button x:Name="SetDefault" 
+                    Text="Set As Default"
+                    Padding="3"
+                    Margin="3"
+                    WidthRequest="130"
+                    BackgroundColor="Navy"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    VerticalOptions="End"
+                    Clicked="SetDefault_Clicked" />
+            <Button x:Name="ViewStations" 
+                    Text="View Stations" 
+                    Padding="3"
+                    Margin="3"
+                    WidthRequest="130"
+                    BackgroundColor="Navy"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    VerticalOptions="End"
+                    Clicked="ViewStations_Clicked" />
+            <Button x:Name="ExitApp" 
+                    Text="Taxi Out" 
+                    Padding="3"
+                    Margin="3"
+                    WidthRequest="130"
+                    BackgroundColor="Navy"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    VerticalOptions="End"
+                    Clicked="ExitHangar_Clicked" />       
+        </HorizontalStackLayout>
+    </Grid>
 </ContentPage>
