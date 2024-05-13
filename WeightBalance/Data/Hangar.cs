@@ -12,7 +12,7 @@ namespace WeightBalance.Data
     public static class Hangar
     {
         
-        public static ObservableCollection<Aircraft> GetTheHangar()
+        public static ObservableCollection<Aircraft> LoadTheHangar()
         {
             var filePath = Path.Combine(FileSystem.AppDataDirectory, "Aircraft.json");
             var json = File.ReadAllText(filePath);

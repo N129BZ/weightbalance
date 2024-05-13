@@ -5,13 +5,12 @@ namespace WeightBalance
 {
     public partial class AircraftPage : ContentPage
     {
-        private string actitle = String.Empty;
-        public string AcTitle { get { return actitle; } }
+        private string _pagetitle = String.Empty;
+        public string PageTitle { get { return _pagetitle; } set { _pagetitle = value; } }
 
         public AircraftPage(Aircraft aircraft)
         {
-            var cg = Math.Round(aircraft.CoG, 2);
-            actitle = $"GROSS WT: {aircraft.TotalWeight}, CG: {cg}";
+            _pagetitle = $"GROSS WT: {aircraft.TotalWeight}, CG: {aircraft.CoG}";
             
             InitializeComponent();
 
@@ -21,16 +20,8 @@ namespace WeightBalance
             }
             else
             {
-                this.Title = AcTitle;
-
-                Grid views = new Grid();
-                views.RowDefinitions = new RowDefinitionCollection
-                {
-                    new RowDefinition(new GridLength(220)),
-                    new RowDefinition(new GridLength(480)),
-                    new RowDefinition(new GridLength(100))
-                };
-                
+                Grid view = PageGrid;
+                               
                 ImageSource acimgsrc = ImageSource.FromResource(aircraft.AircraftResourcePath);
                 Image acimage = new Image
                 {
@@ -39,7 +30,7 @@ namespace WeightBalance
                 };
                 GraphicsView acoverlay = new GraphicsView
                 {
-                    Drawable = new AircraftOverlay(aircraft)
+                    Drawable = new AircraftOverlay(aircraft),
                 };
                 
                 ImageSource chimgsrc = ImageSource.FromResource(aircraft.ChartResourcePath);
@@ -48,24 +39,23 @@ namespace WeightBalance
                     Source = chimgsrc,
                     Aspect = Aspect.AspectFit
                 };
+                
                 GraphicsView chartoverlay = new GraphicsView
                 {
                     Drawable = new ChartOverlay(aircraft)
                 };
-
-                views.Add(acimage);
-                views.Add(acoverlay);
-                views.Add(chartoverlay, 0, 1);
                 
                 HorizontalStackLayout buttonLayout = new HorizontalStackLayout { HorizontalOptions = LayoutOptions.Center };
+                buttonLayout.SetValue(Grid.RowProperty, 2);
                 Button StationPageButton = new Button
                 {
                     Text = "View Stations",
                     VerticalOptions = LayoutOptions.Center,
-                    HorizontalOptions = LayoutOptions.Center,
-                    Padding = 6,
-                    Margin = 6,
-                    WidthRequest = 150,
+                    HorizontalOptions = LayoutOptions.Start,
+                    Padding = 3,
+                    Margin = 3,
+                    WidthRequest = 130,
+                    HeightRequest = 40,
                     BackgroundColor = Colors.Navy,
                     TextColor = Colors.White,
                     FontAttributes = FontAttributes.Bold
@@ -78,9 +68,10 @@ namespace WeightBalance
                     Text = "Select Aircraft",
                     VerticalOptions = LayoutOptions.Center,
                     HorizontalOptions = LayoutOptions.Center,
-                    Padding = 6,
-                    Margin = 6,
-                    WidthRequest = 150,
+                    Padding = 3,
+                    Margin = 3,
+                    WidthRequest = 130,
+                    HeightRequest = 40,
                     BackgroundColor = Colors.Navy,
                     TextColor = Colors.White,
                     FontAttributes = FontAttributes.Bold
@@ -88,18 +79,36 @@ namespace WeightBalance
                 MainPageButton.Clicked += MainPageButton_Clicked;
                 buttonLayout.Add(MainPageButton);
 
-                views.Add(buttonLayout, 0, 2);
-                
-                Content = new VerticalStackLayout
+                Button ExitApp = new Button
                 {
-                    BackgroundColor = Colors.White,
-                    Children = {
-                        views
-                    }
+                    Text = "Taxi Out",
+                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.End,
+                    Padding = 3,
+                    Margin = 3,
+                    WidthRequest = 130,
+                    HeightRequest = 40,
+                    BackgroundColor = Colors.Navy,
+                    FontAttributes = FontAttributes.Bold,
                 };
+                ExitApp.Clicked += ExitApp_Clicked;
+                buttonLayout.Add(ExitApp);  
+
+                view.Add(acimage, 0, 0);
+                view.Add(acoverlay, 0, 0);
+                view.Add(chimage, 0, 1);
+                view.Add(chartoverlay, 0, 1);
+                view.Add(buttonLayout, 0, 2);
+
+                Content = view;
             }
 
             BindingContext = this;  
+        }
+
+        private void ExitApp_Clicked(object? sender, EventArgs e)
+        {
+            Application.Current?.Quit();
         }
 
         private void StationPageButton_Clicked(object? sender, EventArgs e)

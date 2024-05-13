@@ -1,15 +1,14 @@
-﻿using Syncfusion.Maui.DataSource.Extensions;
-using System.Collections.ObjectModel;
-using System.Text.Json;
+﻿using System.Collections.ObjectModel;
+using Syncfusion.Maui.ListView;
 using WeightBalance.Models;
 using WeightBalance.Data;
-using Microsoft.Maui.Controls;
+
 
 namespace WeightBalance
 {
     public partial class MainPage : ContentPage
     {
-        private ObservableCollection<Aircraft> _thehangar = new();
+        private ObservableCollection<Aircraft> _thehangar = [];
         public ObservableCollection<Aircraft> TheHangar { get { return _thehangar; } set { _thehangar = value; } }
 
         private Aircraft _aircraft = new();
@@ -18,35 +17,37 @@ namespace WeightBalance
         public MainPage()
         {
             InitializeComponent();
+           
+            _thehangar = Hangar.LoadTheHangar();
 
-            
-            
-            _thehangar = Hangar.GetTheHangar();
-            
+            BindingContext = this;
+
+            SearchForDefault();
+        }
+
+        private void SearchForDefault()
+        {
             foreach (Aircraft ac in _thehangar)
             {
-                if (ac.IsDefault) 
-                { 
+                if (ac.IsDefault)
+                {
                     _aircraft = ac;
                     AircraftList.SelectedItem = ac;
                     Task.Run(() => DoStationNavigation());
-                    break;
+                    return;
                 }
             }
-
-            BindingContext = this;
         }
 
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            _aircraft = (Aircraft)e.Item;
-        }
+        //private void AircraftList_ItemTapped(object? sender, ItemTappedArgs e)
+        //{
+        //    _aircraft = (Aircraft)e.DataItem;
+        //}
 
         private void DoStationNavigation()
         {
-            Object o = new Object();
-            EventArgs e = new EventArgs();
-            ViewStations_Clicked(o, e);
+            var e = new EventArgs();
+            ViewStations_Clicked(this, e);
         }
         private void ViewStations_Clicked(object sender, EventArgs e)
         {
@@ -56,6 +57,7 @@ namespace WeightBalance
 
         private void SetDefault_Clicked(object sender, EventArgs e)
         {
+            _aircraft.IsDefault = true;
             foreach (Aircraft ac in _thehangar)
             {
                 if (ac.ID != _aircraft.ID)
@@ -63,14 +65,19 @@ namespace WeightBalance
                     ac.IsDefault = false;
                 }
             }
-            _aircraft.IsDefault = Hangar.SaveTheHangar(_thehangar);
-            
-            ViewStations_Clicked(this, new EventArgs());
+            Hangar.SaveTheHangar(_thehangar);
         }
 
         private void ExitHangar_Clicked(object sender, EventArgs e)
         {
-            Application.Current.Quit();
+            Application.Current?.Quit();
+        }
+
+        private void AircraftList_ItemDoubleTapped(object sender, ItemDoubleTappedEventArgs e)
+        {
+            _aircraft = (Aircraft)e.DataItem;
+            SetDefault_Clicked(sender, new EventArgs());
+            ViewStations_Clicked(sender, new EventArgs());
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using System.Reflection;
+using Xamarin.Google.Crypto.Tink.Signature;
 
 namespace WeightBalance.Models
 {
@@ -60,14 +61,20 @@ namespace WeightBalance.Models
         [property: JsonIgnore]
         public double LoadMoment { get { return _loadMoment; } set { _loadMoment = value; } }
 
+        [field: JsonIgnore]
+        private double _totalweight = 0;
         [property: JsonIgnore]
-        public double TotalWeight { get { return _emptyWeight + _loadWeight; } }
+        public double TotalWeight { get { return _totalweight; } }
 
+        [field: JsonIgnore]
+        private double _totalarm = 0;
         [property: JsonIgnore]
-        public double TotalArm { get { return _emptyArm + _loadArm; } }
+        public double TotalArm { get { return _totalarm; } }
 
+        [field: JsonIgnore]
+        private double _totalmoment = 0;
         [property: JsonIgnore]
-        public double TotalMoment { get { return _emptyMoment + _loadMoment; } }
+        public double TotalMoment { get { return _totalmoment; } }
 
         [field: JsonIgnore]
         private string _dispname = String.Empty;
@@ -110,44 +117,53 @@ namespace WeightBalance.Models
 
         public ObservableCollection<CoGUnit> CoGUnits { get { return _cogs; } set { _cogs = value; } }
 
+        [field: JsonIgnore]
+        private double _cog = 0;
         [property: JsonIgnore]
-        public double CoG
+        public double CoG { get { CalculateCoG(); return _cog; } }
+
+        public void CalculateCoG()
         {
-            get
+            double cog = 0;
+            _loadWeight = 0;
+            _loadArm = 0;
+            _loadMoment = 0;
+            _emptyWeight = 0;
+            _emptyArm = 0;
+            _emptyMoment = 0;
+
+            if (_cogs != null)
             {
-                double cog = 0;
-                _loadWeight = 0;
-                _loadArm = 0;
-                _loadMoment = 0;
-                _emptyWeight = 0;
-                _emptyArm = 0;
-                _emptyMoment = 0;
-
-                if (_cogs != null)
+                foreach (var item in _cogs)
                 {
-                    foreach (var item in _cogs)
+                    if (item.Station == "NoseWheel" ||
+                        item.Station == "TailWheel" ||
+                        item.Station == "LeftMain" ||
+                        item.Station == "RightMain")
                     {
-                        if (item.Station == "NoseWheel" ||
-                            item.Station == "TailWheel" ||
-                            item.Station == "LeftMain" ||
-                            item.Station == "RightMain")
-                        {
-                            _emptyWeight += item.Weight;
-                            _emptyArm += item.Arm;
-                            _emptyMoment += item.Weight * item.Arm;
-                        }
-                        else
-                        {
-                            _loadWeight += item.Weight;
-                            _loadArm += item.Arm;
-                            _loadMoment += (item.Weight * item.Arm);
-                        }
+                        _emptyWeight += item.Weight;
+                        _emptyArm += item.Arm;
+                        _emptyMoment += item.Weight * item.Arm;
                     }
-
-                    cog = TotalMoment / TotalWeight;
+                    else
+                    {
+                        _loadWeight += item.Weight;
+                        _loadArm += item.Arm;
+                        _loadMoment += (item.Weight * item.Arm);
+                    }
                 }
-                return cog;
+
+                _totalweight = _emptyWeight + _loadWeight;
+                _totalarm = _emptyArm + _loadArm;
+                _totalmoment = _emptyMoment + _loadMoment;
+
+                cog = _totalmoment / _totalweight;
             }
+
+            if (cog > 0)
+                _cog = Math.Round(cog, 2);
+            else
+                _cog = 0;
         }
 
         [property: JsonIgnore]
@@ -164,5 +180,10 @@ namespace WeightBalance.Models
 
         [property: JsonIgnore]
         public ImageSource AircraftImageSource { get { return ImageSource.FromResource(AircraftResourcePath, typeof(Aircraft).GetTypeInfo().Assembly); } }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

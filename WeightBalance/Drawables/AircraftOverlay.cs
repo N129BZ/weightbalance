@@ -28,12 +28,12 @@ namespace WeightBalance.Drawables
 
             IImage dot;
             Assembly assembly = GetType().GetTypeInfo().Assembly;
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning disable CS8600 
             using (Stream stream = assembly.GetManifestResourceStream(dotpath))
             {
                 dot = PlatformImage.FromStream(stream);
             }
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning restore CS8600 
 
             canvas.FillColor = Color.FromRgba("#E8F8F570");
             canvas.StrokeColor = Colors.DarkGreen;

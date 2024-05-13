@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              xmlns:ac="clr-namespace:WeightBalance.Models"
              x:Class="WeightBalance.MainPage">
 
@@ -20,50 +21,57 @@
             <mct:ImageResourceConverter x:Key="ImageResourceConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="720"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="530"/>
+            <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
-        <ScrollView Grid.Row="0">
-            <ListView x:Name="AircraftList"
-                  ItemsSource="{Binding TheHangar}"
-                  ItemTapped="ListView_ItemTapped" 
-                  SeparatorColor="DarkBlue"
-                  RowHeight="98">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="ac:Aircraft">
-                        <ViewCell>
-                            <Grid Padding="4" BackgroundColor="White" Margin="4">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" 
-                                       Text="{Binding Name}" 
-                                       FontAttributes="Bold"
-                                       Margin="5"
-                                       TextColor="Black"
-                                       HeightRequest="100"/>
-                                <Image Grid.Column="1" 
-                                       Source="{Binding AircraftImageSource}"
-                                       HeightRequest="80"
-                                       VerticalOptions="Start"/>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </ScrollView>
-        <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="820">
+        <sf:SfListView x:Name="AircraftList"
+                   ItemsSource="{Binding TheHangar}"
+                   Grid.Row="0"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Fill"
+                   SelectionMode="Single"
+                   ItemSize="74"
+                   ItemSpacing="1"
+                   ItemDoubleTapped="AircraftList_ItemDoubleTapped">
+            <sf:SfListView.ItemsLayout>
+                <sf:LinearLayout/>
+            </sf:SfListView.ItemsLayout>
+            <sf:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <Border>
+                        <Grid Margin="2" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" 
+                               Text="{Binding Name}" 
+                               FontAttributes="Bold"
+                               Margin="1"
+                               TextColor="Black"
+                               VerticalTextAlignment="Center"
+                               HeightRequest="70"/>
+                            <Image Grid.Column="1" 
+                               Source="{Binding AircraftImageSource}"
+                               HeightRequest="70"
+                               VerticalOptions="Start"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </sf:SfListView.ItemTemplate>
+        </sf:SfListView>
+        <HorizontalStackLayout Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Center">
             <Button x:Name="SetDefault" 
                     Text="Set As Default"
                     Padding="3"
                     Margin="3"
+                    HeightRequest="40"
                     WidthRequest="130"
                     BackgroundColor="Navy"
                     TextColor="White"
@@ -75,6 +83,7 @@
                     Padding="3"
                     Margin="3"
                     WidthRequest="130"
+                    HeightRequest="40"
                     BackgroundColor="Navy"
                     TextColor="White"
                     FontAttributes="Bold"
@@ -85,11 +94,12 @@
                     Padding="3"
                     Margin="3"
                     WidthRequest="130"
+                    HeightRequest="40"
                     BackgroundColor="Navy"
                     TextColor="White"
                     FontAttributes="Bold"
                     VerticalOptions="End"
-                    Clicked="ExitHangar_Clicked" />       
+                    Clicked="ExitHangar_Clicked" />
         </HorizontalStackLayout>
     </Grid>
 </ContentPage>

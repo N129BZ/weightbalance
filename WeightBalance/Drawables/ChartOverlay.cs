@@ -35,7 +35,7 @@ namespace WeightBalance.Drawables
                 image = PlatformImage.FromStream(stream);
             }
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-            canvas.DrawImage(image, 20, 60, 370, 360);
+            //canvas.DrawImage(image, 20, 60, 370, 360);
 
             /*******************************************************
              * Point plotter needs to know the image's rectangular

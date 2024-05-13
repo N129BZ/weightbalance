@@ -9,7 +9,7 @@
     "CgRectCoordinates": [ 119, 20, 36, 100 ],
     "MinCg": 10.6,
     "MaxCg": 18,
-    "IsDefault": true,
+    "IsDefault": false,
     "CoGUnits": [
       {
         "Station": "LeftMain",

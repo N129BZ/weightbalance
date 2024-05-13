@@ -5,13 +5,25 @@
              xmlns:local="clr-namespace:WeightBalance"
              x:Class="WeightBalance.CoGPage">
 
-    <StackLayout>
+    <Shell.TitleView>
         <Grid>
+            <Label Text="{Binding PageTitle}" 
+           FontSize="Title"
+           FontAttributes="Bold"
+           HorizontalOptions="Center" 
+           VerticalOptions="Center" />
+        </Grid>
+    </Shell.TitleView>
+    
+    <Grid HorizontalOptions="Fill" WidthRequest="410">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="530"/>
+                <RowDefinition Height="90"/>
             </Grid.RowDefinitions>
             <sf:SfDataGrid x:Name="StationGrid" 
+                           Grid.Row="0"
+                           HorizontalOptions="Fill"
+                           VerticalOptions="Fill"
                            AutoGenerateColumnsMode="None"
                            SelectionMode="Single"
                            NavigationMode="Cell" 
@@ -19,13 +31,7 @@
                            GridLinesVisibility="Both"
                            HeaderGridLinesVisibility="Horizontal"
                            AlternationRowCount="2"
-                           EditTapAction="OnTap"
-                           Grid.Row="0" 
-                           HorizontalOptions="Center" 
-                           HeightRequest="700"
-                           WidthRequest="410"
-                           Margin="10"
-                           Padding="2">
+                           EditTapAction="OnTap">
                 <sf:SfDataGrid.DefaultStyle>
                     <sf:DataGridStyle AlternateRowBackground="#E8F8F5"
                                       GridLineStrokeThickness="4"
@@ -37,19 +43,19 @@
                 </sf:SfDataGrid.DefaultStyle>
                 <sf:SfDataGrid.Columns>
                     <sf:DataGridTextColumn HeaderText="Station" MappingName="Station" AllowEditing="False" Width="110"/>
-                    <sf:DataGridNumericColumn HeaderText="Weight" MappingName="Weight" AllowEditing="True"/>
-                    <sf:DataGridNumericColumn HeaderText="Arm" MappingName="Arm" AllowEditing="True"/>
-                    <sf:DataGridNumericColumn HeaderText="Moment" MappingName="Moment" AllowEditing="False"/>
+                    <sf:DataGridNumericColumn HeaderText="Weight" MappingName="Weight" AllowEditing="True" Format="0.0"/>
+                    <sf:DataGridNumericColumn HeaderText="Arm" MappingName="Arm" AllowEditing="True" Format="0.0"/>
+                    <sf:DataGridNumericColumn HeaderText="Moment" MappingName="Moment" AllowEditing="False" Format="0.0"/>
                 </sf:SfDataGrid.Columns>
             </sf:SfDataGrid>
-        </Grid>
-        <Grid>
-            <HorizontalStackLayout HorizontalOptions="Center">
+        
+            <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Fill">
                 <Button x:Name="ViewChart" 
                         Text="View Chart" 
-                        Padding="6"
-                        Margin="6"
-                        WidthRequest="150"
+                        Padding="3"
+                        Margin="3"
+                        WidthRequest="130"
+                        HeightRequest="40"
                         BackgroundColor="Navy"
                         TextColor="White"
                         FontAttributes="Bold"
@@ -57,17 +63,29 @@
                         Clicked="ViewChart_Clicked" />
                 <Button x:Name="Back" 
                         Text="Select Aircraft" 
-                        Padding="6"
-                        Margin="6"
-                        WidthRequest="150"
+                        Padding="3"
+                        Margin="3"
+                        WidthRequest="130"
+                        HeightRequest="40"
                         BackgroundColor="Navy"
                         TextColor="White"
                         FontAttributes="Bold"
                         VerticalOptions="End"
-                        Clicked="Back_Clicked" />          
-            </HorizontalStackLayout>
+                        Clicked="Back_Clicked" />
+                <Button x:Name="ExitApp" 
+                        Text="Taxi Out" 
+                        Padding="3"
+                        Margin="3"
+                        WidthRequest="130"
+                        HeightRequest="40"
+                        BackgroundColor="Navy"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        VerticalOptions="End"
+                        Clicked="ExitHangar_Clicked" />
+        </HorizontalStackLayout>
         </Grid>
-    </StackLayout>
+    
     
 
 </ContentPage>
