@@ -49,8 +49,7 @@
                 <sf:DataGridNumericColumn HeaderText="Moment" MappingName="Moment" AllowEditing="False" Format="0.0"/>
             </sf:SfDataGrid.Columns>
             <sf:SfDataGrid.TableSummaryRows>
-                <sf:DataGridTableSummaryRow Name="TableSummary" 
-                                            ShowSummaryInRow="False">
+                <sf:DataGridTableSummaryRow ShowSummaryInRow="False">
                     <sf:DataGridTableSummaryRow.SummaryColumns>
                         <sf:DataGridSummaryColumn Name="Weight"
                                                   MappingName="Weight"

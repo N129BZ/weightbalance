@@ -41,6 +41,7 @@ namespace WeightBalance
             // if we got here, there was no default Aircraft,
             // so set _aircraft to the 1st item in the list
             _aircraft = _thehangar[0];
+            AircraftListView.SelectedItem = _aircraft;
         }
 
         private void DoStationNavigation()

@@ -27,31 +27,29 @@ namespace WeightBalance.Drawables
                 dotpath = aircraft.RedDotResourcePath;
             }
 
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             IImage image;
             Assembly assembly = GetType().GetTypeInfo().Assembly;
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             using (Stream stream = assembly.GetManifestResourceStream(aircraft.ChartResourcePath))
             {
                 image = PlatformImage.FromStream(stream);
             }
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-            //canvas.DrawImage(image, 20, 60, 370, 360);
 
             /*******************************************************
              * Point plotter needs to know the image's rectangular
              * area, so make a rectangle with the same coordinates
-             * to pass to the Plotter
+             * to pass to the Plotter, height is minus dot radius
              *******************************************************/ 
-            Rect rect = new Rect(20, 20, 370, 360);
+            Rect rect = new Rect(20, -5, 370, 360);
             PointF point = Plotter.PlotChartPoint(cog, rect, aircraft);
 
             IImage dot;
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             using (Stream stream = assembly.GetManifestResourceStream(dotpath))
             {
                 dot = PlatformImage.FromStream(stream);
             }
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+
             canvas.DrawImage(dot, point.X, point.Y, dot.Width, dot.Height);
 
         }
