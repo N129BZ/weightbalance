@@ -17,11 +17,11 @@ namespace WeightBalance
 
         private static async void CheckForJsonDataFile()
         {
-            var filepath = Path.Combine(FileSystem.AppDataDirectory, "Aircraft.json");
+            var filepath = Path.Combine(FileSystem.AppDataDirectory, "aircraft.json");
            
             //if (!File.Exists(filepath))
             //{
-                using var inputStream = await FileSystem.OpenAppPackageFileAsync("Aircraft.json");
+                using var inputStream = await FileSystem.OpenAppPackageFileAsync("aircraft.json");
                 using var outputStream = File.Create(filepath);
                 await inputStream.CopyToAsync(outputStream);
             //}

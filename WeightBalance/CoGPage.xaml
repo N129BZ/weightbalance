@@ -14,13 +14,14 @@
            VerticalOptions="Center" />
         </Grid>
     </Shell.TitleView>
-    
+
     <Grid HorizontalOptions="Fill" WidthRequest="410">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="530"/>
-                <RowDefinition Height="90"/>
-            </Grid.RowDefinitions>
-            <sf:SfDataGrid x:Name="StationGrid" 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="530"/>
+            <RowDefinition Height="90"/>
+        </Grid.RowDefinitions>
+        
+        <sf:SfDataGrid x:Name="StationGrid" 
                            Grid.Row="0"
                            HorizontalOptions="Fill"
                            VerticalOptions="Fill"
@@ -32,25 +33,44 @@
                            HeaderGridLinesVisibility="Horizontal"
                            AlternationRowCount="2"
                            EditTapAction="OnTap">
-                <sf:SfDataGrid.DefaultStyle>
-                    <sf:DataGridStyle AlternateRowBackground="#E8F8F5"
+            <sf:SfDataGrid.DefaultStyle>
+                <sf:DataGridStyle AlternateRowBackground="#E8F8F5"
                                       GridLineStrokeThickness="4"
                                       HeaderRowBackground="Navy"
                                       HeaderRowTextColor="White"
                                       SelectionBackground="LightYellow" 
                                       HeaderRowFontAttributes="Bold"
                                       HeaderRowFontSize="16"/>
-                </sf:SfDataGrid.DefaultStyle>
-                <sf:SfDataGrid.Columns>
-                    <sf:DataGridTextColumn HeaderText="Station" MappingName="Station" AllowEditing="False" Width="110"/>
-                    <sf:DataGridNumericColumn HeaderText="Weight" MappingName="Weight" AllowEditing="True" Format="0.0"/>
-                    <sf:DataGridNumericColumn HeaderText="Arm" MappingName="Arm" AllowEditing="True" Format="0.0"/>
-                    <sf:DataGridNumericColumn HeaderText="Moment" MappingName="Moment" AllowEditing="False" Format="0.0"/>
-                </sf:SfDataGrid.Columns>
-            </sf:SfDataGrid>
+            </sf:SfDataGrid.DefaultStyle>
+            <sf:SfDataGrid.Columns>
+                <sf:DataGridTextColumn HeaderText="Station" MappingName="Station" AllowEditing="False" Width="110"/>
+                <sf:DataGridNumericColumn HeaderText="Weight" MappingName="Weight" AllowEditing="True" Format="0.0"/>
+                <sf:DataGridNumericColumn HeaderText="Arm" MappingName="Arm" AllowEditing="True" Format="0.0"/>
+                <sf:DataGridNumericColumn HeaderText="Moment" MappingName="Moment" AllowEditing="False" Format="0.0"/>
+            </sf:SfDataGrid.Columns>
+            <sf:SfDataGrid.TableSummaryRows>
+                <sf:DataGridTableSummaryRow Name="TableSummary" 
+                                            ShowSummaryInRow="False">
+                    <sf:DataGridTableSummaryRow.SummaryColumns>
+                        <sf:DataGridSummaryColumn Name="Weight"
+                                                  MappingName="Weight"
+                                                  Format="{}{Sum:##.0}"
+                                                  SummaryType="DoubleAggregate"/>
+                        <sf:DataGridSummaryColumn Name="Arm"
+                                                  MappingName="Arm"
+                                                  Format="{}{Sum:##.0}"
+                                                  SummaryType="DoubleAggregate"/>
+                        <sf:DataGridSummaryColumn Name="Moment"
+                                                  MappingName="Moment"
+                                                  Format="{}{Sum:##.0}"
+                                                  SummaryType="DoubleAggregate"/>
+                    </sf:DataGridTableSummaryRow.SummaryColumns>
+                </sf:DataGridTableSummaryRow>
+            </sf:SfDataGrid.TableSummaryRows>
+        </sf:SfDataGrid>
         
-            <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Fill">
-                <Button x:Name="ViewChart" 
+        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Fill">
+            <Button x:Name="ViewChart" 
                         Text="View Chart" 
                         Padding="3"
                         Margin="3"
@@ -61,7 +81,7 @@
                         FontAttributes="Bold"
                         VerticalOptions="End"
                         Clicked="ViewChart_Clicked" />
-                <Button x:Name="Back" 
+            <Button x:Name="Back" 
                         Text="Select Aircraft" 
                         Padding="3"
                         Margin="3"
@@ -72,7 +92,7 @@
                         FontAttributes="Bold"
                         VerticalOptions="End"
                         Clicked="Back_Clicked" />
-                <Button x:Name="ExitApp" 
+            <Button x:Name="ExitApp" 
                         Text="Taxi Out" 
                         Padding="3"
                         Margin="3"
@@ -84,8 +104,5 @@
                         VerticalOptions="End"
                         Clicked="ExitHangar_Clicked" />
         </HorizontalStackLayout>
-        </Grid>
-    
-    
-
+    </Grid>
 </ContentPage>

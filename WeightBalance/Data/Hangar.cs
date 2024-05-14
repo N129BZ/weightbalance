@@ -14,7 +14,7 @@ namespace WeightBalance.Data
         
         public static ObservableCollection<Aircraft> LoadTheHangar()
         {
-            var filePath = Path.Combine(FileSystem.AppDataDirectory, "Aircraft.json");
+            var filePath = Path.Combine(FileSystem.AppDataDirectory, "aircraft.json");
             var json = File.ReadAllText(filePath);
             return JsonSerializer.Deserialize<ObservableCollection<Aircraft>>(json)!;
         }
@@ -23,7 +23,7 @@ namespace WeightBalance.Data
         {
             try
             {
-                var filepath = Path.Combine(FileSystem.AppDataDirectory, "Aircraft.json");
+                var filepath = Path.Combine(FileSystem.AppDataDirectory, "aircraft.json");
                 var output = JsonSerializer.Serialize(hangar);
                 using StreamWriter outstream = File.CreateText(filepath);
                 outstream.Write(output);

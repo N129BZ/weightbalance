@@ -26,7 +26,7 @@
             <RowDefinition Height="530"/>
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
-        <sf:SfListView x:Name="AircraftList"
+        <sf:SfListView x:Name="AircraftListView"
                    ItemsSource="{Binding TheHangar}"
                    Grid.Row="0"
                    HorizontalOptions="Fill"
@@ -34,6 +34,7 @@
                    SelectionMode="Single"
                    ItemSize="74"
                    ItemSpacing="1"
+                   ItemTapped="AircraftListView_ItemTapped"
                    ItemDoubleTapped="AircraftList_ItemDoubleTapped">
             <sf:SfListView.ItemsLayout>
                 <sf:LinearLayout/>

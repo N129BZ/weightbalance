@@ -42,7 +42,7 @@ namespace WeightBalance.Drawables
              * area, so make a rectangle with the same coordinates
              * to pass to the Plotter
              *******************************************************/ 
-            Rect rect = new Rect(20, 60, 370, 360);
+            Rect rect = new Rect(20, 20, 370, 360);
             PointF point = Plotter.PlotChartPoint(cog, rect, aircraft);
 
             IImage dot;

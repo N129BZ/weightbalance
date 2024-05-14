@@ -32,17 +32,16 @@ namespace WeightBalance
                 if (ac.IsDefault)
                 {
                     _aircraft = ac;
-                    AircraftList.SelectedItem = ac;
+                    AircraftListView.SelectedItem = ac;
                     Task.Run(() => DoStationNavigation());
                     return;
                 }
             }
-        }
 
-        //private void AircraftList_ItemTapped(object? sender, ItemTappedArgs e)
-        //{
-        //    _aircraft = (Aircraft)e.DataItem;
-        //}
+            // if we got here, there was no default Aircraft,
+            // so set _aircraft to the 1st item in the list
+            _aircraft = _thehangar[0];
+        }
 
         private void DoStationNavigation()
         {
@@ -78,6 +77,11 @@ namespace WeightBalance
             _aircraft = (Aircraft)e.DataItem;
             SetDefault_Clicked(sender, new EventArgs());
             ViewStations_Clicked(sender, new EventArgs());
+        }
+
+        private void AircraftListView_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
+        {
+            _aircraft = (Aircraft)e.DataItem;
         }
     }
 }
