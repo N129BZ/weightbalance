@@ -31,9 +31,9 @@ namespace WeightBalance.Models
         public double MaxCg { get { return _maxcg; } set { _maxcg = value; } }
 
         [field: JsonIgnore]
-        private float _emptyWeight;
+        private double _emptyWeight;
         [property: JsonIgnore]
-        public float EmptyWeight { get { return _emptyWeight; } set { _emptyWeight = value; } }
+        public double EmptyWeight { get { return _emptyWeight; } set { _emptyWeight = value; } }
 
         [field: JsonIgnore]
         private double _emptyArm;

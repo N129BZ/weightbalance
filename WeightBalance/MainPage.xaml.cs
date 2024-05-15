@@ -8,8 +8,20 @@ namespace WeightBalance
 {
     public partial class MainPage : ContentPage
     {
-        private ObservableCollection<Aircraft> _thehangar = [];
-        public ObservableCollection<Aircraft> TheHangar { get { return _thehangar; } set { _thehangar = value; } }
+        private Hangar _hangar = new();
+
+        private ObservableCollection<Aircraft> _hangarList = [];
+        public ObservableCollection<Aircraft> HangarList
+        {
+            get
+            {
+                return _hangarList;
+            }
+            set 
+            {
+                _hangarList = value;
+            }
+        }
 
         private Aircraft _aircraft = new();
         public Aircraft SelectedAircraft { get { return _aircraft; } set { _aircraft = value; } }
@@ -17,8 +29,10 @@ namespace WeightBalance
         public MainPage()
         {
             InitializeComponent();
-           
-            _thehangar = Hangar.LoadTheHangar();
+
+            _hangar = new Hangar();
+
+            _hangarList = _hangar.HangarList;
 
             BindingContext = this;
 
@@ -27,7 +41,7 @@ namespace WeightBalance
 
         private void SearchForDefault()
         {
-            foreach (Aircraft ac in _thehangar)
+            foreach (Aircraft ac in _hangar.HangarList)
             {
                 if (ac.IsDefault)
                 {
@@ -40,7 +54,7 @@ namespace WeightBalance
 
             // if we got here, there was no default Aircraft,
             // so set _aircraft to the 1st item in the list
-            _aircraft = _thehangar[0];
+            _aircraft = _hangarList[0];
             AircraftListView.SelectedItem = _aircraft;
         }
 
@@ -51,21 +65,21 @@ namespace WeightBalance
         }
         private void ViewStations_Clicked(object sender, EventArgs e)
         {
-            var cgp = new CoGPage(_aircraft, _thehangar);
+            var cgp = new CoGPage(_aircraft, _hangar);
             Navigation.PushAsync(cgp);
         }
 
         private void SetDefault_Clicked(object sender, EventArgs e)
         {
             _aircraft.IsDefault = true;
-            foreach (Aircraft ac in _thehangar)
+            foreach (Aircraft ac in _hangarList)
             {
                 if (ac.ID != _aircraft.ID)
                 {
                     ac.IsDefault = false;
                 }
             }
-            Hangar.SaveTheHangar(_thehangar);
+            _hangar.SaveHangarList(_hangarList);
         }
 
         private void ExitHangar_Clicked(object sender, EventArgs e)

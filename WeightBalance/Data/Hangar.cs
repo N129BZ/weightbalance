@@ -9,17 +9,34 @@ using System.Text.Json;
 
 namespace WeightBalance.Data
 {
-    public static class Hangar
+    public class Hangar
     {
+        public Hangar() 
+        {
+            HangarList = this.LoadTheHangarList();
+        }
+
+        private ObservableCollection<Aircraft> _hangarList;
+        public ObservableCollection<Aircraft> HangarList
+        {
+            get 
+            { 
+                return _hangarList; 
+            }
+            set 
+            { 
+                _hangarList = value;
+            }
+        }
         
-        public static ObservableCollection<Aircraft> LoadTheHangar()
+        public ObservableCollection<Aircraft> LoadTheHangarList()
         {
             var filePath = Path.Combine(FileSystem.AppDataDirectory, "aircraft.json");
             var json = File.ReadAllText(filePath);
             return JsonSerializer.Deserialize<ObservableCollection<Aircraft>>(json)!;
         }
 
-        public static bool SaveTheHangar(ObservableCollection<Aircraft> hangar)
+        public bool SaveHangarList(ObservableCollection<Aircraft> hangar)
         {
             try
             {

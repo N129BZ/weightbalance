@@ -26,9 +26,9 @@ namespace WeightBalance.Drawables
                 dotpath = aircraft.RedDotResourcePath;
             }
 
+#pragma warning disable CS8600 
             IImage dot;
             Assembly assembly = GetType().GetTypeInfo().Assembly;
-#pragma warning disable CS8600 
             using (Stream stream = assembly.GetManifestResourceStream(dotpath))
             {
                 dot = PlatformImage.FromStream(stream);

@@ -18,9 +18,10 @@
     <Grid HorizontalOptions="Fill" WidthRequest="410">
         <Grid.RowDefinitions>
             <RowDefinition Height="530"/>
-            <RowDefinition Height="90"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="130"/>
         </Grid.RowDefinitions>
-        
+
         <sf:SfDataGrid x:Name="StationGrid" 
                            Grid.Row="0"
                            HorizontalOptions="Fill"
@@ -32,25 +33,33 @@
                            GridLinesVisibility="Both"
                            HeaderGridLinesVisibility="Horizontal"
                            AlternationRowCount="2"
+                           AllowEditing="True"
+                           AllowDeleting="False"
+                           LiveDataUpdateMode="AllowSummaryUpdate"
+                           CellValueChanged="StationGrid_CellValueChanged"
+                           CellExited="StationGrid_CellExited"
                            EditTapAction="OnTap">
+            
             <sf:SfDataGrid.DefaultStyle>
                 <sf:DataGridStyle AlternateRowBackground="#E8F8F5"
-                                      GridLineStrokeThickness="4"
-                                      HeaderRowBackground="Navy"
-                                      HeaderRowTextColor="White"
-                                      SelectionBackground="LightYellow" 
-                                      HeaderRowFontAttributes="Bold"
-                                      HeaderRowFontSize="16"/>
+                                  GridLineStrokeThickness="4"
+                                  HeaderRowBackground="Navy"
+                                  HeaderRowTextColor="White"
+                                  SelectionBackground="Yellow" 
+                                  HeaderRowFontAttributes="Bold"
+                                  HeaderRowFontSize="16"/>
             </sf:SfDataGrid.DefaultStyle>
+            
             <sf:SfDataGrid.Columns>
                 <sf:DataGridTextColumn HeaderText="Station" MappingName="Station" AllowEditing="False" Width="110"/>
-                <sf:DataGridNumericColumn HeaderText="Weight" MappingName="Weight" AllowEditing="True" Format="0.0"/>
+                <sf:DataGridNumericColumn HeaderText="Weight" MappingName="Weight" AllowEditing="True" Format="0.0" />
                 <sf:DataGridNumericColumn HeaderText="Arm" MappingName="Arm" AllowEditing="True" Format="0.0"/>
                 <sf:DataGridNumericColumn HeaderText="Moment" MappingName="Moment" AllowEditing="False" Format="0.0"/>
             </sf:SfDataGrid.Columns>
+            
             <sf:SfDataGrid.TableSummaryRows>
                 <sf:DataGridTableSummaryRow ShowSummaryInRow="False">
-                    <sf:DataGridTableSummaryRow.SummaryColumns>
+                <sf:DataGridTableSummaryRow.SummaryColumns>
                         <sf:DataGridSummaryColumn Name="Weight"
                                                   MappingName="Weight"
                                                   Format="{}{Sum:##.0}"
@@ -67,8 +76,18 @@
                 </sf:DataGridTableSummaryRow>
             </sf:SfDataGrid.TableSummaryRows>
         </sf:SfDataGrid>
-        
-        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Fill">
+        <HorizontalStackLayout Grid.Row="1" BackgroundColor="Navy" HorizontalOptions="Fill" HeightRequest="50">
+            <Label x:Name="CoGLabel" Text="{Binding CalculatedCoG}" 
+                   FontSize="20" 
+                   FontAttributes="Bold" 
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   BackgroundColor="Navy" 
+                   HorizontalOptions="Center" 
+                   WidthRequest="400"
+                   TextColor="White"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Fill">
             <Button x:Name="ViewChart" 
                         Text="View Chart" 
                         Padding="3"

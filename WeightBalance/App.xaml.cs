@@ -5,7 +5,6 @@ namespace WeightBalance
     {
         public App()
         {
-            // Register Syncfusion license
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NBaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXpfcnVWRmJZV0xwXEQ=");
             
             InitializeComponent();
@@ -17,12 +16,12 @@ namespace WeightBalance
 
         private static async void CheckForJsonDataFile()
         {
-            var filepath = Path.Combine(FileSystem.AppDataDirectory, "aircraft.json");
+            var filePath = Path.Combine(FileSystem.AppDataDirectory, "aircraft.json");
            
-            if (!File.Exists(filepath))
+            if (!File.Exists(filePath))
             {
                 using var inputStream = await FileSystem.OpenAppPackageFileAsync("aircraft.json");
-                using var outputStream = File.Create(filepath);
+                using var outputStream = File.Create(filePath);
                 await inputStream.CopyToAsync(outputStream);
             }
         }

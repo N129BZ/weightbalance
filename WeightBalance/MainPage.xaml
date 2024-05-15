@@ -27,7 +27,7 @@
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
         <sf:SfListView x:Name="AircraftListView"
-                   ItemsSource="{Binding TheHangar}"
+                   ItemsSource="{Binding HangarList}"
                    Grid.Row="0"
                    HorizontalOptions="Fill"
                    VerticalOptions="Fill"
