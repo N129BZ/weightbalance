@@ -1,10 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 using System.Reflection;
+using System.ComponentModel;
 
 namespace WeightBalance.Models
 {
-    public class Aircraft
+    public class Aircraft : INotifyPropertyChanged
     {
         [field: JsonIgnore]
         public long _id;
@@ -15,20 +16,20 @@ namespace WeightBalance.Models
         public string Name { get { return _name; } set { _name = value; } }
 
         [field: JsonIgnore]
-        private double _maxgross;
-        public double MaxGross { get { return _maxgross; } set { _maxgross = value; } }
+        private double _maxGross;
+        public double MaxGross { get { return _maxGross; } set { _maxGross = value; } }
 
         [field: JsonIgnore]
-        private double _mingross;
-        public double MinGross { get { return _mingross; } set { _mingross = value; } }
+        private double _minGross;
+        public double MinGross { get { return _minGross; } set { _minGross = value; } }
 
         [field: JsonIgnore]
-        private double _mincg;
-        public double MinCg { get { return _mincg; } set { _mincg = value; } }
+        private double _minCg;
+        public double MinCg { get { return _minCg; } set { _minCg = value; } }
 
         [field: JsonIgnore]
-        private double _maxcg;
-        public double MaxCg { get { return _maxcg; } set { _maxcg = value; } }
+        private double _maxCg;
+        public double MaxCg { get { return _maxCg; } set { _maxCg = value; } }
 
         [field: JsonIgnore]
         private double _emptyWeight;
@@ -61,35 +62,35 @@ namespace WeightBalance.Models
         public double LoadMoment { get { return _loadMoment; } set { _loadMoment = value; } }
 
         [field: JsonIgnore]
-        private double _totalweight = 0;
+        private double _totalWeight = 0;
         [property: JsonIgnore]
-        public double TotalWeight { get { return _totalweight; } }
+        public double TotalWeight { get { return _totalWeight; } }
 
         [field: JsonIgnore]
-        private double _totalarm = 0;
+        private double _totalArm = 0;
         [property: JsonIgnore]
-        public double TotalArm { get { return _totalarm; } }
+        public double TotalArm { get { return _totalArm; } }
 
         [field: JsonIgnore]
-        private double _totalmoment = 0;
+        private double _totalMoment = 0;
         [property: JsonIgnore]
-        public double TotalMoment { get { return _totalmoment; } }
+        public double TotalMoment { get { return _totalMoment; } }
 
         [field: JsonIgnore]
-        private string _dispname = String.Empty;
-        public string DisplayName { get { return _dispname; } set { _dispname = value; } }
+        private string _displayName = String.Empty;
+        public string DisplayName { get { return _displayName; } set { _displayName = value; } }
 
         [field: JsonIgnore]
-        private string _acimgpath = String.Empty;
-        public string AircraftImagePath { get { return _acimgpath; } set { _acimgpath = value; } }
+        private string _acImagePath = String.Empty;
+        public string AircraftImagePath { get { return _acImagePath; } set { _acImagePath = value; } }
 
         [field: JsonIgnore]
-        private string _chartimgpath = String.Empty;
-        public string ChartImagePath { get { return _chartimgpath; } set { _chartimgpath = value; } }
+        private string _chartImagePath = String.Empty;
+        public string ChartImagePath { get { return _chartImagePath; } set { _chartImagePath = value; } }
 
         [field: JsonIgnore]
-        private double[] _cgrectcoords = new double[4];
-        public double[] CgRectCoordinates { get { return _cgrectcoords; } set { _cgrectcoords = value; } }
+        private double[] _cgRectangleCoordinates = new double[4];
+        public double[] CgRectCoordinates { get { return _cgRectangleCoordinates; } set { _cgRectangleCoordinates = value; } }
 
         [property: JsonIgnore]
         public Rect CgRectangle 
@@ -98,28 +99,42 @@ namespace WeightBalance.Models
             {
                 Rect rect = new Rect
                 {
-                    X = _cgrectcoords[0],
-                    Y = _cgrectcoords[1],
-                    Width = _cgrectcoords[2],
-                    Height = _cgrectcoords[3]
+                    X = _cgRectangleCoordinates[0],
+                    Y = _cgRectangleCoordinates[1],
+                    Width = _cgRectangleCoordinates[2],
+                    Height = _cgRectangleCoordinates[3]
                 };
                 return rect;
             } 
         }
 
         [field: JsonIgnore]
-        private bool _isdefault = false;
-        public bool IsDefault { get { return _isdefault; } set { _isdefault = value; } }
+        private bool _isDefault = false;
+        public bool IsDefault { get { return _isDefault; } set { _isDefault = value; } }
 
         [field: JsonIgnore]
-        private ObservableCollection<CoGUnit> _cogs = [];
+        private ObservableCollection<CoGUnit> _cogUnits = [];
 
-        public ObservableCollection<CoGUnit> CoGUnits { get { return _cogs; } set { _cogs = value; } }
+        public ObservableCollection<CoGUnit> CoGUnits { get { return _cogUnits; } set { _cogUnits = value; } }
 
         [field: JsonIgnore]
         private double _cog = 0;
+
         [property: JsonIgnore]
         public double CoG { get { CalculateCoG(); return _cog; } }
+
+        public event PropertyChangedEventHandler? PropertyChanged
+        {
+            add
+            {
+                ((INotifyPropertyChanged)CoGUnits).PropertyChanged += value;
+            }
+
+            remove
+            {
+                ((INotifyPropertyChanged)CoGUnits).PropertyChanged -= value;
+            }
+        }
 
         public void CalculateCoG()
         {
@@ -131,9 +146,9 @@ namespace WeightBalance.Models
             _emptyArm = 0;
             _emptyMoment = 0;
 
-            if (_cogs != null)
+            if (_cogUnits != null)
             {
-                foreach (var item in _cogs)
+                foreach (var item in _cogUnits)
                 {
                     if (item.Station == "NoseWheel" ||
                         item.Station == "TailWheel" ||
@@ -152,11 +167,11 @@ namespace WeightBalance.Models
                     }
                 }
 
-                _totalweight = _emptyWeight + _loadWeight;
-                _totalarm = _emptyArm + _loadArm;
-                _totalmoment = _emptyMoment + _loadMoment;
+                _totalWeight = _emptyWeight + _loadWeight;
+                _totalArm = _emptyArm + _loadArm;
+                _totalMoment = _emptyMoment + _loadMoment;
 
-                cog = _totalmoment / _totalweight;
+                cog = _totalMoment / _totalWeight;
             }
 
             if (cog > 0)
@@ -166,10 +181,10 @@ namespace WeightBalance.Models
         }
 
         [property: JsonIgnore]
-        public string AircraftResourcePath { get { return $"WeightBalance.Resources.Images.{_acimgpath}"; } }
+        public string AircraftResourcePath { get { return $"WeightBalance.Resources.Images.{_acImagePath}"; } }
 
         [property: JsonIgnore]
-        public string ChartResourcePath { get { return $"WeightBalance.Resources.Images.{_chartimgpath}"; } }
+        public string ChartResourcePath { get { return $"WeightBalance.Resources.Images.{_chartImagePath}"; } }
 
         [property: JsonIgnore]
         public string GreenDotResourcePath { get { return $"WeightBalance.Resources.Images.greendot.png"; } }

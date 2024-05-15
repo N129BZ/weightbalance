@@ -37,7 +37,6 @@
                            AllowDeleting="False"
                            LiveDataUpdateMode="AllowSummaryUpdate"
                            CellValueChanged="StationGrid_CellValueChanged"
-                           CellExited="StationGrid_CellExited"
                            EditTapAction="OnTap">
             
             <sf:SfDataGrid.DefaultStyle>

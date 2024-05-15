@@ -37,7 +37,7 @@ namespace WeightBalance
             summaryRenderer = new DataGridTableSummaryCellRendererExt(_aircraft, CoGLabel);
             StationGrid.CellRenderers.Remove("TableSummary");
             StationGrid.CellRenderers.Add("TableSummary", summaryRenderer);
-
+            StationGrid.CurrentCellEndEdit += StationGrid_EndEdit;
             _pageTitle = $"{_aircraft.Name} CG Stations";
             
             BindingContext = this;
@@ -103,12 +103,12 @@ namespace WeightBalance
             }
         }
 
-        private void StationGrid_CellExited(object sender, DataGridCellExitedEventArgs e)
+        private void StationGrid_EndEdit(object sender, DataGridCurrentCellEndEditEventArgs e)
         {
-            if (!isDirty)
+            if (isDirty)
             {
-                StationGrid.ItemsSource = null;
-                StationGrid.ItemsSource = _hangarList;
+                _aircraft.CalculateCoG();
+                StationGrid.RefreshColumns();
             }
         }
     }

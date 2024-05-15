@@ -8,7 +8,7 @@ namespace WeightBalance
 {
     public partial class MainPage : ContentPage
     {
-        private Hangar _hangar = new();
+        private Hangar _hangarData = new();
 
         private ObservableCollection<Aircraft> _hangarList = [];
         public ObservableCollection<Aircraft> HangarList
@@ -30,9 +30,9 @@ namespace WeightBalance
         {
             InitializeComponent();
 
-            _hangar = new Hangar();
+            _hangarData = new Hangar();
 
-            _hangarList = _hangar.HangarList;
+            _hangarList = _hangarData.HangarList;
 
             BindingContext = this;
 
@@ -41,7 +41,7 @@ namespace WeightBalance
 
         private void SearchForDefault()
         {
-            foreach (Aircraft ac in _hangar.HangarList)
+            foreach (Aircraft ac in _hangarData.HangarList)
             {
                 if (ac.IsDefault)
                 {
@@ -65,7 +65,7 @@ namespace WeightBalance
         }
         private void ViewStations_Clicked(object sender, EventArgs e)
         {
-            var cgp = new CoGPage(_aircraft, _hangar);
+            var cgp = new CoGPage(_aircraft, _hangarData);
             Navigation.PushAsync(cgp);
         }
 
@@ -79,7 +79,7 @@ namespace WeightBalance
                     ac.IsDefault = false;
                 }
             }
-            _hangar.SaveHangarList(_hangarList);
+            _hangarData.SaveHangarList(_hangarList);
         }
 
         private void ExitHangar_Clicked(object sender, EventArgs e)
