@@ -8,13 +8,21 @@ namespace WeightBalance
         private string _pagetitle = String.Empty;
         public string PageTitle { get { return _pagetitle; } set { _pagetitle = value; } }
 
-        public AircraftPage(Aircraft aircraft)
+        private Aircraft _aircraft;
+        public Aircraft SelectedAircraft
         {
-            _pagetitle = $"GROSS WT: {aircraft.TotalWeight}, CG: {aircraft.CoG}";
+            get { return _aircraft; }
+            set { _aircraft = value; }
+        }
+
+        public AircraftPage(Aircraft selectedAircraft)
+        {
+            _aircraft = selectedAircraft;
+            _pagetitle = $"GROSS WT: {_aircraft.TotalWeight}, CG: {_aircraft.CoG}";
 
             InitializeComponent();
 
-            if (aircraft == null)
+            if (_aircraft == null)
             {
                 throw new Exception("selectedAircraft cannot be null!");
             }
@@ -22,27 +30,27 @@ namespace WeightBalance
             {
                 Grid view = PageGrid;
 
-                ImageSource acimgsrc = ImageSource.FromResource(aircraft.AircraftResourcePath);
+                ImageSource acimgsrc = ImageSource.FromResource(_aircraft.AircraftResourcePath);
                 Image acimage = new()
                 {
                     Source = acimgsrc,
                     Aspect = Aspect.AspectFit
                 };
-                GraphicsView acoverlay = new()
+                GraphicsView acoverlay = new GraphicsView
                 {
-                    Drawable = new AircraftOverlay { SelectedAircraft = aircraft }
+                    Drawable = new AircraftOverlay { SelectedAircraft = _aircraft }
                 };
 
-                ImageSource chimgsrc = ImageSource.FromResource(aircraft.ChartResourcePath);
+                ImageSource chimgsrc = ImageSource.FromResource(_aircraft.ChartResourcePath);
                 Image chimage = new()
                 {
                     Source = chimgsrc,
                     Aspect = Aspect.AspectFit
                 };
 
-                GraphicsView chartoverlay = new()
+                GraphicsView chartoverlay = new GraphicsView
                 {
-                    Drawable = new ChartOverlay { SelectedAircraft = aircraft }
+                    Drawable = new ChartOverlay { SelectedAircraft = _aircraft }
                 };
 
                 view.Add(acimage, 0, 0);

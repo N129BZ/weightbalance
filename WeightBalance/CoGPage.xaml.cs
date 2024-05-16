@@ -11,7 +11,6 @@ namespace WeightBalance
     {
         private bool isDirty = false;
         
-
         private readonly ObservableCollection<Aircraft> _hangarList = [];
 
         private readonly ObservableCollection<CoGUnit> _cogUnits;
@@ -21,10 +20,11 @@ namespace WeightBalance
         public string PageTitle { get { return _pageTitle; } set { _pageTitle = value; } }
 
         private readonly Aircraft _aircraft = new();
-        
+        private Hangar _hangar;
 
         public CoGPage(Aircraft selectedAircraft, Hangar hangar)
         {
+            _hangar = hangar;
             _hangarList = hangar.HangarList;
             _aircraft = selectedAircraft;
             _aircraft.CalculateCoG();
@@ -66,15 +66,14 @@ namespace WeightBalance
         {
             get
             {
-                return "CoG: " + _aircraft.CoG.ToString("#0.00");
+                return "CG: " + _aircraft.CoG.ToString("#0.00");
             }
         }
 
         private void ViewChart_Clicked(object sender, EventArgs e)
         {
             HandleDirty();
-            var ap = new AircraftPage(_aircraft);
-            Navigation.PushAsync(ap);
+            Navigation.PushAsync(new AircraftPage(_aircraft));
         }
 
         private void ViewAircraftList_Clicked(object sender, EventArgs e)
@@ -83,7 +82,7 @@ namespace WeightBalance
             Navigation.PopToRootAsync();
         }
 
-        private void StationGrid_CellValueChanged(object sender, DataGridCellValueChangedEventArgs e)
+        private void StationGrid_CellValueChanged(object sender, DataGridCellValueChangedEventArgs? e)
         {
             isDirty = true;
         }
@@ -99,7 +98,7 @@ namespace WeightBalance
             if (isDirty)
             {
                 _aircraft.CalculateCoG();
-                if (Hangar.SaveHangarList(_hangarList))
+                if (_hangar.SaveHangarList(_hangarList))
                 {
                     isDirty = false;
                 }
@@ -151,7 +150,7 @@ namespace WeightBalance
         {
             base.OnUpdateCellValue(dataColumn);
             _aircraft.CalculateCoG();
-            _cogLabel.Text = "CoG: " + _aircraft.CoG.ToString("#0.00");
+            _cogLabel.Text = "CG: " + _aircraft.CoG.ToString("#0.00");
         }
     }
 }

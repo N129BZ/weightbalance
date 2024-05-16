@@ -7,20 +7,10 @@ namespace WeightBalance
 {
     public partial class MainPage : ContentPage
     {
-        private static Hangar _hangarData = new();
-
+        private Hangar _hangar = new();
+        
         private ObservableCollection<Aircraft> _hangarList = [];
-        public ObservableCollection<Aircraft> HangarList
-        {
-            get
-            {
-                return _hangarList;
-            }
-            set
-            {
-                _hangarList = value;
-            }
-        }
+        public ObservableCollection<Aircraft> HangarList { get { return _hangarList; } set { _hangarList = value; } }
 
         private Aircraft _aircraft = new();
         public Aircraft SelectedAircraft { get { return _aircraft; } set { _aircraft = value; } }
@@ -29,9 +19,7 @@ namespace WeightBalance
         {
             InitializeComponent();
 
-            _hangarData = new Hangar();
-
-            _hangarList = _hangarData.HangarList;
+            _hangarList = _hangar.HangarList;
 
             BindingContext = this;
 
@@ -40,10 +28,10 @@ namespace WeightBalance
 
         private void SearchForDefault()
         {
-            foreach (Aircraft ac in _hangarData.HangarList)
+            foreach (Aircraft ac in _hangar.HangarList)
             {
                 if (ac.IsDefault)
-                {
+                {   
                     _aircraft = ac;
                     AircraftListView.SelectedItem = ac;
                     Task.Run(() => DoStationNavigation());
@@ -64,7 +52,7 @@ namespace WeightBalance
         }
         private void ViewStations_Clicked(object sender, EventArgs e)
         {
-            var cgp = new CoGPage(_aircraft, _hangarData);
+            var cgp = new CoGPage(_aircraft, _hangar);
             Navigation.PushAsync(cgp);
         }
 
@@ -78,7 +66,7 @@ namespace WeightBalance
                     ac.IsDefault = false;
                 }
             }
-            Hangar.SaveHangarList(_hangarList);
+            _hangar.SaveHangarList(_hangarList);
         }
 
         private void ExitHangar_Clicked(object sender, EventArgs e)

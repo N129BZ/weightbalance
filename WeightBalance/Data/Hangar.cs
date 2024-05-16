@@ -12,17 +12,7 @@ namespace WeightBalance.Data
         }
 
         private ObservableCollection<Aircraft> _hangarList;
-        public ObservableCollection<Aircraft> HangarList
-        {
-            get
-            {
-                return _hangarList;
-            }
-            set
-            {
-                _hangarList = value;
-            }
-        }
+        public ObservableCollection<Aircraft> HangarList { get { return _hangarList; } set { _hangarList = value; } }
 
         public static ObservableCollection<Aircraft> LoadTheHangarList()
         {
@@ -31,7 +21,7 @@ namespace WeightBalance.Data
             return JsonSerializer.Deserialize<ObservableCollection<Aircraft>>(json)!;
         }
 
-        public static bool SaveHangarList(ObservableCollection<Aircraft> hangar)
+        public bool SaveHangarList(ObservableCollection<Aircraft> hangar)
         {
             try
             {
