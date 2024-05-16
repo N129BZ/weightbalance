@@ -1,51 +1,54 @@
-using System.Collections.ObjectModel;
-using WeightBalance.Models;
+
 using Syncfusion.Maui.DataGrid;
-using WeightBalance.Data;
-using Syncfusion.Maui.Data;
 using Syncfusion.Maui.DataGrid.Helper;
-using Syncfusion.Maui.GridCommon.ScrollAxis;
+using System.Collections.ObjectModel;
+using WeightBalance.Data;
+using WeightBalance.Models;
 
 namespace WeightBalance
 {
     public partial class CoGPage : ContentPage
-	{
+    {
         private bool isDirty = false;
-        private DataGridTableSummaryCellRendererExt summaryRenderer;
-
-        private ObservableCollection<Aircraft> _hangarList = [];
         
-        private ObservableCollection<CoGUnit> _cogUnits;
-		public ObservableCollection<CoGUnit> CoGUnits { get { return _cogUnits;	} }
+
+        private readonly ObservableCollection<Aircraft> _hangarList = [];
+
+        private readonly ObservableCollection<CoGUnit> _cogUnits;
+        public ObservableCollection<CoGUnit> CoGUnits { get { return _cogUnits; } }
 
         private string _pageTitle = String.Empty;
         public string PageTitle { get { return _pageTitle; } set { _pageTitle = value; } }
 
-        private Aircraft _aircraft = new();
-        private Hangar _hangar = new();
+        private readonly Aircraft _aircraft = new();
+        
 
         public CoGPage(Aircraft selectedAircraft, Hangar hangar)
-		{
-            _hangar = hangar;
+        {
             _hangarList = hangar.HangarList;
             _aircraft = selectedAircraft;
             _aircraft.CalculateCoG();
-			_cogUnits = _aircraft.CoGUnits;
+            _cogUnits = _aircraft.CoGUnits;
 
             InitializeComponent();
 
-            summaryRenderer = new DataGridTableSummaryCellRendererExt(_aircraft, CoGLabel);
+            DataGridTableSummaryCellRendererExt summaryRenderer = new()
+            {
+                SelectedAircraft = _aircraft,
+                CogLabel = CoGLabel
+            };
+
             StationGrid.CellRenderers.Remove("TableSummary");
             StationGrid.CellRenderers.Add("TableSummary", summaryRenderer);
             StationGrid.CurrentCellEndEdit += StationGrid_EndEdit;
             _pageTitle = $"{_aircraft.Name} CG Stations";
-            
+
             BindingContext = this;
-		}
+        }
 
         public string GetTotalWeight
         {
-            get 
+            get
             {
                 return $"Weight: " + _aircraft.TotalWeight.ToString("#0.0");
             }
@@ -71,16 +74,16 @@ namespace WeightBalance
         {
             HandleDirty();
             var ap = new AircraftPage(_aircraft);
-			Navigation.PushAsync(ap);
+            Navigation.PushAsync(ap);
         }
 
-        private void Back_Clicked(object sender, EventArgs e)
+        private void ViewAircraftList_Clicked(object sender, EventArgs e)
         {
             HandleDirty();
-			Navigation.PopToRootAsync();
+            Navigation.PopToRootAsync();
         }
 
-        private void StationGrid_CellValueChanged(object? sender, DataGridCellValueChangedEventArgs e)
+        private void StationGrid_CellValueChanged(object sender, DataGridCellValueChangedEventArgs e)
         {
             isDirty = true;
         }
@@ -93,10 +96,10 @@ namespace WeightBalance
 
         private void HandleDirty()
         {
-            if (isDirty) 
+            if (isDirty)
             {
                 _aircraft.CalculateCoG();
-                if (_hangar.SaveHangarList(_hangarList))
+                if (Hangar.SaveHangarList(_hangarList))
                 {
                     isDirty = false;
                 }
@@ -116,13 +119,19 @@ namespace WeightBalance
     public class DataGridTableSummaryCellRendererExt : DataGridTableSummaryCellRenderer
     {
         private Aircraft _aircraft = new();
-        private Label _cogLabel;
-
-        public DataGridTableSummaryCellRendererExt(Aircraft aircraft, Label cogLabel)
+        public Aircraft SelectedAircraft
         {
-            _aircraft = aircraft;
-            _cogLabel = cogLabel;
+            get { return _aircraft; }
+            set { _aircraft = value; }
         }
+
+        private Label _cogLabel = new();
+        public Label CogLabel
+        {
+            get { return _cogLabel; }
+            set { _cogLabel = value; }
+        }
+
         protected override void OnSetCellStyle(DataColumnBase dataColumn)
         {
             base.OnSetCellStyle(dataColumn);

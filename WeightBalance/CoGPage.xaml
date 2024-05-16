@@ -18,7 +18,7 @@
     <Grid HorizontalOptions="Fill" WidthRequest="410">
         <Grid.RowDefinitions>
             <RowDefinition Height="530"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="130"/>
         </Grid.RowDefinitions>
 
@@ -75,7 +75,7 @@
                 </sf:DataGridTableSummaryRow>
             </sf:SfDataGrid.TableSummaryRows>
         </sf:SfDataGrid>
-        <HorizontalStackLayout Grid.Row="1" BackgroundColor="Navy" HorizontalOptions="Fill" HeightRequest="50">
+        <HorizontalStackLayout Grid.Row="1" BackgroundColor="Navy" HorizontalOptions="Fill" HeightRequest="40">
             <Label x:Name="CoGLabel" Text="{Binding CalculatedCoG}" 
                    FontSize="20" 
                    FontAttributes="Bold" 
@@ -91,7 +91,7 @@
                         Text="View Chart" 
                         Padding="3"
                         Margin="3"
-                        WidthRequest="130"
+                        WidthRequest="120"
                         HeightRequest="40"
                         BackgroundColor="Navy"
                         TextColor="White"
@@ -102,18 +102,18 @@
                         Text="Select Aircraft" 
                         Padding="3"
                         Margin="3"
-                        WidthRequest="130"
+                        WidthRequest="120"
                         HeightRequest="40"
                         BackgroundColor="Navy"
                         TextColor="White"
                         FontAttributes="Bold"
                         VerticalOptions="End"
-                        Clicked="Back_Clicked" />
+                        Clicked="ViewAircraftList_Clicked" />
             <Button x:Name="ExitApp" 
                         Text="Taxi Out" 
                         Padding="3"
                         Margin="3"
-                        WidthRequest="130"
+                        WidthRequest="120"
                         HeightRequest="40"
                         BackgroundColor="Navy"
                         TextColor="White"

@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
-using System.Text.Json.Serialization;
-using System.Reflection;
 using System.ComponentModel;
+using System.Reflection;
+using System.Text.Json.Serialization;
 
 namespace WeightBalance.Models
 {
@@ -93,11 +93,11 @@ namespace WeightBalance.Models
         public double[] CgRectCoordinates { get { return _cgRectangleCoordinates; } set { _cgRectangleCoordinates = value; } }
 
         [property: JsonIgnore]
-        public Rect CgRectangle 
-        { 
-            get 
+        public Rect CgRectangle
+        {
+            get
             {
-                Rect rect = new Rect
+                Rect rect = new()
                 {
                     X = _cgRectangleCoordinates[0],
                     Y = _cgRectangleCoordinates[1],
@@ -105,7 +105,7 @@ namespace WeightBalance.Models
                     Height = _cgRectangleCoordinates[3]
                 };
                 return rect;
-            } 
+            }
         }
 
         [field: JsonIgnore]
@@ -187,10 +187,10 @@ namespace WeightBalance.Models
         public string ChartResourcePath { get { return $"WeightBalance.Resources.Images.{_chartImagePath}"; } }
 
         [property: JsonIgnore]
-        public string GreenDotResourcePath { get { return $"WeightBalance.Resources.Images.greendot.png"; } }
+        public static string GreenDotResourcePath { get { return $"WeightBalance.Resources.Images.greendot.png"; } }
 
         [property: JsonIgnore]
-        public string RedDotResourcePath { get { return $"WeightBalance.Resources.Images.reddot.png"; } }
+        public static string RedDotResourcePath { get { return $"WeightBalance.Resources.Images.reddot.png"; } }
 
         [property: JsonIgnore]
         public ImageSource AircraftImageSource { get { return ImageSource.FromResource(AircraftResourcePath, typeof(Aircraft).GetTypeInfo().Assembly); } }

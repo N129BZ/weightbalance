@@ -1,14 +1,13 @@
-﻿using System.Collections.ObjectModel;
-using Syncfusion.Maui.ListView;
-using WeightBalance.Models;
+﻿using Syncfusion.Maui.ListView;
+using System.Collections.ObjectModel;
 using WeightBalance.Data;
-
+using WeightBalance.Models;
 
 namespace WeightBalance
 {
     public partial class MainPage : ContentPage
     {
-        private Hangar _hangarData = new();
+        private static Hangar _hangarData = new();
 
         private ObservableCollection<Aircraft> _hangarList = [];
         public ObservableCollection<Aircraft> HangarList
@@ -17,7 +16,7 @@ namespace WeightBalance
             {
                 return _hangarList;
             }
-            set 
+            set
             {
                 _hangarList = value;
             }
@@ -79,7 +78,7 @@ namespace WeightBalance
                     ac.IsDefault = false;
                 }
             }
-            _hangarData.SaveHangarList(_hangarList);
+            Hangar.SaveHangarList(_hangarList);
         }
 
         private void ExitHangar_Clicked(object sender, EventArgs e)

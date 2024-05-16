@@ -1,29 +1,29 @@
 ﻿using Microsoft.Maui.Graphics.Platform;
-using IImage = Microsoft.Maui.Graphics.IImage;
 using System.Reflection;
 using WeightBalance.Models;
+using IImage = Microsoft.Maui.Graphics.IImage;
 
 namespace WeightBalance.Drawables
 {
     internal class AircraftOverlay : IDrawable
     {
-        private Aircraft aircraft;
-
-        public AircraftOverlay(Aircraft selectedaircraft)
+        private Aircraft _aircraft = new();
+        public Aircraft SelectedAircraft
         {
-            aircraft = selectedaircraft;
+            get { return _aircraft; }
+            set { _aircraft = value; }
         }
 
         public void Draw(ICanvas canvas, RectF dirtyRect)
         {
-            string dotpath = aircraft.GreenDotResourcePath;
-            
-            var cog = aircraft.CoG;
+            string dotpath = Aircraft.GreenDotResourcePath;
 
-            if ((aircraft.TotalWeight > aircraft.MaxGross) ||
-                cog <= aircraft.MinCg || cog >= aircraft.MaxCg)
+            var cog = _aircraft.CoG;
+
+            if ((_aircraft.TotalWeight > _aircraft.MaxGross) ||
+                cog <= _aircraft.MinCg || cog >= _aircraft.MaxCg)
             {
-                dotpath = aircraft.RedDotResourcePath;
+                dotpath = Aircraft.RedDotResourcePath;
             }
 
 #pragma warning disable CS8600 
@@ -38,11 +38,11 @@ namespace WeightBalance.Drawables
             canvas.FillColor = Color.FromRgba("#E8F8F570");
             canvas.StrokeColor = Colors.DarkGreen;
             canvas.StrokeSize = 1.4f;
-            canvas.DrawRectangle(aircraft.CgRectangle);
-            canvas.FillRectangle(aircraft.CgRectangle);
+            canvas.DrawRectangle(_aircraft.CgRectangle);
+            canvas.FillRectangle(_aircraft.CgRectangle);
 
-            PointF point = Plotter.PlotAircraftPoint(cog, aircraft);
-            
+            PointF point = Plotter.PlotAircraftPoint(cog, _aircraft);
+
             canvas.DrawImage(dot, point.X, point.Y, 15, 15);
         }
     }

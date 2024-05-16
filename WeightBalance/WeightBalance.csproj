@@ -45,9 +45,9 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-
+		
 		<!-- Splash Screen -->
-
+		
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 

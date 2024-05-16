@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace WeightBalance.Models
 {
@@ -14,24 +9,24 @@ namespace WeightBalance.Models
         public string? Station { get; set; }
 
         [field: JsonIgnore]
-        private double _weight = 0; 
-        public double Weight 
-        { 
-            get { return _weight; } 
+        private double _weight = 0;
+        public double Weight
+        {
+            get { return _weight; }
             set
             {
-               _weight= value;
+                _weight = value;
                 OnPropertyChanged("Weight");
             }
         }
 
         [field: JsonIgnore]
         private double _arm = 0;
-        public double Arm 
-        { 
+        public double Arm
+        {
             get { return _arm; }
-            set 
-            { 
+            set
+            {
                 _arm = value;
                 OnPropertyChanged("Arm");
             }
@@ -40,9 +35,9 @@ namespace WeightBalance.Models
         [field: JsonIgnore]
         public double _moment = 0;
         [property: JsonIgnore]
-        public double Moment 
-        { 
-            get { return _weight * _arm; } 
+        public double Moment
+        {
+            get { return _weight * _arm; }
             set
             {
                 _moment = value;

@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using WeightBalance.Models;
 
 namespace WeightBalance
 {

@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Core.Hosting;
-using CommunityToolkit.Maui;
 
 namespace WeightBalance
 {
@@ -20,7 +20,7 @@ namespace WeightBalance
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             builder.ConfigureSyncfusionCore();

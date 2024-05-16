@@ -1,42 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using WeightBalance.Models;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json;
+using WeightBalance.Models;
 
 namespace WeightBalance.Data
 {
     public class Hangar
     {
-        public Hangar() 
+        public Hangar()
         {
-            HangarList = this.LoadTheHangarList();
+            HangarList = LoadTheHangarList();
         }
 
         private ObservableCollection<Aircraft> _hangarList;
         public ObservableCollection<Aircraft> HangarList
         {
-            get 
-            { 
-                return _hangarList; 
+            get
+            {
+                return _hangarList;
             }
-            set 
-            { 
+            set
+            {
                 _hangarList = value;
             }
         }
-        
-        public ObservableCollection<Aircraft> LoadTheHangarList()
+
+        public static ObservableCollection<Aircraft> LoadTheHangarList()
         {
             var filePath = Path.Combine(FileSystem.AppDataDirectory, "aircraft.json");
             var json = File.ReadAllText(filePath);
             return JsonSerializer.Deserialize<ObservableCollection<Aircraft>>(json)!;
         }
 
-        public bool SaveHangarList(ObservableCollection<Aircraft> hangar)
+        public static bool SaveHangarList(ObservableCollection<Aircraft> hangar)
         {
             try
             {
