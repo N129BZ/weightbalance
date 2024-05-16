@@ -75,17 +75,28 @@
                 </sf:DataGridTableSummaryRow>
             </sf:SfDataGrid.TableSummaryRows>
         </sf:SfDataGrid>
-        <HorizontalStackLayout Grid.Row="1" BackgroundColor="Navy" HorizontalOptions="Fill" HeightRequest="40">
-            <Label x:Name="CoGLabel" Text="{Binding CalculatedCoG}" 
+        
+        <Frame x:Name="CgFrame" 
+               Grid.Row="1"
+               BackgroundColor="#E8F8F5" 
+               BorderColor="navy" 
+               HeightRequest="70"
+               VerticalOptions="StartAndExpand"
+               HorizontalOptions="Fill">
+            <Label x:Name="CgLabel" 
+                   Text="{Binding CalculatedCoG}" 
                    FontSize="20" 
                    FontAttributes="Bold" 
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
-                   BackgroundColor="Navy" 
+                   BackgroundColor="#E8F8F5"
+                   HeightRequest="30"
                    HorizontalOptions="Center" 
+                   VerticalOptions="Start"
                    WidthRequest="400"
-                   TextColor="White"/>
-        </HorizontalStackLayout>
+                   TextColor="navy"/>
+        </Frame>
+        
         <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Fill">
             <Button x:Name="ViewChart" 
                         Text="View Chart" 
@@ -99,7 +110,7 @@
                         VerticalOptions="End"
                         Clicked="ViewChart_Clicked" />
             <Button x:Name="Back" 
-                        Text="Select Aircraft" 
+                        Text="Aircraft List" 
                         Padding="3"
                         Margin="3"
                         WidthRequest="120"

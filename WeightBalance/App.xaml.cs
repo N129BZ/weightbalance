@@ -11,7 +11,7 @@ namespace WeightBalance
 
             Task.Run(() => CheckForJsonDataFile()).Wait();
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new MainPage()); 
         }
 
         private static async void CheckForJsonDataFile()

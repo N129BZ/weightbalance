@@ -172,6 +172,9 @@ namespace WeightBalance.Models
                 _totalMoment = _emptyMoment + _loadMoment;
 
                 cog = _totalMoment / _totalWeight;
+
+                _isWithinRange = cog >= _minCg && cog <= MaxCg;
+                _isWithinWeight = _totalWeight <= _maxGross;
             }
 
             if (cog > 0)
@@ -179,6 +182,16 @@ namespace WeightBalance.Models
             else
                 _cog = 0;
         }
+
+        [field: JsonIgnore]
+        private bool _isWithinRange = false;
+        [property: JsonIgnore]
+        public bool IsWithinRange { get { return _isWithinRange; } }
+
+        [field: JsonIgnore]
+        private bool _isWithinWeight = false;
+        [property: JsonIgnore]
+        public bool IsWithinWeight { get { return _isWithinWeight; } }
 
         [property: JsonIgnore]
         public string AircraftResourcePath { get { return $"WeightBalance.Resources.Images.{_acImagePath}"; } }

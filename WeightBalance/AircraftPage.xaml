@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
         <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Fill">
             <Button x:Name="ViewStations" 
-                Text="View Stations" 
+                Text="Weight Entry" 
                 Padding="3"
                 Margin="3"
                 WidthRequest="120"
@@ -33,7 +33,7 @@
                 VerticalOptions="End"
                 Clicked="ViewStations_Clicked" />
             <Button x:Name="Back" 
-                Text="Select Aircraft" 
+                Text="Aircraft List" 
                 Padding="3"
                 Margin="3"
                 WidthRequest="120"

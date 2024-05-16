@@ -3,11 +3,12 @@ using System.Collections.ObjectModel;
 using WeightBalance.Data;
 using WeightBalance.Models;
 
+
 namespace WeightBalance
 {
     public partial class MainPage : ContentPage
     {
-        private Hangar _hangar = new();
+        private readonly Hangar _hangar = new();
         
         private ObservableCollection<Aircraft> _hangarList = [];
         public ObservableCollection<Aircraft> HangarList { get { return _hangarList; } set { _hangarList = value; } }
@@ -21,20 +22,20 @@ namespace WeightBalance
 
             _hangarList = _hangar.HangarList;
 
-            BindingContext = this;
-
             SearchForDefault();
+
+            BindingContext = this;
         }
 
         private void SearchForDefault()
         {
-            foreach (Aircraft ac in _hangar.HangarList)
+            foreach (Aircraft aircraft in _hangar.HangarList)
             {
-                if (ac.IsDefault)
+                if (aircraft.IsDefault)
                 {   
-                    _aircraft = ac;
-                    AircraftListView.SelectedItem = ac;
-                    Task.Run(() => DoStationNavigation());
+                    _aircraft = aircraft;
+                    AircraftListView.SelectedItem = aircraft;
+                    //Task.Run(() => DoStationNavigation());
                     return;
                 }
             }
@@ -45,17 +46,17 @@ namespace WeightBalance
             AircraftListView.SelectedItem = _aircraft;
         }
 
-        private void DoStationNavigation()
-        {
-            var e = new EventArgs();
-            ViewStations_Clicked(this, e);
-        }
-        private void ViewStations_Clicked(object sender, EventArgs e)
+        private async void ViewStations_Clicked(object sender, EventArgs e)
         {
             var cgp = new CoGPage(_aircraft, _hangar);
-            Navigation.PushAsync(cgp);
+            await Navigation.PushAsync(cgp, true);
         }
 
+        protected override void OnNavigatedTo(NavigatedToEventArgs args)
+        {
+            SearchForDefault();
+            base.OnNavigatedTo(args);
+        }
         private void SetDefault_Clicked(object sender, EventArgs e)
         {
             _aircraft.IsDefault = true;
@@ -77,8 +78,8 @@ namespace WeightBalance
         private void AircraftList_ItemDoubleTapped(object sender, ItemDoubleTappedEventArgs e)
         {
             _aircraft = (Aircraft)e.DataItem;
-            SetDefault_Clicked(sender, new EventArgs());
-            ViewStations_Clicked(sender, new EventArgs());
+            SetDefault_Clicked(sender, e);
+            ViewStations_Clicked(sender, e);
         }
 
         private void AircraftListView_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)

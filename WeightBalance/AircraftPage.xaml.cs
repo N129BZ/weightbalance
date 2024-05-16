@@ -8,8 +8,8 @@ namespace WeightBalance
         private string _pagetitle = String.Empty;
         public string PageTitle { get { return _pagetitle; } set { _pagetitle = value; } }
 
-        private Aircraft _aircraft;
-        public Aircraft SelectedAircraft
+        private Aircraft? _aircraft;
+        public Aircraft? SelectedAircraft
         {
             get { return _aircraft; }
             set { _aircraft = value; }
@@ -36,7 +36,7 @@ namespace WeightBalance
                     Source = acimgsrc,
                     Aspect = Aspect.AspectFit
                 };
-                GraphicsView acoverlay = new GraphicsView
+                GraphicsView acoverlay = new ()
                 {
                     Drawable = new AircraftOverlay { SelectedAircraft = _aircraft }
                 };
@@ -48,7 +48,7 @@ namespace WeightBalance
                     Aspect = Aspect.AspectFit
                 };
 
-                GraphicsView chartoverlay = new GraphicsView
+                GraphicsView chartoverlay = new()
                 {
                     Drawable = new ChartOverlay { SelectedAircraft = _aircraft }
                 };
@@ -69,14 +69,14 @@ namespace WeightBalance
             Application.Current?.Quit();
         }
 
-        private void ViewStations_Clicked(object? sender, EventArgs e)
+        private async void ViewStations_Clicked(object? sender, EventArgs e)
         {
-            Shell.Current.Navigation.PopAsync();
+            await Navigation.PopAsync(true);
         }
 
-        private void ViewAircraftSelection_Clicked(object? sender, EventArgs e)
+        private async void ViewAircraftSelection_Clicked(object? sender, EventArgs e)
         {
-            Shell.Current.Navigation.PopToRootAsync();
+            await Navigation.PopToRootAsync(true);
         }
     }
 }

@@ -16,13 +16,14 @@
                VerticalOptions="Center" />
         </Grid>
     </Shell.TitleView>
-
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <mct:ImageResourceConverter x:Key="ImageResourceConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="530"/>
             <RowDefinition Height="90"/>
@@ -80,7 +81,7 @@
                     VerticalOptions="End"
                     Clicked="SetDefault_Clicked" />
             <Button x:Name="ViewStations" 
-                    Text="View Stations" 
+                    Text="Weight Entry" 
                     Padding="3"
                     Margin="3"
                     WidthRequest="120"
