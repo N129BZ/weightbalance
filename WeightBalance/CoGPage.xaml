@@ -5,15 +5,18 @@
              xmlns:local="clr-namespace:WeightBalance"
              x:Class="WeightBalance.CoGPage">
 
-    <Shell.TitleView>
-        <Grid>
-            <Label Text="{Binding PageTitle}" 
+    <NavigationPage.TitleView>
+        <Label Text="Weight Entry" 
            FontSize="Title"
+           BackgroundColor="Transparent"
+           TextColor="Navy"
+           HeightRequest="36"
+           WidthRequest="195"
+           HorizontalTextAlignment="Start"
            FontAttributes="Bold"
-           HorizontalOptions="Center" 
+           HorizontalOptions="Fill" 
            VerticalOptions="Center" />
-        </Grid>
-    </Shell.TitleView>
+    </NavigationPage.TitleView>
 
     <Grid HorizontalOptions="Fill" WidthRequest="410">
         <Grid.RowDefinitions>
@@ -99,7 +102,7 @@
         
         <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Fill">
             <Button x:Name="ViewChart" 
-                        Text="View Chart" 
+                        Text="CG Chart" 
                         Padding="3"
                         Margin="3"
                         WidthRequest="120"

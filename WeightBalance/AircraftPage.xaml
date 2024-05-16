@@ -4,16 +4,19 @@
              xmlns:local="clr-namespace:WeightBalance"
              x:Class="WeightBalance.AircraftPage">
 
-    <Shell.TitleView>
-        <Grid>
-            <Label Text="{Binding PageTitle}" 
-                   FontSize="Title"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" 
-                   VerticalOptions="Center" />
-        </Grid>
-    </Shell.TitleView>
-    
+    <NavigationPage.TitleView>
+        <Label Text="CG Chart" 
+               FontSize="Title"
+               BackgroundColor="Transparent"
+               TextColor="Navy"
+               HeightRequest="36"
+               WidthRequest="195"
+               HorizontalTextAlignment="Start"
+               FontAttributes="Bold"
+               HorizontalOptions="Fill" 
+               VerticalOptions="Center" />
+    </NavigationPage.TitleView>
+
     <Grid x:Name="PageGrid" HorizontalOptions="Fill" WidthRequest="410">
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>

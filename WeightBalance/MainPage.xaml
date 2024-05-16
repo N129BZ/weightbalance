@@ -7,13 +7,22 @@
              xmlns:ac="clr-namespace:WeightBalance.Models"
              x:Class="WeightBalance.MainPage">
 
+    <NavigationPage.TitleView>
+        <Label Text="Aircraft List" 
+       FontSize="Title"
+       BackgroundColor="Transparent"
+       TextColor="Navy"
+       HeightRequest="36"
+       WidthRequest="195"
+       HorizontalTextAlignment="Start"
+       FontAttributes="Bold"
+       HorizontalOptions="Fill" 
+       VerticalOptions="Center" />
+    </NavigationPage.TitleView>
+
     <Shell.TitleView>
         <Grid>
-            <Label Text="Weight and Balance" 
-               FontSize="Title"
-               FontAttributes="Bold"
-               HorizontalOptions="Center" 
-               VerticalOptions="Center" />
+            
         </Grid>
     </Shell.TitleView>
     
