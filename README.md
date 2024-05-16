@@ -4,8 +4,8 @@
 ### Select from multiple aircraft
 
 ### Screenshots:  
-![mainscreen](https://github.com/N129BZ/weightbalance/assets/47579080/f8fd747e-cf1c-4b63-88c2-5eef0bf16938)  
+![mainscreen](https://github.com/N129BZ/weightbalance/assets/47579080/a73e7a1b-368e-4288-8a57-c8ad6dd25dd4)  
 
-![stationscreen](https://github.com/N129BZ/weightbalance/assets/47579080/db3bc74a-2182-4624-b2d6-f8cfe2788758)  
+![stationscreen](https://github.com/N129BZ/weightbalance/assets/47579080/6877ac4f-8d84-4e22-8420-676d26de06ec)  
 
-![chartscreen](https://github.com/N129BZ/weightbalance/assets/47579080/81ff7b27-8878-4085-b316-e853de472ae0)  
+![chartscreen](https://github.com/N129BZ/weightbalance/assets/47579080/2e82cf66-6f3e-44c5-bf33-9cb464440be0)  
