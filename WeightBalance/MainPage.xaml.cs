@@ -48,8 +48,10 @@ public partial class MainPage : ContentPage
 
     private async void ViewStations_Clicked(object sender, EventArgs e)
     {
-        var cgp = new CoGPage(aircraft, hangar);
+        IsBusy = true;
+        var cgp = new CgPage(aircraft, hangar);
         await Navigation.PushAsync(cgp, true);
+        IsBusy = false;
     }
 
     protected override void OnNavigatedTo(NavigatedToEventArgs args)

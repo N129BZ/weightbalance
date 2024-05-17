@@ -1,6 +1,3 @@
-
-using CommunityToolkit.Maui;
-using CommunityToolkit.Maui.Core.Platform;
 using Syncfusion.Maui.DataGrid;
 using Syncfusion.Maui.DataGrid.Helper;
 using System.Collections.ObjectModel;
@@ -9,7 +6,7 @@ using WeightBalance.Models;
 
 namespace WeightBalance;
 
-public partial class CoGPage : ContentPage
+public partial class CgPage : ContentPage
 {
     private bool isDirty = false;
 
@@ -17,8 +14,8 @@ public partial class CoGPage : ContentPage
 
     //private readonly ObservableCollection<Aircraft>? hangarList;
 
-    private ObservableCollection<CoGUnit>? cogUnits;
-    public ObservableCollection<CoGUnit>? CoGUnits { get { return cogUnits; } set { cogUnits = value; } }
+    private ObservableCollection<CoGUnit>? cgUnits;
+    public ObservableCollection<CoGUnit>? CgUnits { get { return cgUnits; } set { cgUnits = value; } }
 
     private Aircraft? aircraft = new();
     public Aircraft? SelectedAircraft { get { return aircraft; } set { aircraft = value; } }
@@ -26,13 +23,12 @@ public partial class CoGPage : ContentPage
     private readonly string pageTitle = string.Empty;
     public string PageTitle { get { return pageTitle; } }
 
-    public CoGPage(Aircraft selectedAircraft, Hangar hangar)
+    public CgPage(Aircraft selectedAircraft, Hangar hangar)
     {
         this.hangar = hangar;
-        //hangarList = hangar.HangarList;
         aircraft = selectedAircraft;
         aircraft.CalculateCg();
-        cogUnits = aircraft.CoGUnits;
+        cgUnits = aircraft.CoGUnits;
 
         InitializeComponent();
 
@@ -90,6 +86,7 @@ public partial class CoGPage : ContentPage
     private void StationGrid_CellValueChanged(object sender, DataGridCellValueChangedEventArgs? e)
     {
         isDirty = true;
+        HandleDirty();
     }
 
    

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:sf="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
              xmlns:local="clr-namespace:WeightBalance"
-             x:Class="WeightBalance.CoGPage">
+             x:Class="WeightBalance.CgPage">
 
     <NavigationPage.TitleView>
         <Label Text="Station Entry" 
@@ -32,7 +32,7 @@
                            AutoGenerateColumnsMode="None"
                            SelectionMode="Single"
                            NavigationMode="Cell" 
-                           ItemsSource="{Binding CoGUnits}" 
+                           ItemsSource="{Binding CgUnits}" 
                            GridLinesVisibility="Both"
                            HeaderGridLinesVisibility="Horizontal"
                            AlternationRowCount="2"

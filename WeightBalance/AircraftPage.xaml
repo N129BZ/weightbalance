@@ -23,8 +23,8 @@
             <RowDefinition Height="310"/>
             <RowDefinition Height="170"/>
         </Grid.RowDefinitions>
+
         <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Fill">
-            
             <Button Text="Station Entry" 
                     Padding="3"
                     Margin="3"

@@ -24,8 +24,8 @@
             <mct:ImageResourceConverter x:Key="ImageResourceConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
+    
     <Grid>
-        
         <Grid.RowDefinitions>
             <RowDefinition Height="530"/>
             <RowDefinition Height="90"/>

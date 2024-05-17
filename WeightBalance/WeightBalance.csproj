@@ -154,10 +154,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="CgPage.xaml.cs">
+	    <DependentUpon>CgPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="AircraftPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="CoGPage.xaml">
+	  <MauiXaml Update="CgPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
