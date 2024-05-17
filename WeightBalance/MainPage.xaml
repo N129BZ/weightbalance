@@ -9,15 +9,15 @@
 
     <NavigationPage.TitleView>
         <Label Text="Aircraft List" 
-       FontSize="Title"
-       BackgroundColor="Transparent"
-       TextColor="Navy"
-       HeightRequest="36"
-       WidthRequest="195"
-       HorizontalTextAlignment="Start"
-       FontAttributes="Bold"
-       HorizontalOptions="Fill" 
-       VerticalOptions="Center" />
+               FontSize="Title"
+               BackgroundColor="Transparent"
+               TextColor="Navy"
+               HeightRequest="36"
+               WidthRequest="195"
+               HorizontalTextAlignment="Start"
+               FontAttributes="Bold"
+               HorizontalOptions="Fill" 
+               VerticalOptions="Center" />  
     </NavigationPage.TitleView>
 
     <ContentPage.Resources>
@@ -82,7 +82,7 @@
                     FontAttributes="Bold"
                     VerticalOptions="End"
                     Clicked="SetDefault_Clicked" />
-            <Button Text="Weights * Arms" 
+            <Button Text="Weights and Arms" 
                     Padding="3"
                     Margin="3"
                     WidthRequest="120"

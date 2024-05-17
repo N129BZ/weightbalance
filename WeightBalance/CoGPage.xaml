@@ -6,7 +6,7 @@
              x:Class="WeightBalance.CoGPage">
 
     <NavigationPage.TitleView>
-        <Label Text="Weight &amp; Arm Entry" 
+        <Label Text="Weights - Arms" 
            FontSize="Title"
            BackgroundColor="Transparent"
            TextColor="Navy"

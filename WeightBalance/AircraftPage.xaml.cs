@@ -5,24 +5,24 @@ namespace WeightBalance
 {
     public partial class AircraftPage : ContentPage
     {
-        private string _pagetitle = String.Empty;
-        public string PageTitle { get { return _pagetitle; } set { _pagetitle = value; } }
+        private readonly string pagetitle = String.Empty;
+        public string PageTitle { get { return pagetitle; } }
 
-        private Aircraft? _aircraft;
+        private Aircraft? aircraft;
         public Aircraft? SelectedAircraft
         {
-            get { return _aircraft; }
-            set { _aircraft = value; }
+            get { return aircraft; }
+            set { aircraft = value; }
         }
 
         public AircraftPage(Aircraft selectedAircraft)
         {
-            _aircraft = selectedAircraft;
-            _pagetitle = $"GROSS WT: {_aircraft.TotalWeight}, CG: {_aircraft.CoG}";
+            aircraft = selectedAircraft;
+            pagetitle = $"GROSS WT: {aircraft.TotalWeight}, CG: {aircraft.CoG}";
 
             InitializeComponent();
 
-            if (_aircraft == null)
+            if (aircraft == null)
             {
                 throw new Exception("selectedAircraft cannot be null!");
             }
@@ -30,7 +30,7 @@ namespace WeightBalance
             {
                 Grid view = PageGrid;
 
-                ImageSource acimgsrc = ImageSource.FromResource(_aircraft.AircraftResourcePath);
+                ImageSource acimgsrc = ImageSource.FromResource(aircraft.AircraftResourcePath);
                 Image acimage = new()
                 {
                     Source = acimgsrc,
@@ -38,10 +38,10 @@ namespace WeightBalance
                 };
                 GraphicsView acoverlay = new ()
                 {
-                    Drawable = new AircraftOverlay { SelectedAircraft = _aircraft }
+                    Drawable = new AircraftOverlay { SelectedAircraft = aircraft }
                 };
 
-                ImageSource chimgsrc = ImageSource.FromResource(_aircraft.ChartResourcePath);
+                ImageSource chimgsrc = ImageSource.FromResource(aircraft.ChartResourcePath);
                 Image chimage = new()
                 {
                     Source = chimgsrc,
@@ -50,7 +50,7 @@ namespace WeightBalance
 
                 GraphicsView chartoverlay = new()
                 {
-                    Drawable = new ChartOverlay { SelectedAircraft = _aircraft }
+                    Drawable = new ChartOverlay { SelectedAircraft = aircraft }
                 };
 
                 view.Add(acimage, 0, 0);
