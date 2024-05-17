@@ -121,7 +121,7 @@ namespace WeightBalance.Models
         private double _cog = 0;
 
         [property: JsonIgnore]
-        public double CoG { get { CalculateCoG(); return _cog; } }
+        public double CoG { get { CalculateCg(); return _cog; } }
 
         public event PropertyChangedEventHandler? PropertyChanged
         {
@@ -136,7 +136,7 @@ namespace WeightBalance.Models
             }
         }
 
-        public void CalculateCoG()
+        public void CalculateCg()
         {
             double cog = 0;
             _loadWeight = 0;

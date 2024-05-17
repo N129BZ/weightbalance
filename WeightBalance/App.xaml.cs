@@ -14,14 +14,14 @@ public partial class App : Application
         MainPage = new NavigationPage(new MainPage()); 
     }
 
-    private static async void CheckForJsonDataFile()
+    private async void CheckForJsonDataFile()
     {
-        var filePath = Path.Combine(FileSystem.AppDataDirectory, "aircraft.json");
+        var filePath = Path.Combine(FileSystem.Current.AppDataDirectory, "aircraft.json");
 
         if (!File.Exists(filePath))
         {
             using var inputStream = await FileSystem.OpenAppPackageFileAsync("aircraft.json");
-            using var outputStream = File.Create(filePath);
+            using Stream outputStream = File.OpenWrite(filePath);
             await inputStream.CopyToAsync(outputStream);
         }
     }

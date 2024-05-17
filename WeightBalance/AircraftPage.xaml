@@ -24,39 +24,39 @@
             <RowDefinition Height="170"/>
         </Grid.RowDefinitions>
         <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Fill">
-            <Button x:Name="ViewStations" 
-                Text="Weights and Arms" 
-                Padding="3"
-                Margin="3"
-                WidthRequest="120"
-                HeightRequest="40"
-                BackgroundColor="Navy"
-                TextColor="White"
-                FontAttributes="Bold"
-                VerticalOptions="End"
-                Clicked="ViewStations_Clicked" />
-            <Button x:Name="Back" 
-                Text="Aircraft List" 
-                Padding="3"
-                Margin="3"
-                WidthRequest="120"
-                HeightRequest="40"
-                BackgroundColor="Navy"
-                TextColor="White"
-                FontAttributes="Bold"
-                VerticalOptions="End"
-                Clicked="ViewAircraftSelection_Clicked" />
-            <Button x:Name="ExitApp" 
-                Text="Taxi Out" 
-                Padding="3"
-                Margin="3"
-                WidthRequest="120"
-                HeightRequest="40"
-                BackgroundColor="Navy"
-                TextColor="White"
-                FontAttributes="Bold"
-                VerticalOptions="End"
-                Clicked="ExitHangar_Clicked" />
+            
+            <Button Text="Station Entry" 
+                    Padding="3"
+                    Margin="3"
+                    WidthRequest="120"
+                    HeightRequest="40"
+                    BackgroundColor="Navy"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    VerticalOptions="End"
+                    Clicked="ViewStations_Clicked" />
+            
+            <Button Text="Aircraft List" 
+                    Padding="3"
+                    Margin="3"
+                    WidthRequest="120"
+                    HeightRequest="40"
+                    BackgroundColor="Navy"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    VerticalOptions="End"
+                    Clicked="ViewAircraftSelection_Clicked" />
+            
+            <Button Text="Taxi Out" 
+                    Padding="3"
+                    Margin="3"
+                    WidthRequest="120"
+                    HeightRequest="40"
+                    BackgroundColor="Navy"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    VerticalOptions="End"
+                    Clicked="ExitHangar_Clicked" />
         </HorizontalStackLayout>
     </Grid>
 </ContentPage>

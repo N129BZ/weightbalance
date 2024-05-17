@@ -6,7 +6,7 @@
              x:Class="WeightBalance.CoGPage">
 
     <NavigationPage.TitleView>
-        <Label Text="Weights - Arms" 
+        <Label Text="Station Entry" 
            FontSize="Title"
            BackgroundColor="Transparent"
            TextColor="Navy"
@@ -53,10 +53,24 @@
             </sf:SfDataGrid.DefaultStyle>
             
             <sf:SfDataGrid.Columns>
-                <sf:DataGridTextColumn HeaderText="Station" MappingName="Station" AllowEditing="False" Width="110"/>
-                <sf:DataGridNumericColumn HeaderText="Weight" MappingName="Weight" AllowEditing="True" Format="0.0" />
-                <sf:DataGridNumericColumn HeaderText="Arm" MappingName="Arm" AllowEditing="True" Format="0.0"/>
-                <sf:DataGridNumericColumn HeaderText="Moment" MappingName="Moment" AllowEditing="False" Format="0.0"/>
+                <sf:DataGridTextColumn HeaderText="Station" 
+                                       MappingName="Station" 
+                                       AllowEditing="False"
+                                       AllowFocus="False"
+                                       Width="110"/>
+                <sf:DataGridNumericColumn HeaderText="Weight" 
+                                          MappingName="Weight" 
+                                          AllowEditing="True" 
+                                          Format="0.0" />
+                <sf:DataGridNumericColumn HeaderText="Arm" 
+                                          MappingName="Arm" 
+                                          AllowEditing="True" 
+                                          Format="0.0"/>
+                <sf:DataGridNumericColumn HeaderText="Moment" 
+                                          MappingName="Moment" 
+                                          AllowEditing="False" 
+                                          AllowFocus="False"
+                                          Format="0.0"/>
             </sf:SfDataGrid.Columns>
             
             <sf:SfDataGrid.TableSummaryRows>

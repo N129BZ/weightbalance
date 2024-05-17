@@ -1,82 +1,81 @@
 using WeightBalance.Drawables;
 using WeightBalance.Models;
 
-namespace WeightBalance
+namespace WeightBalance;
+
+public partial class AircraftPage : ContentPage
 {
-    public partial class AircraftPage : ContentPage
+    private readonly string pagetitle = String.Empty;
+    public string PageTitle { get { return pagetitle; } }
+
+    private Aircraft? aircraft;
+    public Aircraft? SelectedAircraft
     {
-        private readonly string pagetitle = String.Empty;
-        public string PageTitle { get { return pagetitle; } }
+        get { return aircraft; }
+        set { aircraft = value; }
+    }
 
-        private Aircraft? aircraft;
-        public Aircraft? SelectedAircraft
+    public AircraftPage(Aircraft selectedAircraft)
+    {
+        aircraft = selectedAircraft;
+        pagetitle = $"GROSS WT: {aircraft.TotalWeight}, CG: {aircraft.CoG}";
+
+        InitializeComponent();
+
+        if (aircraft == null)
         {
-            get { return aircraft; }
-            set { aircraft = value; }
+            throw new Exception("selectedAircraft cannot be null!");
         }
-
-        public AircraftPage(Aircraft selectedAircraft)
+        else
         {
-            aircraft = selectedAircraft;
-            pagetitle = $"GROSS WT: {aircraft.TotalWeight}, CG: {aircraft.CoG}";
+            Grid view = PageGrid;
 
-            InitializeComponent();
-
-            if (aircraft == null)
+            ImageSource acimgsrc = ImageSource.FromResource(aircraft.AircraftResourcePath);
+            Image acimage = new()
             {
-                throw new Exception("selectedAircraft cannot be null!");
-            }
-            else
+                Source = acimgsrc,
+                Aspect = Aspect.AspectFit
+            };
+            GraphicsView acoverlay = new ()
             {
-                Grid view = PageGrid;
+                Drawable = new AircraftOverlay { SelectedAircraft = aircraft }
+            };
 
-                ImageSource acimgsrc = ImageSource.FromResource(aircraft.AircraftResourcePath);
-                Image acimage = new()
-                {
-                    Source = acimgsrc,
-                    Aspect = Aspect.AspectFit
-                };
-                GraphicsView acoverlay = new ()
-                {
-                    Drawable = new AircraftOverlay { SelectedAircraft = aircraft }
-                };
+            ImageSource chimgsrc = ImageSource.FromResource(aircraft.ChartResourcePath);
+            Image chimage = new()
+            {
+                Source = chimgsrc,
+                Aspect = Aspect.AspectFit
+            };
 
-                ImageSource chimgsrc = ImageSource.FromResource(aircraft.ChartResourcePath);
-                Image chimage = new()
-                {
-                    Source = chimgsrc,
-                    Aspect = Aspect.AspectFit
-                };
+            GraphicsView chartoverlay = new()
+            {
+                Drawable = new ChartOverlay { SelectedAircraft = aircraft }
+            };
 
-                GraphicsView chartoverlay = new()
-                {
-                    Drawable = new ChartOverlay { SelectedAircraft = aircraft }
-                };
+            view.Add(acimage, 0, 0);
+            view.Add(acoverlay, 0, 0);
+            view.Add(chimage, 0, 1);
+            view.Add(chartoverlay, 0, 1);
 
-                view.Add(acimage, 0, 0);
-                view.Add(acoverlay, 0, 0);
-                view.Add(chimage, 0, 1);
-                view.Add(chartoverlay, 0, 1);
-
-                Content = view;
-            }
-
-            BindingContext = this;
+            Content = view;
         }
 
-        private void ExitHangar_Clicked(object? sender, EventArgs e)
-        {
-            Application.Current?.Quit();
-        }
+        BindingContext = this;
+    }
 
-        private async void ViewStations_Clicked(object? sender, EventArgs e)
-        {
-            await Task.Run(() => Navigation.PopAsync(true));
-        }
+    private void ExitHangar_Clicked(object? sender, EventArgs e)
+    {
+        Application.Current?.Quit();
+    }
 
-        private async void ViewAircraftSelection_Clicked(object? sender, EventArgs e)
-        {
-            await Task.Run(() => Navigation.PopToRootAsync(true));
-        }
+    private async void ViewStations_Clicked(object? sender, EventArgs e)
+    {
+        await Navigation.PopAsync(true);
+    }
+
+    private async void ViewAircraftSelection_Clicked(object? sender, EventArgs e)
+    {
+        await Navigation.PopToRootAsync(true);
     }
 }

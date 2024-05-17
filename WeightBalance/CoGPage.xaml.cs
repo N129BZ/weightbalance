@@ -15,7 +15,7 @@ public partial class CoGPage : ContentPage
 
     private readonly Hangar? hangar;
 
-    private readonly ObservableCollection<Aircraft>? hangarList = [];
+    //private readonly ObservableCollection<Aircraft>? hangarList;
 
     private ObservableCollection<CoGUnit>? cogUnits;
     public ObservableCollection<CoGUnit>? CoGUnits { get { return cogUnits; } set { cogUnits = value; } }
@@ -29,9 +29,9 @@ public partial class CoGPage : ContentPage
     public CoGPage(Aircraft selectedAircraft, Hangar hangar)
     {
         this.hangar = hangar;
-        hangarList = hangar.HangarList;
+        //hangarList = hangar.HangarList;
         aircraft = selectedAircraft;
-        aircraft.CalculateCoG();
+        aircraft.CalculateCg();
         cogUnits = aircraft.CoGUnits;
 
         InitializeComponent();
@@ -47,7 +47,7 @@ public partial class CoGPage : ContentPage
         StationGrid.CellRenderers.Add("TableSummary", summaryRenderer);
         StationGrid.CurrentCellEndEdit += StationGrid_EndEdit;
         pageTitle = $"{aircraft.Name} CG Stations";
-
+        
         BindingContext = this;
     }
 
@@ -78,13 +78,13 @@ public partial class CoGPage : ContentPage
     private async void ViewChart_Clicked(object sender, EventArgs e)
     {
         HandleDirty();
-        Task.Run(() => Navigation.PushAsync(new AircraftPage(aircraft)));
+        await Navigation.PushAsync(new AircraftPage(aircraft));
     }
 
-    private void ViewAircraftList_Clicked(object sender, EventArgs e)
+    private async void ViewAircraftList_Clicked(object sender, EventArgs e)
     {
         HandleDirty();
-        Navigation.PopToRootAsync();
+        await Navigation.PopToRootAsync();
     }
 
     private void StationGrid_CellValueChanged(object sender, DataGridCellValueChangedEventArgs? e)
@@ -103,9 +103,9 @@ public partial class CoGPage : ContentPage
     {
         if (isDirty)
         {
-            aircraft.CalculateCoG();
+            aircraft.CalculateCg();
 
-            if (hangar.SaveHangarList(hangarList))
+            if (hangar.SaveHangarList())
             {
                 isDirty = false;
             }
@@ -116,7 +116,7 @@ public partial class CoGPage : ContentPage
     {
         if (isDirty)
         {
-            aircraft.CalculateCoG();
+            aircraft.CalculateCg();
             StationGrid.RefreshColumns();
         }
     }
@@ -169,7 +169,7 @@ public class DataGridTableSummaryCellRendererExt : DataGridTableSummaryCellRende
 
     private void CheckCgStatus()
     {
-        aircraft.CalculateCoG();
+        aircraft.CalculateCg();
         
 
         if (aircraft.IsWithinRange && aircraft.IsWithinWeight)
