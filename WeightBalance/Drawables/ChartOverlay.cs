@@ -62,5 +62,13 @@ internal class ChartOverlay : IDrawable
         var mncg = aircraft.MinCg.ToString("#0.00");
         var mxcg = aircraft.MaxCg.ToString("#0.00");
         canvas.DrawString($"Range: {mncg} - {mxcg}", 200, 300, HorizontalAlignment.Justified);
+
+        if (!aircraft.IsWithinWeight)
+        {
+            canvas.FontSize = 16;
+            canvas.Font = Font.Default;
+            canvas.FontColor = Colors.Red;
+            canvas.DrawString("* OVER MAX GROSS *", 200, 190, HorizontalAlignment.Justified);
+        }
     }
 }

@@ -39,7 +39,7 @@
                            AllowEditing="True"
                            AllowDeleting="False"
                            LiveDataUpdateMode="AllowSummaryUpdate"
-                           CellValueChanged="StationGrid_CellValueChanged"
+                           CurrentCellEndEdit="StationGrid_CurrentCellEndEdit"
                            EditTapAction="OnTap">
             
             <sf:SfDataGrid.DefaultStyle>
@@ -61,15 +61,20 @@
                 <sf:DataGridNumericColumn HeaderText="Weight" 
                                           MappingName="Weight" 
                                           AllowEditing="True" 
+                                          AllowSorting="False"
+                                          AllowNull="False"
                                           Format="0.0" />
                 <sf:DataGridNumericColumn HeaderText="Arm" 
                                           MappingName="Arm" 
                                           AllowEditing="True" 
+                                          AllowSorting="False"
+                                          AllowNull="False"
                                           Format="0.0"/>
                 <sf:DataGridNumericColumn HeaderText="Moment" 
                                           MappingName="Moment" 
                                           AllowEditing="False" 
                                           AllowFocus="False"
+                                          AllowSorting="False"
                                           Format="0.0"/>
             </sf:SfDataGrid.Columns>
             

@@ -8,8 +8,6 @@ namespace WeightBalance;
 
 public partial class CgPage : ContentPage
 {
-    private bool isDirty = false;
-
     private readonly Hangar? hangar;
 
     private ObservableCollection<CoGUnit>? cgUnits;
@@ -39,7 +37,6 @@ public partial class CgPage : ContentPage
 
         StationGrid.CellRenderers.Remove("TableSummary");
         StationGrid.CellRenderers.Add("TableSummary", summaryRenderer);
-        StationGrid.CurrentCellEndEdit += StationGrid_EndEdit;
         pageTitle = $"{aircraft.Name} CG Stations";
         
         BindingContext = this;
@@ -71,49 +68,35 @@ public partial class CgPage : ContentPage
 
     private async void ViewChart_Clicked(object sender, EventArgs e)
     {
-        HandleDirty();
+        StationGrid.Refresh();
+        SaveData();
         await Navigation.PushAsync(new AircraftPage(aircraft));
     }
 
     private async void ViewAircraftList_Clicked(object sender, EventArgs e)
     {
-        HandleDirty();
+        StationGrid.Refresh();
+        SaveData();
         await Navigation.PopToRootAsync();
     }
 
-    private void StationGrid_CellValueChanged(object sender, DataGridCellValueChangedEventArgs? e)
-    {
-        isDirty = true;
-        HandleDirty();
-    }
-
-   
     private void ExitHangar_Clicked(object sender, EventArgs e)
     {
-        HandleDirty();
+        StationGrid.Refresh();
+        SaveData();
         Application.Current?.Quit();
     }
 
-    private void HandleDirty()
+    private void SaveData()
     {
-        if (isDirty)
-        {
-            aircraft.CalculateCg();
-
-            if (hangar.SaveHangarList())
-            {
-                isDirty = false;
-            }
-        }
+        aircraft.CalculateCg();
+        if (!hangar.SaveHangarList())
+            throw new Exception("Data not saved!");
     }
 
-    private void StationGrid_EndEdit(object sender, DataGridCurrentCellEndEditEventArgs e)
+    private void StationGrid_CurrentCellEndEdit(object sender, DataGridCurrentCellEndEditEventArgs e)
     {
-        if (isDirty)
-        {
-            aircraft.CalculateCg();
-            StationGrid.RefreshColumns();
-        }
+        SaveData();
     }
 }
 
