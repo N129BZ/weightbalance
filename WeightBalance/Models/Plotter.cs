@@ -50,7 +50,7 @@
 
             //Rect rect = new Rect(20, 60, 370, 360);
 
-            double dotX = PlotX(chartrect, maxcg, mincg, cog);
+            double dotX = PlotX(chartrect, maxcg, mincg, cog) - 20;
             double dotY = PlotY(chartrect, aircraft.MaxGross, aircraft.MinGross, aircraft.TotalWeight);
 
             PointF point = new Point(dotX, dotY);

@@ -65,8 +65,8 @@ internal class ChartOverlay : IDrawable
 
         if (!aircraft.IsWithinWeight)
         {
-            canvas.FontSize = 16;
-            canvas.Font = Font.Default;
+            canvas.FontSize = 14;
+            canvas.Font = Font.DefaultBold;
             canvas.FontColor = Colors.Red;
             canvas.DrawString("* OVER MAX GROSS *", 200, 190, HorizontalAlignment.Justified);
         }
