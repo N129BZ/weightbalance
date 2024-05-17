@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
         <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Fill">
             <Button x:Name="ViewStations" 
-                Text="Weight Entry" 
+                Text="Weights * Arms" 
                 Padding="3"
                 Margin="3"
                 WidthRequest="120"

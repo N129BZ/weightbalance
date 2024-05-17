@@ -79,7 +79,7 @@ public partial class CoGPage : ContentPage
     private async void ViewChart_Clicked(object sender, EventArgs e)
     {
         HandleDirty();
-        Navigation.PushAsync(new AircraftPage(_aircraft));
+        Task.Run(() => Navigation.PushAsync(new AircraftPage(_aircraft)));
     }
 
     private void ViewAircraftList_Clicked(object sender, EventArgs e)

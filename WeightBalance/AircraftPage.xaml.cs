@@ -71,12 +71,12 @@ namespace WeightBalance
 
         private async void ViewStations_Clicked(object? sender, EventArgs e)
         {
-            await Navigation.PopAsync(true);
+            await Task.Run(() => Navigation.PopAsync(true));
         }
 
         private async void ViewAircraftSelection_Clicked(object? sender, EventArgs e)
         {
-            await Navigation.PopToRootAsync(true);
+            await Task.Run(() => Navigation.PopToRootAsync(true));
         }
     }
 }

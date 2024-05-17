@@ -16,6 +16,8 @@ namespace WeightBalance
         private Aircraft _aircraft = new();
         public Aircraft SelectedAircraft { get { return _aircraft; } set { _aircraft = value; } }
 
+        public string WaEntryText { get { return "Weights &amp; Arms"; } }
+
         public MainPage()
         {
             InitializeComponent();

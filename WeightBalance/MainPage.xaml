@@ -20,12 +20,6 @@
        VerticalOptions="Center" />
     </NavigationPage.TitleView>
 
-    <Shell.TitleView>
-        <Grid>
-            
-        </Grid>
-    </Shell.TitleView>
-    
     <ContentPage.Resources>
         <ResourceDictionary>
             <mct:ImageResourceConverter x:Key="ImageResourceConverter" />
@@ -78,8 +72,7 @@
             </sf:SfListView.ItemTemplate>
         </sf:SfListView>
         <HorizontalStackLayout Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Center">
-            <Button x:Name="SetDefault" 
-                    Text="Set As Default"
+            <Button Text="Set As Default"
                     Padding="3"
                     Margin="3"
                     HeightRequest="40"
@@ -89,8 +82,7 @@
                     FontAttributes="Bold"
                     VerticalOptions="End"
                     Clicked="SetDefault_Clicked" />
-            <Button x:Name="ViewStations" 
-                    Text="Weight Entry" 
+            <Button Text="Weights * Arms" 
                     Padding="3"
                     Margin="3"
                     WidthRequest="120"
@@ -100,8 +92,7 @@
                     FontAttributes="Bold"
                     VerticalOptions="End"
                     Clicked="ViewStations_Clicked" />
-            <Button x:Name="ExitApp" 
-                    Text="Taxi Out" 
+            <Button Text="Taxi Out" 
                     Padding="3"
                     Margin="3"
                     WidthRequest="120"
