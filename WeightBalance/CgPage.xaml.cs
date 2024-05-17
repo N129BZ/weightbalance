@@ -12,8 +12,6 @@ public partial class CgPage : ContentPage
 
     private readonly Hangar? hangar;
 
-    //private readonly ObservableCollection<Aircraft>? hangarList;
-
     private ObservableCollection<CoGUnit>? cgUnits;
     public ObservableCollection<CoGUnit>? CgUnits { get { return cgUnits; } set { cgUnits = value; } }
 
