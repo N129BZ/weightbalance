@@ -88,32 +88,32 @@
       {
         "Station": "Pilot",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 25.6
       },
       {
         "Station": "Passenger",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 25.6
       },
       {
         "Station": "Fuel",
         "Weight": 0,
-        "Arm": 0
+        "Arm": -3.93
       },
       {
         "Station": "LeftWLock",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 23.6
       },
       {
         "Station": "RightWLock",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 23.6
       },
       {
         "Station": "Baggage",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 55.1
       }
     ]
   },
@@ -125,8 +125,8 @@
     "AircraftImagePath": "ch701_light.png",
     "ChartImagePath": "bevelchart.png",
     "CgRectCoordinates": [ 110, 32, 36, 100 ],
-    "MinCg": 10.6,
-    "MaxCg": 18,
+    "MinCg": 11.0,
+    "MaxCg": 20.0,
     "IsDefault": false,
     "CoGUnits": [
       {
@@ -147,22 +147,22 @@
       {
         "Station": "Pilot",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 23.6
       },
       {
         "Station": "Passenger",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 23.6
       },
       {
         "Station": "Fuel",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 23.6
       },
       {
         "Station": "Baggage",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 41.3
       }
     ]
   },
@@ -196,22 +196,22 @@
       {
         "Station": "Pilot",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 25.59
       },
       {
         "Station": "Passenger",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 25.59
       },
       {
         "Station": "Fuel",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 24.80
       },
       {
         "Station": "Baggage",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 63
       }
     ]
   },
@@ -223,8 +223,8 @@
     "AircraftImagePath": "chcruzer_light.png",
     "ChartImagePath": "bevelchart.png",
     "CgRectCoordinates": [ 110, 36, 36, 100 ],
-    "MinCg": 10.6,
-    "MaxCg": 18,
+    "MinCg": 10.63,
+    "MaxCg": 19.68,
     "IsDefault": false,
     "CoGUnits": [
       {
@@ -245,22 +245,22 @@
       {
         "Station": "Pilot",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 25.59
       },
       {
         "Station": "Passenger",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 25.59
       },
       {
         "Station": "Fuel",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 24.80
       },
       {
         "Station": "Baggage",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 45.28
       }
     ]
   },
@@ -272,8 +272,8 @@
     "AircraftImagePath": "rv9_light.png",
     "ChartImagePath": "nobevelchart.png",
     "CgRectCoordinates": [ 106, 30, 36, 100 ],
-    "MinCg": 10.6,
-    "MaxCg": 18,
+    "MinCg": 77.95,
+    "MaxCg": 84.84,
     "IsDefault": false,
     "CoGUnits": [
       {
@@ -294,22 +294,22 @@
       {
         "Station": "Pilot",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 92.7
       },
       {
         "Station": "Passenger",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 92.7
       },
       {
         "Station": "Fuel",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 76.75
       },
       {
         "Station": "Baggage",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 122.0
       }
     ]
   },
@@ -321,8 +321,8 @@
     "AircraftImagePath": "rv9a_light.png",
     "ChartImagePath": "nobevelchart.png",
     "CgRectCoordinates": [ 106, 32, 36, 100 ],
-    "MinCg": 10.6,
-    "MaxCg": 18,
+    "MinCg": 77.95,
+    "MaxCg": 84.84,
     "IsDefault": false,
     "CoGUnits": [
       {
@@ -343,22 +343,22 @@
       {
         "Station": "Pilot",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 92.7
       },
       {
         "Station": "Passenger",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 92.7
       },
       {
         "Station": "Fuel",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 76.75
       },
       {
         "Station": "Baggage",
         "Weight": 0,
-        "Arm": 0
+        "Arm": 122
       }
     ]
   }
