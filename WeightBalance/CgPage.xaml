@@ -6,7 +6,7 @@
              x:Class="WeightBalance.CgPage">
 
     <NavigationPage.TitleView>
-        <Label Text="Station Entry" 
+        <Label Text="{Binding PageTitle}" 
            FontSize="Title"
            BackgroundColor="Transparent"
            TextColor="Navy"
