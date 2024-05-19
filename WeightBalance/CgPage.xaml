@@ -39,6 +39,7 @@
                            AllowEditing="True"
                            AllowDeleting="False"
                            LiveDataUpdateMode="AllowSummaryUpdate"
+                           CurrentCellActivated="StationGrid_CurrentCellActivated"
                            CurrentCellEndEdit="StationGrid_CurrentCellEndEdit"
                            EditTapAction="OnTap">
             

@@ -26,11 +26,10 @@ public class Hangar
         {
             var filepath = Path.Combine(FileSystem.AppDataDirectory, "aircraft.json");
             var output = JsonSerializer.Serialize(HangarList);
-            using StreamWriter outstream = File.CreateText(filepath);
+            using StreamWriter outstream = File.CreateText(filepath); 
             outstream.Write(output);
             outstream.Flush();
             outstream.Close();
-            outstream.Dispose();
             return true;
         }
         catch { return false; }

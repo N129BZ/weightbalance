@@ -1,6 +1,7 @@
 using Syncfusion.Maui.DataGrid;
 using Syncfusion.Maui.DataGrid.Helper;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using WeightBalance.Data;
 using WeightBalance.Models;
 
@@ -22,7 +23,7 @@ public partial class CgPage : ContentPage
         SelectedAircraft = selectedAircraft;
         SelectedAircraft.CalculateCg();
         CgUnits = SelectedAircraft.CoGUnits;
-
+        
         InitializeComponent();
 
         DataGridTableSummaryCellRendererExt summaryRenderer = new()
@@ -93,7 +94,13 @@ public partial class CgPage : ContentPage
 
     private void StationGrid_CurrentCellEndEdit(object sender, DataGridCurrentCellEndEditEventArgs e)
     {
+        Console.WriteLine(e.ToString());
         SaveData();
+    }
+
+    private void StationGrid_CurrentCellActivated(object sender, DataGridCurrentCellActivatedEventArgs e)
+    {
+        SelectedAircraft.CalculateCg();
     }
 }
 
@@ -123,14 +130,13 @@ public class DataGridTableSummaryCellRendererExt : DataGridTableSummaryCellRende
     protected override void OnUpdateCellValue(DataColumnBase dataColumn)
     {
         base.OnUpdateCellValue(dataColumn);
-        
         CheckCgStatus();
     }
 
     private void CheckCgStatus()
     {
         SelectedAircraft.CalculateCg();
-        
+       
 
         if (SelectedAircraft.IsWithinRange && SelectedAircraft.IsWithinWeight)
         {

@@ -1,55 +1,44 @@
 ﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
-namespace WeightBalance.Models
+namespace WeightBalance.Models;
+
+public class CoGUnit : INotifyPropertyChanged
 {
-    public class CoGUnit : INotifyPropertyChanged
+    public string? Station { get; set; }
+
+    [field: JsonIgnore]
+    private double weight = 0;
+    public double Weight
     {
-        public string? Station { get; set; }
-
-        [field: JsonIgnore]
-        private double _weight = 0;
-        public double Weight
+        get { return weight; }
+        set
         {
-            get { return _weight; }
-            set
-            {
-                _weight = value;
-                OnPropertyChanged("Weight");
-            }
+            weight = value;
+            RaisePropertyChanged(nameof(Weight));
+            RaisePropertyChanged(nameof(Moment));
         }
+    }
 
-        [field: JsonIgnore]
-        private double _arm = 0;
-        public double Arm
+    [field: JsonIgnore]
+    private double arm = 0;
+    public double Arm
+    {
+        get { return arm; }
+        set
         {
-            get { return _arm; }
-            set
-            {
-                _arm = value;
-                OnPropertyChanged("Arm");
-            }
+            arm = value;
+            RaisePropertyChanged(nameof(Arm));
+            RaisePropertyChanged(nameof(Moment));
         }
+    }
 
-        [field: JsonIgnore]
-        public double _moment = 0;
-        [property: JsonIgnore]
-        public double Moment
-        {
-            get { return _weight * _arm; }
-            set
-            {
-                _moment = value;
-                OnPropertyChanged("Moment");
-            }
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
+    [property: JsonIgnore]
+    public double Moment { get { return weight * arm; } }
+    
+    public event PropertyChangedEventHandler? PropertyChanged;
+    protected void RaisePropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
