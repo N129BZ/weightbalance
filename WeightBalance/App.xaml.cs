@@ -10,11 +10,11 @@ public partial class App : Application
         InitializeComponent();
 
         Task.Run(() => CheckForJsonDataFile()).Wait();
-
+       
         MainPage = new NavigationPage(new MainPage()); 
     }
 
-    private async void CheckForJsonDataFile()
+    private static async void CheckForJsonDataFile()
     {
         var filePath = Path.Combine(FileSystem.Current.AppDataDirectory, "aircraft.json");
 
@@ -22,7 +22,7 @@ public partial class App : Application
         {
             using var inputStream = await FileSystem.OpenAppPackageFileAsync("aircraft.json");
             using Stream outputStream = File.OpenWrite(filePath);
-            await inputStream.CopyToAsync(outputStream);
+            inputStream.CopyTo(outputStream);
         }
     }
 }

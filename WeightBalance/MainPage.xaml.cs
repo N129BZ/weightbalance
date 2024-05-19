@@ -10,17 +10,16 @@ public partial class MainPage : ContentPage
 {
     private readonly Hangar hangar = new();
     
-    private readonly ObservableCollection<Aircraft>? hangarList;
-    public ObservableCollection<Aircraft>? HangarList { get { return hangarList; } }
+    public ObservableCollection<Aircraft> HangarList { get; private set; } = [];
 
-    private Aircraft aircraft = new();
-    public Aircraft SelectedAircraft { get { return aircraft; } set { aircraft = value; } }
+    public Aircraft SelectedAircraft { get; private set; } = new(); 
 
+    
     public MainPage()
     {
         InitializeComponent();
 
-        hangarList = hangar.HangarList;
+        HangarList = hangar.HangarList;
 
         SearchForDefault();
 
@@ -29,11 +28,11 @@ public partial class MainPage : ContentPage
 
     private void SearchForDefault()
     {
-        foreach (Aircraft aircraft in hangar.HangarList)
+        foreach (Aircraft aircraft in HangarList)
         {
             if (aircraft.IsDefault)
             {   
-                this.aircraft = aircraft;
+                this.SelectedAircraft = aircraft;
                 AircraftListView.SelectedItem = aircraft;
                 //Task.Run(() => DoStationNavigation());
                 return;
@@ -42,14 +41,14 @@ public partial class MainPage : ContentPage
 
         // if we got here, there was no default Aircraft,
         // so set _aircraft to the 1st item in the list
-        aircraft = hangarList[0];
-        AircraftListView.SelectedItem = aircraft;
+        SelectedAircraft = HangarList[0];
+        AircraftListView.SelectedItem = SelectedAircraft;
     }
 
     private async void ViewStations_Clicked(object sender, EventArgs e)
     {
         IsBusy = true;
-        var cgp = new CgPage(aircraft, hangar);
+        var cgp = new CgPage(SelectedAircraft, hangar);
         await Navigation.PushAsync(cgp, true);
         IsBusy = false;
     }
@@ -61,10 +60,10 @@ public partial class MainPage : ContentPage
     }
     private void SetDefault_Clicked(object sender, EventArgs e)
     {
-        aircraft.IsDefault = true;
-        foreach (Aircraft ac in hangarList)
+        SelectedAircraft.IsDefault = true;
+        foreach (Aircraft ac in HangarList)
         {
-            if (ac.ID != aircraft.ID)
+            if (ac.ID != SelectedAircraft.ID)
             {
                 ac.IsDefault = false;
             }
@@ -79,13 +78,13 @@ public partial class MainPage : ContentPage
 
     private void AircraftList_ItemDoubleTapped(object sender, ItemDoubleTappedEventArgs e)
     {
-        aircraft = (Aircraft)e.DataItem;
+        SelectedAircraft = (Aircraft)e.DataItem;
         SetDefault_Clicked(sender, e);
         ViewStations_Clicked(sender, e);
     }
 
     private void AircraftListView_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
     {
-        aircraft = (Aircraft)e.DataItem;
+        SelectedAircraft = (Aircraft)e.DataItem;
     }
 }

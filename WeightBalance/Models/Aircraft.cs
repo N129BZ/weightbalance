@@ -194,8 +194,8 @@ namespace WeightBalance.Models
         public bool IsWithinWeight { get { return _isWithinWeight; } }
 
         [property: JsonIgnore]
-        public string AircraftResourcePath { get { return $"WeightBalance.Resources.Images.{_acImagePath}"; } }
-
+        public string AircraftResourcePath {  get { return $"WeightBalance.Resources.Images.{_acImagePath}"; } }
+        
         [property: JsonIgnore]
         public string ChartResourcePath { get { return $"WeightBalance.Resources.Images.{_chartImagePath}"; } }
 

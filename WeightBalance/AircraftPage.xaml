@@ -5,8 +5,8 @@
              x:Class="WeightBalance.AircraftPage">
 
     <NavigationPage.TitleView>
-        <Label Text="CG Chart" 
-               FontSize="Title"
+        <Label Text="{Binding PageTitle}" 
+               FontSize="Medium"
                BackgroundColor="Transparent"
                TextColor="Navy"
                HeightRequest="36"

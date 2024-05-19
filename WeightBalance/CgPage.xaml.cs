@@ -8,36 +8,33 @@ namespace WeightBalance;
 
 public partial class CgPage : ContentPage
 {
-    private readonly Hangar? hangar;
+    private readonly Hangar Hangar;
 
-    private ObservableCollection<CoGUnit>? cgUnits;
-    public ObservableCollection<CoGUnit>? CgUnits { get { return cgUnits; } set { cgUnits = value; } }
+    public ObservableCollection<CoGUnit> CgUnits { get; private set; } = []; 
 
-    private Aircraft? aircraft = new();
-    public Aircraft? SelectedAircraft { get { return aircraft; } set { aircraft = value; } }
+    public Aircraft SelectedAircraft { get; private set; } = new();
 
-    private readonly string pageTitle = string.Empty;
-    public string PageTitle { get { return pageTitle; } }
+    public string PageTitle { get; private set; } = string.Empty; 
 
     public CgPage(Aircraft selectedAircraft, Hangar hangar)
     {
-        this.hangar = hangar;
-        aircraft = selectedAircraft;
-        aircraft.CalculateCg();
-        cgUnits = aircraft.CoGUnits;
+        this.Hangar = hangar;
+        SelectedAircraft = selectedAircraft;
+        SelectedAircraft.CalculateCg();
+        CgUnits = SelectedAircraft.CoGUnits;
 
         InitializeComponent();
 
         DataGridTableSummaryCellRendererExt summaryRenderer = new()
         {
-            SelectedAircraft = aircraft,
+            SelectedAircraft = this.SelectedAircraft,
             CgLabel = CgLabel,
             CgFrame = CgFrame
         };
 
         StationGrid.CellRenderers.Remove("TableSummary");
         StationGrid.CellRenderers.Add("TableSummary", summaryRenderer);
-        pageTitle = $"{aircraft.Name} CG Stations";
+        PageTitle = $"{SelectedAircraft.Name} CG Stations";
         
         BindingContext = this;
     }
@@ -46,7 +43,7 @@ public partial class CgPage : ContentPage
     {
         get
         {
-            return $"Weight: " + aircraft.TotalWeight.ToString("#0.0");
+            return $"Weight: " + SelectedAircraft.TotalWeight.ToString("#0.0");
         }
     }
 
@@ -54,7 +51,7 @@ public partial class CgPage : ContentPage
     {
         get
         {
-            return "Moment:" + aircraft.TotalMoment.ToString("#0.0");
+            return "Moment:" + SelectedAircraft.TotalMoment.ToString("#0.0");
         }
     }
 
@@ -62,7 +59,7 @@ public partial class CgPage : ContentPage
     {
         get
         {
-            return "CG: " + aircraft.CoG.ToString("#0.00");
+            return "CG: " + SelectedAircraft.CoG.ToString("#0.00");
         }
     }
 
@@ -70,7 +67,7 @@ public partial class CgPage : ContentPage
     {
         StationGrid.Refresh();
         SaveData();
-        await Navigation.PushAsync(new AircraftPage(aircraft));
+        await Navigation.PushAsync(new AircraftPage(SelectedAircraft));
     }
 
     private async void ViewAircraftList_Clicked(object sender, EventArgs e)
@@ -89,8 +86,8 @@ public partial class CgPage : ContentPage
 
     private void SaveData()
     {
-        aircraft.CalculateCg();
-        if (!hangar.SaveHangarList())
+        SelectedAircraft.CalculateCg();
+        if (!this.Hangar.SaveHangarList())
             throw new Exception("Data not saved!");
     }
 
@@ -102,27 +99,12 @@ public partial class CgPage : ContentPage
 
 public class DataGridTableSummaryCellRendererExt : DataGridTableSummaryCellRenderer
 {
-    private Aircraft aircraft = new();
-    public Aircraft SelectedAircraft
-    {
-        get { return aircraft; }
-        set { aircraft = value; }
-    }
-
-    private Label cgLabel = new();
-    public Label CgLabel
-    {
-        get { return cgLabel; }
-        set { cgLabel = value; }
-    }
-
-    private Frame cgFrame = new();
-    public Frame CgFrame
-    {
-        get { return cgFrame; }
-        set { cgFrame = value; }
-    }
-
+    public Aircraft SelectedAircraft { get; set; } = new();
+    
+    public Label CgLabel { get; set; } = new();
+    
+    public Frame CgFrame {  get; set; } = new();
+    
     protected override void OnSetCellStyle(DataColumnBase dataColumn)
     {
         base.OnSetCellStyle(dataColumn);
@@ -147,25 +129,25 @@ public class DataGridTableSummaryCellRendererExt : DataGridTableSummaryCellRende
 
     private void CheckCgStatus()
     {
-        aircraft.CalculateCg();
+        SelectedAircraft.CalculateCg();
         
 
-        if (aircraft.IsWithinRange && aircraft.IsWithinWeight)
+        if (SelectedAircraft.IsWithinRange && SelectedAircraft.IsWithinWeight)
         {
             Color bg = Color.FromRgba("#E8F8F5");
-            cgFrame.BackgroundColor = bg;
-            cgLabel.TextColor = Colors.Navy;
-            cgLabel.BackgroundColor = bg;
-            cgLabel.Text = "CG: " + aircraft.CoG.ToString("#0.00");
+            CgFrame.BackgroundColor = bg;
+            CgLabel.TextColor = Colors.Navy;
+            CgLabel.BackgroundColor = bg;
+            CgLabel.Text = "CG: " + SelectedAircraft.CoG.ToString("#0.00");
         }
         else
         {
-            cgFrame.BackgroundColor = Colors.Red;
-            cgLabel.TextColor = Colors.White;
-            cgLabel.BackgroundColor = Colors.Red;
-            if (aircraft.TotalWeight > aircraft.MaxGross)
+            CgFrame.BackgroundColor = Colors.Red;
+            CgLabel.TextColor = Colors.White;
+            CgLabel.BackgroundColor = Colors.Red;
+            if (SelectedAircraft.TotalWeight > SelectedAircraft.MaxGross)
             {
-                cgLabel.Text = "OVERWEIGHT! CG: " + aircraft.CoG.ToString("#0.00");
+                CgLabel.Text = "OVERWEIGHT! CG: " + SelectedAircraft.CoG.ToString("#0.00");
             }
         }
     }

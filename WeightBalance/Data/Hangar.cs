@@ -8,17 +8,16 @@ public class Hangar
 {
     public Hangar()
     {
-        LoadTheHangarList();
+        LoadHangarList();
     }
 
-    private ObservableCollection<Aircraft> hangarList;
-    public ObservableCollection<Aircraft> HangarList { get { return hangarList; } }
+    public ObservableCollection<Aircraft> HangarList { get; private set; } = [];
 
-    public void LoadTheHangarList()
+    public void LoadHangarList()
     {
         var filePath = Path.Combine(FileSystem.Current.AppDataDirectory, "aircraft.json");
         var json = File.ReadAllText(filePath);
-        hangarList = JsonSerializer.Deserialize<ObservableCollection<Aircraft>>(json)!;
+        HangarList = JsonSerializer.Deserialize<ObservableCollection<Aircraft>>(json)!;
     }
 
     public bool SaveHangarList()
@@ -26,7 +25,7 @@ public class Hangar
         try
         {
             var filepath = Path.Combine(FileSystem.AppDataDirectory, "aircraft.json");
-            var output = JsonSerializer.Serialize(hangarList);
+            var output = JsonSerializer.Serialize(HangarList);
             using StreamWriter outstream = File.CreateText(filepath);
             outstream.Write(output);
             outstream.Flush();

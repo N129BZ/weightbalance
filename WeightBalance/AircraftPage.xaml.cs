@@ -18,7 +18,7 @@ public partial class AircraftPage : ContentPage
     public AircraftPage(Aircraft selectedAircraft)
     {
         aircraft = selectedAircraft;
-        pagetitle = $"GROSS WT: {aircraft.TotalWeight}, CG: {aircraft.CoG}";
+        pagetitle = $"WT: {aircraft.TotalWeight}, CG: {aircraft.CoG}";
 
         InitializeComponent();
 
