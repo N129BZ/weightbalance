@@ -3,9 +3,10 @@ using WeightBalance.Models;
 
 namespace WeightBalance;
 
-public partial class AircraftPage : ContentPage
+public partial class ChartPage : ContentPage
 {
     private readonly string pagetitle = String.Empty;
+    private readonly double CoG;
     public string PageTitle { get { return pagetitle; } }
 
     private Aircraft? aircraft;
@@ -15,10 +16,14 @@ public partial class AircraftPage : ContentPage
         set { aircraft = value; }
     }
 
-    public AircraftPage(Aircraft selectedAircraft)
+    
+    
+    public ChartPage(Aircraft selectedAircraft, double cog)
     {
         aircraft = selectedAircraft;
-        pagetitle = $"WT: {aircraft.TotalWeight}, CG: {aircraft.CoG}";
+        CoG = cog;
+
+        pagetitle = $"WT: {aircraft.TotalWeight}, CG: {CoG}";
 
         InitializeComponent();
 
@@ -36,9 +41,9 @@ public partial class AircraftPage : ContentPage
                 Source = acimgsrc,
                 Aspect = Aspect.AspectFit
             };
-            GraphicsView acoverlay = new ()
+            GraphicsView acoverlay = new()
             {
-                Drawable = new AircraftOverlay { SelectedAircraft = aircraft }
+                Drawable = new AircraftOverlay(aircraft, CoG)
             };
 
             ImageSource chimgsrc = ImageSource.FromResource(aircraft.ChartResourcePath);
@@ -50,7 +55,7 @@ public partial class AircraftPage : ContentPage
 
             GraphicsView chartoverlay = new()
             {
-                Drawable = new ChartOverlay { SelectedAircraft = aircraft }
+                Drawable = new ChartOverlay(aircraft, CoG)
             };
 
             view.Add(acimage, 0, 0);

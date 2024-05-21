@@ -7,21 +7,32 @@ namespace WeightBalance.Drawables;
 
 internal class AircraftOverlay : IDrawable
 {
-    private Aircraft _aircraft = new();
-    public Aircraft SelectedAircraft
+    private Aircraft aircraft = new();
+
+    private double CoG;
+
+    public AircraftOverlay(Aircraft selectedAircraft, double cog)
     {
-        get { return _aircraft; }
-        set { _aircraft = value; }
+        aircraft = selectedAircraft;
+        CoG = cog;
     }
+
+    //public Aircraft SelectedAircraft
+    //{
+    //    get { return aircraft; }
+    //    set 
+    //    { 
+    //        aircraft = value;
+    //        CoG = aircraft.CoG;
+    //    }
+    //}
 
     public void Draw(ICanvas canvas, RectF dirtyRect)
     {
         string dotpath = Aircraft.GreenDotResourcePath;
 
-        var cog = _aircraft.CoG;
-
-        if ((_aircraft.TotalWeight > _aircraft.MaxGross) ||
-            cog <= _aircraft.MinCg || cog >= _aircraft.MaxCg)
+        if ((aircraft.TotalWeight > aircraft.MaxGross) ||
+            CoG <= aircraft.MinCg || CoG >= aircraft.MaxCg)
         {
             dotpath = Aircraft.RedDotResourcePath;
         }
@@ -38,10 +49,10 @@ internal class AircraftOverlay : IDrawable
         canvas.FillColor = Color.FromRgba("#E8F8F570");
         canvas.StrokeColor = Colors.DarkGreen;
         canvas.StrokeSize = 1.4f;
-        canvas.DrawRectangle(_aircraft.CgRectangle);
-        canvas.FillRectangle(_aircraft.CgRectangle);
+        canvas.DrawRectangle(aircraft.CgRectangle);
+        canvas.FillRectangle(aircraft.CgRectangle);
 
-        PointF point = Plotter.PlotAircraftPoint(cog, _aircraft);
+        PointF point = Plotter.PlotAircraftPoint(CoG, aircraft);
 
         canvas.DrawImage(dot, point.X, point.Y, 15, 15);
     }

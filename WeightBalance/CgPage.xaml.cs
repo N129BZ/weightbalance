@@ -1,7 +1,5 @@
 using Syncfusion.Maui.DataGrid;
-using Syncfusion.Maui.DataGrid.Helper;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using WeightBalance.Data;
 using WeightBalance.Models;
 
@@ -68,7 +66,7 @@ public partial class CgPage : ContentPage
     {
         StationGrid.Refresh();
         SaveData();
-        await Navigation.PushAsync(new AircraftPage(SelectedAircraft));
+        await Navigation.PushAsync(new ChartPage(SelectedAircraft, SelectedAircraft.CoG));
     }
 
     private async void ViewAircraftList_Clicked(object sender, EventArgs e)
@@ -137,7 +135,6 @@ public class DataGridTableSummaryCellRendererExt : DataGridTableSummaryCellRende
     {
         SelectedAircraft.CalculateCg();
        
-
         if (SelectedAircraft.IsWithinRange && SelectedAircraft.IsWithinWeight)
         {
             Color bg = Color.FromRgba("#E8F8F5");

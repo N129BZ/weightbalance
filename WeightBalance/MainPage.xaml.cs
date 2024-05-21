@@ -87,4 +87,10 @@ public partial class MainPage : ContentPage
     {
         SelectedAircraft = (Aircraft)e.DataItem;
     }
+
+    private async void EditAircraft_Clicked(object sender, EventArgs e)
+    {
+        var eap = new EditAircraftPage(SelectedAircraft, hangar);
+        await Navigation.PushAsync(eap, true);
+    }
 }

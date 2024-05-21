@@ -2,6 +2,7 @@
   {
     "ID": 1,
     "Name": "CH Zodiac",
+    "IsMetric": false,
     "MaxGross": 1320,
     "MinGross": 720,
     "AircraftImagePath": "ch650_light.png",
@@ -61,6 +62,7 @@
   {
     "ID": 2,
     "Name": "CH Zodiac TD",
+    "IsMetric": false,
     "MaxGross": 1320,
     "MinGross": 720,
     "AircraftImagePath": "ch650td_light.png",
@@ -120,6 +122,7 @@
   {
     "ID": 3,
     "Name": "CH 701",
+    "IsMetric": false,
     "MaxGross": 1200,
     "MinGross": 680,
     "AircraftImagePath": "ch701_light.png",
@@ -169,6 +172,7 @@
   {
     "ID": 4,
     "Name": "CH 750",
+    "IsMetric": false,
     "MaxGross": 1320,
     "MinGross": 720,
     "AircraftImagePath": "ch750_light.png",
@@ -218,6 +222,7 @@
   {
     "ID": 5,
     "Name": "CH CruZer",
+    "IsMetric": false,
     "MaxGross": 1320,
     "MinGross": 720,
     "AircraftImagePath": "chcruzer_light.png",
@@ -267,6 +272,7 @@
   {
     "ID": 6,
     "Name": "RV 9",
+    "IsMetric": false,
     "MaxGross": 1475,
     "MinGross": 830,
     "AircraftImagePath": "rv9_light.png",
@@ -316,6 +322,7 @@
   {
     "ID": 7,
     "Name": "RV 9A",
+    "IsMetric": false,
     "MaxGross": 1475,
     "MinGross": 830,
     "AircraftImagePath": "rv9a_light.png",

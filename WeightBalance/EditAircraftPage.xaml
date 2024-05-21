@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WeightBalance"
+             x:Class="WeightBalance.EditAircraftPage">
+
+    <NavigationPage.TitleView>
+        <Label Text="{Binding PageTitle}" 
+           FontSize="Medium"
+           BackgroundColor="Transparent"
+           TextColor="Navy"
+           HeightRequest="36"
+           WidthRequest="195"
+           HorizontalTextAlignment="Start"
+           FontAttributes="Bold"
+           HorizontalOptions="Fill" 
+           VerticalOptions="Center" />
+    </NavigationPage.TitleView>
+    
+    <Grid HorizontalOptions="Center"
+          VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="200"/>
+            </Grid.RowDefinitions>
+            <Label Text="{Binding Name}"
+                    Grid.Row="0"
+                    FontSize="Title"
+                    FontAttributes="Bold"
+                    WidthRequest="300"
+                    HeightRequest="150"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"/>
+
+            <Label x:Name="Instructions" 
+                   Grid.Row="1"
+                   WidthRequest="400"
+                   HeightRequest="100"
+                   FontSize="Default"
+                   VerticalTextAlignment="Start"
+                   HorizontalTextAlignment="Start"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start"/>
+
+        </Grid>
+        <Label Text="Minimum Gross Weight:" 
+               Grid.Row="2" 
+               Grid.Column="0"
+               HeightRequest="400"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Start"/>
+        <Entry Text="{Binding MinGross}" 
+               Placeholder="Min Gross" 
+               Grid.Row="2" 
+               Grid.Column="1"
+               Keyboard="Numeric"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"
+               TextChanged="NumericText_Changed"/>
+
+        <Label Text="Maximum Gross Weight:" 
+               Grid.Row="3" 
+               Grid.Column="0"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Start"/>
+        <Entry Text="{Binding MaxGross}" 
+               Placeholder="Max Gross" 
+               Grid.Row="3" 
+               Grid.Column="1"
+               Keyboard="Numeric"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"
+               TextChanged="NumericText_Changed"/>
+
+        <Label Text="Minimum Center of Gravity:" 
+               Grid.Row="4" 
+               Grid.Column="0"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Start"/>
+        <Entry Text="{Binding MinCg}" 
+               Placeholder="Min CG" 
+               Grid.Row="4" 
+               Grid.Column="1"
+               Keyboard="Numeric"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"
+               TextChanged="NumericText_Changed"/>
+
+        <Label Text="Maximum Center of Gravity:" 
+               Grid.Row="5" 
+               Grid.Column="0"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Start"/>
+        <Entry Text="{Binding MaxCg}" 
+               Placeholder="Max CG" 
+               Grid.Row="5" 
+               Grid.Column="1"
+               Keyboard="Numeric"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"
+               TextChanged="NumericText_Changed"/>
+        <HorizontalStackLayout Grid.Row="6"
+                               HeightRequest="200"
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Fill">
+            <Button Text="Station Entry" 
+                    Padding="3"
+                    Margin="3"
+                    WidthRequest="120"
+                    HeightRequest="40"
+                    BackgroundColor="Navy"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    VerticalOptions="End"
+                    Clicked="ViewStations_Clicked" />
+
+            <Button Text="Aircraft List" 
+                    Padding="3"
+                    Margin="3"
+                    WidthRequest="120"
+                    HeightRequest="40"
+                    BackgroundColor="Navy"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    VerticalOptions="End"
+                    Clicked="ViewAircraftSelection_Clicked" />
+
+            <Button Text="Taxi Out" 
+                    Padding="3"
+                    Margin="3"
+                    WidthRequest="100"
+                    HeightRequest="40"
+                    BackgroundColor="Navy"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    VerticalOptions="End"
+                    Clicked="ExitHangar_Clicked" />
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

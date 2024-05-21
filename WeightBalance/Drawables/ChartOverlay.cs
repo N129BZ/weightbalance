@@ -9,17 +9,17 @@ namespace WeightBalance.Drawables;
 internal class ChartOverlay : IDrawable
 {
     private Aircraft aircraft = new();
-    public Aircraft SelectedAircraft 
-    { 
-        get { return aircraft; } 
-        set { aircraft = value; }
+    private double cog;
+    
+    public ChartOverlay(Aircraft aircraft, double cog)
+    {
+        this.aircraft = aircraft;
+        this.cog = cog;
     }
 
     public void Draw(ICanvas canvas, RectF dirtyRect)
     {
         string dotpath = Aircraft.GreenDotResourcePath;
-
-        var cog = aircraft.CoG;
 
         if ((aircraft.TotalWeight > aircraft.MaxGross) ||
             cog <= aircraft.MinCg || cog >= aircraft.MaxCg)

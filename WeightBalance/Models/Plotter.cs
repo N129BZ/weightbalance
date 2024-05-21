@@ -7,8 +7,9 @@ public static class Plotter
         var range = maxgross - mingross;
         var pxfactor = chart.Height / range;
         var diff = maxgross - weight;
-        var offset = chart.Top + diff * pxfactor;
-        return offset - 5; // minus 5px dot radius
+        var adjustedDiff = diff * pxfactor;
+        var offset = chart.Top + adjustedDiff - 5; // minus 5px dot radius
+        return offset; 
     }
 
     private static double PlotX(Rect chart, double maxcg, double mincg, double cog)
@@ -16,8 +17,9 @@ public static class Plotter
         var range = maxcg - mincg;
         var pxfactor = chart.Width / range;
         var diff = maxcg - cog;
-        var offset = chart.X + chart.Width - diff * pxfactor;
-        return offset - 5; // minus 5px dot radius
+        var adjustedDiff = diff * pxfactor;
+        var offset = chart.X + chart.Width - adjustedDiff - 5; // minus 5px dot radius
+        return offset; 
     }
 
     public static Point PlotAircraftPoint(double cog, Aircraft aircraft)
@@ -47,8 +49,6 @@ public static class Plotter
 
         var maxcg = aircraft.MaxCg;
         var mincg = aircraft.MinCg;
-
-        //Rect rect = new Rect(20, 60, 370, 360);
 
         double dotX = PlotX(chartrect, maxcg, mincg, cog) - 20;
         double dotY = PlotY(chartrect, aircraft.MaxGross, aircraft.MinGross, aircraft.TotalWeight);

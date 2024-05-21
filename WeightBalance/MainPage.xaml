@@ -51,8 +51,9 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="220"/>
+                                <ColumnDefinition Width="120"/>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" 
                                Text="{Binding Name}" 
@@ -60,11 +61,22 @@
                                Margin="1"
                                TextColor="Black"
                                VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="End"
                                HeightRequest="70"/>
                             <Image Grid.Column="1" 
                                Source="{Binding AircraftImageSource}"
                                HeightRequest="70"
+                               WidthRequest="220"
                                VerticalOptions="Start"/>
+                            <Button x:Name="EditAircraft" Grid.Column="2"
+                                    Text="Set CG Limits"
+                                    FontSize="Small"
+                                    BackgroundColor="Navy"
+                                    TextColor="White"
+                                    WidthRequest="120"
+                                    HeightRequest="40"
+                                    HorizontalOptions="StartAndExpand"
+                                    Clicked="EditAircraft_Clicked"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
