@@ -7,25 +7,15 @@ namespace WeightBalance.Drawables;
 
 internal class AircraftOverlay : IDrawable
 {
-    private Aircraft aircraft = new();
+    private readonly Aircraft aircraft = new();
 
-    private double CoG;
+    private readonly double CoG;
 
     public AircraftOverlay(Aircraft selectedAircraft, double cog)
     {
         aircraft = selectedAircraft;
         CoG = cog;
     }
-
-    //public Aircraft SelectedAircraft
-    //{
-    //    get { return aircraft; }
-    //    set 
-    //    { 
-    //        aircraft = value;
-    //        CoG = aircraft.CoG;
-    //    }
-    //}
 
     public void Draw(ICanvas canvas, RectF dirtyRect)
     {

@@ -66,14 +66,14 @@
                             <Image Grid.Column="1" 
                                Source="{Binding AircraftImageSource}"
                                HeightRequest="70"
-                               WidthRequest="220"
+                               WidthRequest="210"
                                VerticalOptions="Start"/>
                             <Button x:Name="EditAircraft" Grid.Column="2"
-                                    Text="Set CG Limits"
+                                    Text="CG Limits"
                                     FontSize="Small"
                                     BackgroundColor="Navy"
                                     TextColor="White"
-                                    WidthRequest="120"
+                                    WidthRequest="110"
                                     HeightRequest="40"
                                     HorizontalOptions="StartAndExpand"
                                     Clicked="EditAircraft_Clicked"/>

@@ -8,8 +8,8 @@ namespace WeightBalance.Drawables;
 
 internal class ChartOverlay : IDrawable
 {
-    private Aircraft aircraft = new();
-    private double cog;
+    private readonly Aircraft aircraft = new();
+    private readonly double cog;
     
     public ChartOverlay(Aircraft aircraft, double cog)
     {

@@ -6,8 +6,8 @@ namespace WeightBalance;
 
 public partial class EditAircraftPage : ContentPage
 {
-	private Aircraft aircraft = new();
-	private Hangar hangar = new();
+	private readonly Aircraft aircraft = new();
+	private readonly Hangar hangar = new();
 
 	public EditAircraftPage(Aircraft selectedAircraft, Hangar hangar)
     {
@@ -15,10 +15,10 @@ public partial class EditAircraftPage : ContentPage
         this.hangar = hangar;
         InitializeComponent();
 
-		Instructions.Text = "You can edit the CG limits for your aircraft here. For example, if " +
-					        "your weights and arms are Metric, you can enter the min / max weight " +
-					        "and min / max CG values in kilograms and centimeters and your station " +
-					        "entries will be correctly interpreted on the CG chart.";
+		Instructions.Text = "You can edit the CG limits for your aircraft here. For example, " +
+					        "if your weights and arms are Metric, you can enter the min/max " +
+					        "weight and min/max CG values in kilograms and centimeters and your " +
+					        "station entries will be correctly interpreted on the CG chart.";
         BindingContext = this;
     }
 
