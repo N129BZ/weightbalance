@@ -27,7 +27,7 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="530"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
         <sf:SfListView x:Name="AircraftListView"
@@ -51,38 +51,45 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50"/>
-                                <ColumnDefinition Width="220"/>
-                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
+                            
                             <Label Grid.Column="0" 
-                               Text="{Binding Name}" 
-                               FontAttributes="Bold"
-                               Margin="1"
-                               TextColor="Black"
-                               VerticalTextAlignment="Center"
-                               HorizontalTextAlignment="End"
-                               HeightRequest="70"/>
+                                   Text="{Binding Name}" 
+                                   FontAttributes="Bold"
+                                   Margin="1"
+                                   TextColor="Black"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Start"
+                                   WidthRequest="50"
+                                   HeightRequest="70"/>
+                            
                             <Image Grid.Column="1" 
-                               Source="{Binding AircraftImageSource}"
-                               HeightRequest="70"
-                               WidthRequest="210"
-                               VerticalOptions="Start"/>
-                            <Button x:Name="EditAircraft" Grid.Column="2"
+                                   Source="{Binding AircraftImageSource}"
+                                   HeightRequest="70"
+                                   WidthRequest="210"
+                                   VerticalOptions="Start"/>
+                            
+                            <Button x:Name="EditAircraft" 
+                                    Grid.Column="2"
                                     Text="CG Limits"
                                     FontSize="Small"
                                     BackgroundColor="Navy"
                                     TextColor="White"
-                                    WidthRequest="110"
+                                    WidthRequest="96"
                                     HeightRequest="40"
-                                    HorizontalOptions="StartAndExpand"
-                                    Clicked="EditAircraft_Clicked"/>
+                                    HorizontalOptions="End"
+                                    Command="{Binding BindingContext.TapCommand, Source={x:Reference Name=AircraftListView}}"
+                                    CommandParameter="{Binding .}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </sf:SfListView.ItemTemplate>
         </sf:SfListView>
         <HorizontalStackLayout Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Center">
+            
             <Button Text="Set As Default"
                     Padding="3"
                     Margin="3"
@@ -93,6 +100,7 @@
                     FontAttributes="Bold"
                     VerticalOptions="End"
                     Clicked="SetDefault_Clicked" />
+            
             <Button Text="Station Entry" 
                     Padding="3"
                     Margin="3"
@@ -103,6 +111,7 @@
                     FontAttributes="Bold"
                     VerticalOptions="End"
                     Clicked="ViewStations_Clicked" />
+            
             <Button Text="Taxi Out" 
                     Padding="3"
                     Margin="3"

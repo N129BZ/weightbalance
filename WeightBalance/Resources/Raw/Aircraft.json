@@ -271,6 +271,56 @@
   },
   {
     "ID": 6,
+    "Name": "RV 7",
+    "IsMetric": false,
+    "MaxGross": 1800,
+    "MinGross": 800,
+    "AircraftImagePath": "rv9_light.png",
+    "ChartImagePath": "nobevelchart.png",
+    "CgRectCoordinates": [ 106, 30, 36, 100 ],
+    "MinCg": 78.7,
+    "MaxCg": 86.82,
+    "IsDefault": false,
+    "CoGUnits": [
+      {
+        "Station": "LeftMain",
+        "Weight": 0,
+        "Arm": 68.45
+      },
+      {
+        "Station": "RightMain",
+        "Weight": 0,
+        "Arm": 68.45
+      },
+      {
+        "Station": "TailWheel",
+        "Weight": 0,
+        "Arm": 249.19
+      },
+      {
+        "Station": "Pilot",
+        "Weight": 0,
+        "Arm": 97.48
+      },
+      {
+        "Station": "Passenger",
+        "Weight": 0,
+        "Arm": 97.48
+      },
+      {
+        "Station": "Fuel",
+        "Weight": 0,
+        "Arm": 80.0
+      },
+      {
+        "Station": "Baggage",
+        "Weight": 0,
+        "Arm": 126.78
+      }
+    ]
+  },
+  {
+    "ID": 7,
     "Name": "RV 9",
     "IsMetric": false,
     "MaxGross": 1475,
@@ -320,7 +370,7 @@
     ]
   },
   {
-    "ID": 7,
+    "ID": 8,
     "Name": "RV 9A",
     "IsMetric": false,
     "MaxGross": 1475,

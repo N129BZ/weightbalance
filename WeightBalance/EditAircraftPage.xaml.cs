@@ -17,7 +17,7 @@ public partial class EditAircraftPage : ContentPage
 
 		Instructions.Text = "You can edit the CG limits for your aircraft here. For example, " +
 					        "if your weights and arms are Metric, you can enter the min/max " +
-					        "weight and min/max CG values in kilograms and centimeters and your " +
+					        "weight and min/max CG values in kilograms and millimeters and your " +
 					        "station entries will be correctly interpreted on the CG chart.";
         BindingContext = this;
     }
@@ -71,7 +71,7 @@ public partial class EditAircraftPage : ContentPage
 
     private async void ViewStations_Clicked(object? sender, EventArgs e)
     {
-		CgPage cgp = new CgPage(aircraft, hangar);
+		CgPage cgp = new(aircraft, hangar);
         await Navigation.PushAsync(cgp, true);
     }
 

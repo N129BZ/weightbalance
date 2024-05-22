@@ -12,16 +12,23 @@ public partial class MainPage : ContentPage
     
     public ObservableCollection<Aircraft> HangarList { get; private set; } = [];
 
-    public Aircraft SelectedAircraft { get; private set; } = new(); 
+    public Aircraft SelectedAircraft { get; private set; } = new();
 
-    
+    private Command tapcommand;
+    public Command TapCommand
+    {
+        get { return tapcommand; }
+        set { tapcommand = value; }
+    }
+
     public MainPage()
     {
         InitializeComponent();
 
         HangarList = hangar.HangarList;
-
         SearchForDefault();
+
+        TapCommand = new Command(EditAircraft_Clicked);
 
         BindingContext = this;
     }
@@ -88,9 +95,10 @@ public partial class MainPage : ContentPage
         SelectedAircraft = (Aircraft)e.DataItem;
     }
 
-    private async void EditAircraft_Clicked(object sender, EventArgs e)
+    private async void EditAircraft_Clicked(object sender)
     {
-        var eap = new EditAircraftPage(SelectedAircraft, hangar);
+        Aircraft editaircraft = sender as Aircraft;
+        var eap = new EditAircraftPage(editaircraft, hangar);
         await Navigation.PushAsync(eap, true);
     }
 }

@@ -120,6 +120,7 @@
                Grid.Row="4" 
                Grid.Column="1"
                Keyboard="Numeric"
+               WidthRequest="50"
                VerticalTextAlignment="Center"
                HorizontalTextAlignment="Center"
                TextChanged="NumericText_Changed"/>
