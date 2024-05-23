@@ -6,17 +6,8 @@ using IImage = Microsoft.Maui.Graphics.IImage;
 
 namespace WeightBalance.Drawables;
 
-internal class ChartOverlay : IDrawable
+internal class ChartOverlay(Aircraft aircraft, double cog) : IDrawable
 {
-    private readonly Aircraft aircraft = new();
-    private readonly double cog;
-    
-    public ChartOverlay(Aircraft aircraft, double cog)
-    {
-        this.aircraft = aircraft;
-        this.cog = cog;
-    }
-
     public void Draw(ICanvas canvas, RectF dirtyRect)
     {
         string dotpath = Aircraft.GreenDotResourcePath;
@@ -61,7 +52,7 @@ internal class ChartOverlay : IDrawable
 
         var mncg = aircraft.MinCg.ToString("#0.00");
         var mxcg = aircraft.MaxCg.ToString("#0.00");
-        canvas.DrawString($"Range: {mncg} - {mxcg}", 200, 300, HorizontalAlignment.Justified);
+        canvas.DrawString($"Range: {mncg} - {mxcg}", 200, 321, HorizontalAlignment.Justified);
 
         if (!aircraft.IsWithinWeight)
         {
@@ -70,5 +61,13 @@ internal class ChartOverlay : IDrawable
             canvas.FontColor = Colors.Red;
             canvas.DrawString("* OVER MAX GROSS *", 200, 190, HorizontalAlignment.Justified);
         }
+
+        var minwt = aircraft.MinGross.ToString("#0.0");
+        var maxwt = aircraft.MaxGross.ToString("#0.0");
+        canvas.StrokeSize = 2;
+        canvas.FontSize = 12;
+        canvas.Font = Font.Default;
+        canvas.Rotate(-90, point.X, point.Y + 352); 
+        canvas.DrawString($"Range: {minwt} - {maxwt}", 354, 306, HorizontalAlignment.Justified);
     }
 }

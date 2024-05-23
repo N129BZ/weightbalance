@@ -28,7 +28,7 @@ public partial class MainPage : ContentPage
         HangarList = hangar.HangarList;
         SearchForDefault();
 
-        TapCommand = new Command(EditAircraft_Clicked);
+        TapCommand = new Command(EditLimits_Clicked);
 
         BindingContext = this;
     }
@@ -95,7 +95,7 @@ public partial class MainPage : ContentPage
         SelectedAircraft = (Aircraft)e.DataItem;
     }
 
-    private async void EditAircraft_Clicked(object sender)
+    private async void EditLimits_Clicked(object sender)
     {
         Aircraft editaircraft = sender as Aircraft;
         var eap = new EditAircraftPage(editaircraft, hangar);

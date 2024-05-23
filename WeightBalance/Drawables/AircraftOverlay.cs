@@ -5,24 +5,14 @@ using IImage = Microsoft.Maui.Graphics.IImage;
 
 namespace WeightBalance.Drawables;
 
-internal class AircraftOverlay : IDrawable
+internal class AircraftOverlay(Aircraft selectedAircraft, double cog) : IDrawable
 {
-    private readonly Aircraft aircraft = new();
-
-    private readonly double CoG;
-
-    public AircraftOverlay(Aircraft selectedAircraft, double cog)
-    {
-        aircraft = selectedAircraft;
-        CoG = cog;
-    }
-
     public void Draw(ICanvas canvas, RectF dirtyRect)
     {
         string dotpath = Aircraft.GreenDotResourcePath;
 
-        if ((aircraft.TotalWeight > aircraft.MaxGross) ||
-            CoG <= aircraft.MinCg || CoG >= aircraft.MaxCg)
+        if ((selectedAircraft.TotalWeight > selectedAircraft.MaxGross) ||
+            cog <= selectedAircraft.MinCg || cog >= selectedAircraft.MaxCg)
         {
             dotpath = Aircraft.RedDotResourcePath;
         }
@@ -39,10 +29,10 @@ internal class AircraftOverlay : IDrawable
         canvas.FillColor = Color.FromRgba("#E8F8F570");
         canvas.StrokeColor = Colors.DarkGreen;
         canvas.StrokeSize = 1.4f;
-        canvas.DrawRectangle(aircraft.CgRectangle);
-        canvas.FillRectangle(aircraft.CgRectangle);
+        canvas.DrawRectangle(selectedAircraft.CgRectangle);
+        canvas.FillRectangle(selectedAircraft.CgRectangle);
 
-        PointF point = Plotter.PlotAircraftPoint(CoG, aircraft);
+        PointF point = Plotter.PlotAircraftPoint(cog, selectedAircraft);
 
         canvas.DrawImage(dot, point.X, point.Y, 15, 15);
     }

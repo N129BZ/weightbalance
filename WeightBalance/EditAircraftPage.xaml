@@ -38,14 +38,15 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
+           
             <Label Text="{Binding Name}"
-                    Grid.Row="0"
-                    FontSize="Title"
-                    FontAttributes="Bold"
-                    WidthRequest="300"
-                    HeightRequest="200"
-                    VerticalTextAlignment="Center"
-                    HorizontalTextAlignment="Center"/>
+                   Grid.Row="0"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   WidthRequest="300"
+                   HeightRequest="200"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"/>
 
             <Label x:Name="Instructions" 
                    Grid.Row="1"

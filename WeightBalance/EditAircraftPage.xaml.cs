@@ -22,7 +22,7 @@ public partial class EditAircraftPage : ContentPage
         BindingContext = this;
     }
 
-	public string Name { get { return $"Aircraft: {aircraft.Name}"; } } 
+	public string Name { get { return $"{aircraft.Name} CG Limits"; } } 
 	
 	public double MinGross 
 	{ 
