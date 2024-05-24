@@ -71,25 +71,29 @@
                                    HeightRequest="70"
                                    WidthRequest="208"
                                    VerticalOptions="Start"/>
-                            
+
                             <Button x:Name="EditLimits" 
                                     Grid.Column="2"
                                     Text="CG Limits"
-                                    FontSize="Small"
-                                    BackgroundColor="Navy"
-                                    TextColor="White"
-                                    WidthRequest="91"
+                                    FontSize="12"
+                                    BackgroundColor="LightCyan"
+                                    BorderColor="Black"
+                                    BorderWidth="1"
+                                    TextColor="Black"
+                                    WidthRequest="90"
                                     HeightRequest="40"
-                                    HorizontalOptions="End"
+                                    HorizontalOptions="EndAndExpand"
                                     Command="{Binding BindingContext.TapCommand, Source={x:Reference Name=AircraftListView}}"
-                                    CommandParameter="{Binding .}"/>
+                                    CommandParameter="{Binding .}">
+                                
+                            </Button>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </sf:SfListView.ItemTemplate>
         </sf:SfListView>
         <HorizontalStackLayout Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Center">
-            
+
             <Button Text="Set As Default"
                     Padding="3"
                     Margin="3"
@@ -99,8 +103,8 @@
                     TextColor="White"
                     FontAttributes="Bold"
                     VerticalOptions="End"
-                    Clicked="SetDefault_Clicked" />
-            
+                    Clicked="SetDefault_Clicked"/>
+
             <Button Text="Station Entry" 
                     Padding="3"
                     Margin="3"
@@ -110,8 +114,9 @@
                     TextColor="White"
                     FontAttributes="Bold"
                     VerticalOptions="End"
-                    Clicked="ViewStations_Clicked" />
-            
+                    Clicked="ViewStations_Clicked"/>
+
+
             <Button Text="Taxi Out" 
                     Padding="3"
                     Margin="3"
@@ -121,7 +126,8 @@
                     TextColor="White"
                     FontAttributes="Bold"
                     VerticalOptions="End"
-                    Clicked="ExitHangar_Clicked" />
+                    Clicked="ExitHangar_Clicked"/>
+
         </HorizontalStackLayout>
     </Grid>
 </ContentPage>
