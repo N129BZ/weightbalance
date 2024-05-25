@@ -26,8 +26,9 @@ public partial class MainPage : ContentPage
         InitializeComponent();
 
         HangarList = hangar.HangarList;
-        SearchForDefault();
 
+        SearchForDefault();
+        
         TapCommand = new Command(EditLimits_Clicked);
 
         BindingContext = this;
@@ -41,8 +42,12 @@ public partial class MainPage : ContentPage
             {   
                 this.SelectedAircraft = aircraft;
                 AircraftListView.SelectedItem = aircraft;
-                //Task.Run(() => DoStationNavigation());
-                return;
+                if (Globals.IsFirstRun)
+                {
+                    Globals.IsFirstRun = false;
+                    ViewStations_Clicked(this, new EventArgs());
+                    return;
+                }
             }
         }
 
@@ -65,17 +70,23 @@ public partial class MainPage : ContentPage
         SearchForDefault();
         base.OnNavigatedTo(args);
     }
-    private void SetDefault_Clicked(object sender, EventArgs e)
+    private async void SetDefault_Clicked(object sender, EventArgs e)
     {
-        SelectedAircraft.IsDefault = true;
-        foreach (Aircraft ac in HangarList)
+        bool answer = await DisplayAlert("Set Default Aircraft", 
+            "When you set a default aircraft, the application will automatically go to the Stations view when launched. Continue?", 
+            "Yes", "No");
+        if (answer)
         {
-            if (ac.ID != SelectedAircraft.ID)
+            SelectedAircraft.IsDefault = true;
+            foreach (Aircraft ac in HangarList)
             {
-                ac.IsDefault = false;
+                if (ac.ID != SelectedAircraft.ID)
+                {
+                    ac.IsDefault = false;
+                }
             }
+            hangar.SaveHangarList();
         }
-        hangar.SaveHangarList();
     }
 
     private void ExitHangar_Clicked(object sender, EventArgs e)

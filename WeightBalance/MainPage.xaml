@@ -84,9 +84,9 @@
                                     HeightRequest="40"
                                     HorizontalOptions="EndAndExpand"
                                     Command="{Binding BindingContext.TapCommand, Source={x:Reference Name=AircraftListView}}"
-                                    CommandParameter="{Binding .}">
-                                
-                            </Button>
+                                    CommandParameter="{Binding .}"/>
+
+
                         </Grid>
                     </Border>
                 </DataTemplate>

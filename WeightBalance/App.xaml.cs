@@ -26,3 +26,13 @@ public partial class App : Application
         }
     }
 }
+
+public static class Globals
+{
+    private static bool isFirstRun = true;
+    public static bool IsFirstRun
+    {
+        get { return isFirstRun; }
+        set { isFirstRun = value; }
+    }
+}
