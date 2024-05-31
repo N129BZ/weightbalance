@@ -106,10 +106,13 @@ public partial class MainPage : ContentPage
         SelectedAircraft = (Aircraft)e.DataItem;
     }
 
-    private async void EditLimits_Clicked(object sender)
+    private async void EditLimits_Clicked(object? sender)
     {
-        Aircraft editaircraft = sender as Aircraft;
-        var eap = new EditAircraftPage(editaircraft, hangar);
-        await Navigation.PushAsync(eap, true);
+        if (sender != null)
+        {
+            Aircraft editaircraft = (Aircraft)sender;
+            var eap = new EditAircraftPage(editaircraft, hangar);
+            await Navigation.PushAsync(eap, true);
+        }
     }
 }
