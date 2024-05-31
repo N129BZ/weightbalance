@@ -1,5 +1,7 @@
 ﻿using Syncfusion.Maui.ListView;
 using System.Collections.ObjectModel;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using WeightBalance.Data;
 using WeightBalance.Models;
 
@@ -91,7 +93,11 @@ public partial class MainPage : ContentPage
 
     private void ExitHangar_Clicked(object sender, EventArgs e)
     {
+#if IOS
+        Globals.exit(0);
+#else
         Application.Current?.Quit();
+#endif
     }
 
     private void AircraftList_ItemDoubleTapped(object sender, ItemDoubleTappedEventArgs e)

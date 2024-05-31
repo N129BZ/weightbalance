@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using WeightBalance.Data;
 using WeightBalance.Models;
 
@@ -66,7 +67,11 @@ public partial class EditAircraftPage : ContentPage
 
     private void ExitHangar_Clicked(object? sender, EventArgs e)
     {
+#if IOS
+        Globals.exit(0);
+#else
         Application.Current?.Quit();
+#endif
     }
 
     private async void ViewStations_Clicked(object? sender, EventArgs e)

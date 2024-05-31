@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using WeightBalance.Drawables;
 using WeightBalance.Models;
 
@@ -71,7 +72,11 @@ public partial class ChartPage : ContentPage
 
     private void ExitHangar_Clicked(object? sender, EventArgs e)
     {
+#if IOS
+        Globals.exit(0);
+#else
         Application.Current?.Quit();
+#endif
     }
 
     private async void ViewStations_Clicked(object? sender, EventArgs e)

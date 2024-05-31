@@ -1,5 +1,6 @@
 using Syncfusion.Maui.DataGrid;
 using System.Collections.ObjectModel;
+using System.Runtime.InteropServices;
 using WeightBalance.Data;
 using WeightBalance.Models;
 
@@ -76,11 +77,15 @@ public partial class CgPage : ContentPage
         await Navigation.PopToRootAsync();
     }
 
-    private void ExitHangar_Clicked(object sender, EventArgs e)
+    private void ExitHangar_Clicked(object? sender, EventArgs e)
     {
         StationGrid.Refresh();
         SaveData();
+#if IOS
+        Globals.exit(0);
+#else
         Application.Current?.Quit();
+#endif
     }
 
     private void SaveData()

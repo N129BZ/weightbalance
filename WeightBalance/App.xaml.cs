@@ -1,6 +1,7 @@
 ﻿
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace WeightBalance;
 
@@ -22,7 +23,7 @@ public partial class App : Application
         MainPage = new NavigationPage(new MainPage()); 
     }
 
-    public async Task CopyFileToAppDataDirectory(string filename)
+    public static async Task CopyFileToAppDataDirectory(string filename)
     {
         using Stream inputStream = await FileSystem.Current.OpenAppPackageFileAsync(filename);
         string targetFile = Path.Combine(FileSystem.Current.AppDataDirectory, filename);
@@ -39,4 +40,9 @@ public static class Globals
         get { return isFirstRun; }
         set { isFirstRun = value; }
     }
+
+#if IOS
+    [DllImport("__Internal", EntryPoint = "exit")]
+    public static extern void exit(int exitCode);
+#endif
 }
