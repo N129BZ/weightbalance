@@ -1,8 +1,4 @@
 ﻿
-using System.IO;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-
 namespace WeightBalance;
 
 public partial class App : Application
@@ -43,9 +39,4 @@ public static class Globals
         get { return isFirstRun; }
         set { isFirstRun = value; }
     }
-
-#if IOS
-    [DllImport("__Internal", EntryPoint = "exit")]
-    public static extern void exit(int exitCode);
-#endif
 }
