@@ -18,7 +18,7 @@ public partial class MainPage : ContentPage
     public Command TapCommand
     {
         get { return tapcommand; }
-        set { tapcommand = value; }
+        private set { tapcommand = value; }
     }
 
     public MainPage()
@@ -27,11 +27,11 @@ public partial class MainPage : ContentPage
 
         HangarList = hangar.HangarList;
 
-        SearchForDefault();
-        
-        TapCommand = new Command(EditLimits_Clicked);
+        tapcommand = new Command(EditLimits_Clicked);
 
         BindingContext = this;
+
+        SearchForDefault();
     }
 
     private void SearchForDefault()

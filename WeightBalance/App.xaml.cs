@@ -1,4 +1,7 @@
 ﻿
+using System.IO;
+using System.Runtime.CompilerServices;
+
 namespace WeightBalance;
 
 public partial class App : Application
@@ -9,21 +12,22 @@ public partial class App : Application
 
         InitializeComponent();
 
-        Task.Run(() => CheckForJsonDataFile()).Wait();
-       
+        var filename = Path.Combine(FileSystem.Current.AppDataDirectory, "aircraft.json");
+
+        if (!File.Exists(filename))
+        {
+            Task.Run(() => CopyFileToAppDataDirectory("aircraft.json")).Wait();
+        }
+        
         MainPage = new NavigationPage(new MainPage()); 
     }
 
-    private static async void CheckForJsonDataFile()
+    public async Task CopyFileToAppDataDirectory(string filename)
     {
-        var filePath = Path.Combine(FileSystem.Current.AppDataDirectory, "aircraft.json");
-
-        if (!File.Exists(filePath))
-        {
-            using var inputStream = await FileSystem.OpenAppPackageFileAsync("aircraft.json");
-            using Stream outputStream = File.OpenWrite(filePath);
-            inputStream.CopyTo(outputStream);
-        }
+        using Stream inputStream = await FileSystem.Current.OpenAppPackageFileAsync(filename);
+        string targetFile = Path.Combine(FileSystem.Current.AppDataDirectory, filename);
+        using FileStream outputStream = File.Create(targetFile);
+        await inputStream.CopyToAsync(outputStream);
     }
 }
 
