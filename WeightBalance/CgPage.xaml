@@ -143,17 +143,6 @@
                         FontAttributes="Bold"
                         VerticalOptions="End"
                         Clicked="ViewAircraftList_Clicked" />
-            <Button x:Name="ExitApp" 
-                        Text="Taxi Out" 
-                        Padding="3"
-                        Margin="3"
-                        WidthRequest="120"
-                        HeightRequest="40"
-                        BackgroundColor="Navy"
-                        TextColor="White"
-                        FontAttributes="Bold"
-                        VerticalOptions="End"
-                        Clicked="ExitHangar_Clicked" />
         </HorizontalStackLayout>
     </Grid>
 </ContentPage>

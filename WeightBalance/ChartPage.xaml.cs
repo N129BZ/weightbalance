@@ -70,15 +70,6 @@ public partial class ChartPage : ContentPage
         BindingContext = this;
     }
 
-    private void ExitHangar_Clicked(object? sender, EventArgs e)
-    {
-#if IOS
-        Globals.exit(0);
-#else
-        Application.Current?.Quit();
-#endif
-    }
-
     private async void ViewStations_Clicked(object? sender, EventArgs e)
     {
         await Navigation.PopAsync(true);

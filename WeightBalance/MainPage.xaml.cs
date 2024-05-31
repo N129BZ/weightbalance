@@ -16,20 +16,11 @@ public partial class MainPage : ContentPage
 
     public Aircraft SelectedAircraft { get; private set; } = new();
 
-    private Command tapcommand;
-    public Command TapCommand
-    {
-        get { return tapcommand; }
-        private set { tapcommand = value; }
-    }
-
     public MainPage()
     {
         InitializeComponent();
 
         HangarList = hangar.HangarList;
-
-        tapcommand = new Command(EditLimits_Clicked);
 
         BindingContext = this;
 
@@ -91,15 +82,6 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private void ExitHangar_Clicked(object sender, EventArgs e)
-    {
-#if IOS
-        Globals.exit(0);
-#else
-        Application.Current?.Quit();
-#endif
-    }
-
     private void AircraftList_ItemDoubleTapped(object sender, ItemDoubleTappedEventArgs e)
     {
         SelectedAircraft = (Aircraft)e.DataItem;
@@ -112,13 +94,9 @@ public partial class MainPage : ContentPage
         SelectedAircraft = (Aircraft)e.DataItem;
     }
 
-    private async void EditLimits_Clicked(object? sender)
+    private async void EditLimits_Clicked(object sender, EventArgs e)
     {
-        if (sender != null)
-        {
-            Aircraft editaircraft = (Aircraft)sender;
-            var eap = new EditAircraftPage(editaircraft, hangar);
-            await Navigation.PushAsync(eap, true);
-        }
+        var eap = new EditAircraftPage(SelectedAircraft, hangar);
+        await Navigation.PushAsync(eap, true);
     }
 }

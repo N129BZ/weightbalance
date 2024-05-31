@@ -65,13 +65,10 @@ public partial class EditAircraftPage : ContentPage
 		} 
 	}
 
-    private void ExitHangar_Clicked(object? sender, EventArgs e)
+    private async void ViewChart_Clicked(object sender, EventArgs e)
     {
-#if IOS
-        Globals.exit(0);
-#else
-        Application.Current?.Quit();
-#endif
+        hangar.SaveHangarList();
+        await Navigation.PushAsync(new ChartPage(aircraft, aircraft.CoG));
     }
 
     private async void ViewStations_Clicked(object? sender, EventArgs e)

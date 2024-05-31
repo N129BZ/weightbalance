@@ -17,18 +17,21 @@ public partial class App : Application
 
         if (!File.Exists(filename))
         {
-            Task.Run(() => CopyFileToAppDataDirectory("aircraft.json")).Wait();
+            var json = Task.Run(() => GetAircraftJson()).Result;
+            using StreamWriter outstream = File.CreateText(filename);
+            outstream.Write(json);
+            outstream.Flush();
+            outstream.Close();
         }
-        
+       
         MainPage = new NavigationPage(new MainPage()); 
     }
 
-    public static async Task CopyFileToAppDataDirectory(string filename)
+    private static async Task<string> GetAircraftJson()
     {
-        using Stream inputStream = await FileSystem.Current.OpenAppPackageFileAsync(filename);
-        string targetFile = Path.Combine(FileSystem.Current.AppDataDirectory, filename);
-        using FileStream outputStream = File.Create(targetFile);
-        await inputStream.CopyToAsync(outputStream);
+        using Stream inputStream = await FileSystem.OpenAppPackageFileAsync("aircraft.json");
+        using StreamReader reader = new StreamReader(inputStream);
+        return await reader.ReadToEndAsync();
     }
 }
 

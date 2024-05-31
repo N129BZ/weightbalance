@@ -53,7 +53,6 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             
                             <Label Grid.Column="0" 
@@ -71,22 +70,6 @@
                                    HeightRequest="70"
                                    WidthRequest="208"
                                    VerticalOptions="Start"/>
-
-                            <Button x:Name="EditLimits" 
-                                    Grid.Column="2"
-                                    Text="CG Limits"
-                                    FontSize="12"
-                                    BackgroundColor="LightCyan"
-                                    BorderColor="Black"
-                                    BorderWidth="1"
-                                    TextColor="Black"
-                                    WidthRequest="90"
-                                    HeightRequest="40"
-                                    HorizontalOptions="EndAndExpand"
-                                    Command="{Binding BindingContext.TapCommand, Source={x:Reference Name=AircraftListView}}"
-                                    CommandParameter="{Binding .}"/>
-
-
                         </Grid>
                     </Border>
                 </DataTemplate>
@@ -116,8 +99,7 @@
                     VerticalOptions="End"
                     Clicked="ViewStations_Clicked"/>
 
-
-            <Button Text="Taxi Out" 
+            <Button Text="Set Limits" 
                     Padding="3"
                     Margin="3"
                     WidthRequest="120"
@@ -126,7 +108,7 @@
                     TextColor="White"
                     FontAttributes="Bold"
                     VerticalOptions="End"
-                    Clicked="ExitHangar_Clicked"/>
+                    Clicked="EditLimits_Clicked"/> 
 
         </HorizontalStackLayout>
     </Grid>
