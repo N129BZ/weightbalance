@@ -24,7 +24,7 @@ public class Hangar
     {
         try
         {
-            var filepath = Path.Combine(FileSystem.AppDataDirectory, "aircraft.json");
+            var filepath = Path.Combine(FileSystem.Current.AppDataDirectory, "aircraft.json");
             var output = JsonSerializer.Serialize(HangarList);
             using StreamWriter outstream = File.CreateText(filepath); 
             outstream.Write(output);
