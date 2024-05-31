@@ -29,7 +29,7 @@ public partial class App : Application
 
     private static async Task<string> GetAircraftJson()
     {
-        using Stream inputStream = await FileSystem.OpenAppPackageFileAsync("aircraft.json");
+        using Stream inputStream = await FileSystem.Current.OpenAppPackageFileAsync("aircraft.json");
         using StreamReader reader = new StreamReader(inputStream);
         return await reader.ReadToEndAsync();
     }

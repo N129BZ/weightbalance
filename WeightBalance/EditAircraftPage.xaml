@@ -35,8 +35,8 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="200"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="300"/>
             </Grid.RowDefinitions>
            
             <Label Text="{Binding Name}"
@@ -44,7 +44,7 @@
                    FontSize="Title"
                    FontAttributes="Bold"
                    WidthRequest="300"
-                   HeightRequest="200"
+                   HeightRequest="80"
                    VerticalTextAlignment="Center"
                    HorizontalTextAlignment="Center"/>
 
