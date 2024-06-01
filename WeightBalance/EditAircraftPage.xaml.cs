@@ -7,13 +7,12 @@ namespace WeightBalance;
 public partial class EditAircraftPage : ContentPage
 {
 	private readonly Aircraft aircraft = new();
-	private readonly Hangar hangar = new();
-
-	public EditAircraftPage(Aircraft selectedAircraft, Hangar hangar)
+	
+	public EditAircraftPage(Aircraft selectedAircraft)
     {
 		aircraft = selectedAircraft;
-        this.hangar = hangar;
-        InitializeComponent();
+        
+		InitializeComponent();
 
 		Instructions.Text = "You can edit the CG limits for your aircraft here. For example, " +
 					        "if your weights and arms are Metric, you can enter the min/max " +
@@ -30,7 +29,7 @@ public partial class EditAircraftPage : ContentPage
 		set 
 		{ 
 			aircraft.MinGross = value; 
-			hangar.SaveHangarList();
+			Hangar.SaveHangarList();
 		} 
 	}
 
@@ -39,8 +38,8 @@ public partial class EditAircraftPage : ContentPage
 		get { return aircraft.MaxGross;} 
 		set 
 		{ 
-			aircraft.MaxGross = value; 
-			hangar.SaveHangarList();
+			aircraft.MaxGross = value;
+            Hangar.SaveHangarList();
 		} 
 	}
 
@@ -50,7 +49,7 @@ public partial class EditAircraftPage : ContentPage
 		set 
 		{ 
 			aircraft.MinCg = value;
-			hangar.SaveHangarList();
+            Hangar.SaveHangarList();
 		} 
 	}
 
@@ -60,19 +59,19 @@ public partial class EditAircraftPage : ContentPage
 		set 
 		{  
 			aircraft.MaxCg = value;
-			hangar.SaveHangarList();
+            Hangar.SaveHangarList();
 		} 
 	}
 
     private async void ViewChart_Clicked(object sender, EventArgs e)
     {
-        hangar.SaveHangarList();
+        Hangar.SaveHangarList();
         await Navigation.PushAsync(new ChartPage(aircraft, aircraft.CoG));
     }
 
     private async void ViewStations_Clicked(object? sender, EventArgs e)
     {
-		CgPage cgp = new(aircraft, hangar);
+		CgPage cgp = new(aircraft);
         await Navigation.PushAsync(cgp, true);
     }
 

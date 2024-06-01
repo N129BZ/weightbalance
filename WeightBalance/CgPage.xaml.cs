@@ -7,17 +7,14 @@ namespace WeightBalance;
 
 public partial class CgPage : ContentPage
 {
-    private readonly Hangar Hangar;
-
     public ObservableCollection<CoGUnit> CgUnits { get; private set; } = []; 
 
     public Aircraft SelectedAircraft { get; private set; } = new();
 
     public string PageTitle { get; private set; } = string.Empty; 
 
-    public CgPage(Aircraft selectedAircraft, Hangar hangar)
+    public CgPage(Aircraft selectedAircraft)
     {
-        this.Hangar = hangar;
         SelectedAircraft = selectedAircraft;
         SelectedAircraft.CalculateCg();
         CgUnits = SelectedAircraft.CoGUnits;
@@ -79,7 +76,7 @@ public partial class CgPage : ContentPage
     private void SaveData()
     {
         SelectedAircraft.CalculateCg();
-        if (!this.Hangar.SaveHangarList())
+        if (!Hangar.SaveHangarList())
             throw new Exception("Data not saved!");
     }
 

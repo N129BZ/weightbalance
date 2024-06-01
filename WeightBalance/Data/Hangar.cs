@@ -4,24 +4,23 @@ using WeightBalance.Models;
 
 namespace WeightBalance.Data;
 
-public class Hangar
+public static class Hangar
 {
-    public Hangar()
-    {
-        LoadHangarList();
-    }
+    //public Hangar()
+    //{
+    //    LoadHangarList();
+    //}
 
-    public ObservableCollection<Aircraft> HangarList { get; private set; } = [];
+    public static ObservableCollection<Aircraft> HangarList { get; private set; } = [];
 
-    public void LoadHangarList()
+    public static void LoadHangarList()
     {
         var filePath = Path.Combine(FileSystem.Current.AppDataDirectory, "aircraft.json");
-        while (!File.Exists(filePath)){};
         var json = File.ReadAllText(filePath);
         HangarList = JsonSerializer.Deserialize<ObservableCollection<Aircraft>>(json)!;
     }
 
-    public bool SaveHangarList()
+    public static bool SaveHangarList()
     {
         try
         {

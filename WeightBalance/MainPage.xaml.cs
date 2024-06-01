@@ -8,39 +8,21 @@ namespace WeightBalance;
 
 public partial class MainPage : ContentPage
 {
-    private readonly Hangar hangar = new();
-    
-    public ObservableCollection<Aircraft> HangarList { get; private set; } = [];
-
     public Aircraft SelectedAircraft { get; private set; } = new();
+    
+    public ObservableCollection<Aircraft> HangarList { get; private set; }
 
     public MainPage()
     {
         InitializeComponent();
+        
+        Hangar.LoadHangarList();
 
-        HangarList = hangar.HangarList;
-
+        HangarList = Hangar.HangarList;
+        
         BindingContext = this;
-
-        var filename = Path.Combine(FileSystem.Current.AppDataDirectory, "aircraft.json");
-
-        if (!File.Exists(filename))
-        {
-            var json = Task.Run(() => GetAircraftJson()).Result;
-            using StreamWriter outstream = File.CreateText(filename);
-            outstream.Write(json);
-            outstream.Flush();
-            outstream.Close();
-        }
-
+        
         SearchForDefault();
-    }
-
-    private static async Task<string> GetAircraftJson()
-    {
-        using Stream inputStream = FileSystem.Current.OpenAppPackageFileAsync("AboutAssets.txt").Result;
-        using StreamReader reader = new(inputStream);
-        return await reader.ReadToEndAsync();
     }
 
     private void SearchForDefault()
@@ -69,7 +51,7 @@ public partial class MainPage : ContentPage
     private async void ViewStations_Clicked(object sender, EventArgs e)
     {
         IsBusy = true;
-        var cgp = new CgPage(SelectedAircraft, hangar);
+        var cgp = new CgPage(SelectedAircraft);
         await Navigation.PushAsync(cgp, true);
         IsBusy = false;
     }
@@ -94,7 +76,7 @@ public partial class MainPage : ContentPage
                     ac.IsDefault = false;
                 }
             }
-            hangar.SaveHangarList();
+            Hangar.SaveHangarList();
         }
     }
 
@@ -112,7 +94,7 @@ public partial class MainPage : ContentPage
 
     private async void EditLimits_Clicked(object sender, EventArgs e)
     {
-        var eap = new EditAircraftPage(SelectedAircraft, hangar);
+        var eap = new EditAircraftPage(SelectedAircraft);
         await Navigation.PushAsync(eap, true);
     }
 }
