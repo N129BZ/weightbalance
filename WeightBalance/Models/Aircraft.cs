@@ -13,7 +13,27 @@ namespace WeightBalance.Models
             remove { ((INotifyPropertyChanged)CoGUnits).PropertyChanged -= value; }
         }
 
-        public ObservableCollection<CoGUnit> CoGUnits { get; set; } = []; 
+        public Aircraft() {}
+
+        public Aircraft(long id, string name, bool ismetric, double mingross, double maxgross, double mincg, double maxcg, ObservableCollection<CoGUnit> cogunits) 
+        {
+            this.id = id;
+            this.name = name;
+            this.isMetric = ismetric;
+            this.maxGross = maxgross;
+            this.minGross = mingross;
+            this.maxCg = maxcg;
+            this.minCg = mincg;
+            this.cogunits = cogunits;
+        }
+
+        [field: JsonIgnore]
+        private ObservableCollection<CoGUnit> cogunits = new();
+        public ObservableCollection<CoGUnit> CoGUnits 
+        { 
+            get { return cogunits; }
+            set { cogunits= value; }
+        } 
 
         [field: JsonIgnore]
         public long id;

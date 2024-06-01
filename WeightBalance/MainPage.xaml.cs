@@ -22,7 +22,33 @@ public partial class MainPage : ContentPage
 
         BindingContext = this;
 
+        var filename = Path.Combine(FileSystem.Current.AppDataDirectory, "aircraft.json");
+
+        if (!File.Exists(filename))
+        {
+            CreateBaseDataSet();
+            //var json = Task.Run(() => GetAircraftJson()).Result;
+            //using StreamWriter outstream = File.CreateText(filename);
+            //outstream.Write(json);
+            //outstream.Flush();
+            //outstream.Close();
+        }
+
         SearchForDefault();
+    }
+
+    private void CreateBaseDataSet() 
+    {
+        var ds1 = new ObservableCollection<CoGUnit>();
+        ds1.Add(new CoGUnit());  
+        var ac1 = new Aircraft(1, "CH Zodiac", false, 720, 1320, 10.6, 18.0, ds1)
+    }
+    
+    private static async Task<string> GetAircraftJson()
+    {
+        using Stream inputStream = FileSystem.Current.OpenAppPackageFileAsync("AboutAssets.txt").Result;
+        using StreamReader reader = new StreamReader(inputStream);
+        return await reader.ReadToEndAsync();
     }
 
     private void SearchForDefault()

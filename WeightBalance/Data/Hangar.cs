@@ -16,6 +16,7 @@ public class Hangar
     public void LoadHangarList()
     {
         var filePath = Path.Combine(FileSystem.Current.AppDataDirectory, "aircraft.json");
+        while (!File.Exists(filePath)){};
         var json = File.ReadAllText(filePath);
         HangarList = JsonSerializer.Deserialize<ObservableCollection<Aircraft>>(json)!;
     }
