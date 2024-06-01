@@ -5,15 +5,6 @@ namespace WeightBalance.Models;
 
 public class CoGUnit : INotifyPropertyChanged
 {
-    public CoGUnit() {}
-
-    public CoGUnit(string station, double weight, double arm)
-    {
-        this.station = station;
-        this.weight = weight;
-        this.arm = arm;   
-    }
-
     [field: JsonIgnore]
     private string station = String.Empty;
     public string Station { get {return station; } set {station = value; } }

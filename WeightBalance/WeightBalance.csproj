@@ -74,12 +74,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiAsset Remove="Resources\Raw\chartscreen.png" />
-	  <MauiAsset Remove="Resources\Raw\mainscreen.png" />
-	  <MauiAsset Remove="Resources\Raw\stationscreen.png" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\bevelchart.png" />
 	  <MauiImage Remove="Resources\Images\ch650td_dark.png" />
 	  <MauiImage Remove="Resources\Images\ch650td_light.png" />
