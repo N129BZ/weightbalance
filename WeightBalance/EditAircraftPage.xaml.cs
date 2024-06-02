@@ -63,12 +63,6 @@ public partial class EditAircraftPage : ContentPage
 		} 
 	}
 
-    private async void ViewChart_Clicked(object sender, EventArgs e)
-    {
-        Hangar.SaveHangarList();
-        await Navigation.PushAsync(new ChartPage(aircraft, aircraft.CoG));
-    }
-
     private async void ViewStations_Clicked(object? sender, EventArgs e)
     {
 		CgPage cgp = new(aircraft);

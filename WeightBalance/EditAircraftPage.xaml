@@ -132,18 +132,6 @@
                                HorizontalOptions="Center" 
                                VerticalOptions="Fill">
 
-            <Button x:Name="ViewChart" 
-                    Text="CG Chart" 
-                    Padding="3"
-                    Margin="3"
-                    WidthRequest="120"
-                    HeightRequest="40"
-                    BackgroundColor="Navy"
-                    TextColor="White"
-                    FontAttributes="Bold"
-                    VerticalOptions="End"
-                    Clicked="ViewChart_Clicked" />  
-
             <Button Text="Station Entry" 
                     Padding="3"
                     Margin="3"
