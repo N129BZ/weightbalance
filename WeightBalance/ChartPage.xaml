@@ -34,7 +34,9 @@
                WidthRequest="370"
                HorizontalTextAlignment="Center"/>
         
-        <HorizontalStackLayout Grid.Row="3" HorizontalOptions="EndAndExpand" VerticalOptions="Fill">
+        <HorizontalStackLayout Grid.Row="3" 
+                               HorizontalOptions="CenterAndExpand" 
+                               VerticalOptions="CenterAndExpand">
             
             <Button Text="Station Entry" 
                     Padding="3"

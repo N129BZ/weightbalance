@@ -9,8 +9,8 @@ public partial class ChartPage : ContentPage
     private readonly double CoG;
     public string PageTitle { get { return pagetitle; } }
 
-    private Aircraft? aircraft;
-    public Aircraft? SelectedAircraft
+    private Aircraft aircraft = new();
+    public Aircraft SelectedAircraft
     {
         get { return aircraft; }
         set { aircraft = value; }
