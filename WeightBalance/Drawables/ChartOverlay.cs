@@ -58,14 +58,14 @@ internal class ChartOverlay(Aircraft aircraft, double cog) : IDrawable
             canvas.DrawString("* OVER MAX GROSS *", 200, 190, HorizontalAlignment.Justified);
         }
 
-        var minwt = aircraft.MinGross.ToString("#0");
-        var maxwt = aircraft.MaxGross.ToString("#0");
-        var units = aircraft.IsMetric ? "KG" : "LB";
-        canvas.StrokeSize = 2;
-        canvas.FontSize = 12;
-        canvas.Font = Font.Default;
-        canvas.Rotate(-90, point.X, point.Y + 352);
-        Rect yr = new Rect(314, 280, 160, 40);
-        canvas.DrawString($"Range: {minwt} - {maxwt} {units}", yr, HorizontalAlignment.Center, VerticalAlignment.Center);
+        //var minwt = aircraft.MinGross.ToString("#0");
+        //var maxwt = aircraft.MaxGross.ToString("#0");
+        //var units = aircraft.IsMetric ? "KG" : "LB";
+        //canvas.StrokeSize = 2;
+        //canvas.FontSize = 12;
+        //canvas.Font = Font.Default;
+        //canvas.Rotate(-90, point.X, point.Y + 352);
+        //Rect yr = new Rect(314, 280, 160, 40);
+        //canvas.DrawString($"Range: {minwt} - {maxwt} {units}", yr, HorizontalAlignment.Center, VerticalAlignment.Center);
     }
 }

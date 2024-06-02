@@ -23,7 +23,7 @@ public partial class ChartPage : ContentPage
             var units = aircraft.IsMetric ? "MM" : "Inches";
             var mncg = aircraft.MinCg.ToString("#0.00");
             var mxcg = aircraft.MaxCg.ToString("#0.00");
-            return $"Range: {mncg} - {mxcg} {units}";
+            return $"CG Range: {mncg} - {mxcg} {units}";
         }
     }
     
@@ -34,7 +34,7 @@ public partial class ChartPage : ContentPage
             var units = aircraft.IsMetric ? "KG" : "LB";
             var mng = aircraft.MinGross.ToString("#0");
             var mxg = aircraft.MaxGross.ToString("#0");
-            return $"Range: {mng} - {mxg} {units}";
+            return $"Weight Range: {mng} - {mxg} {units}";
         }
     }
 
