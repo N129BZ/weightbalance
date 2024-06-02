@@ -27,6 +27,17 @@ public partial class ChartPage : ContentPage
         }
     }
     
+    public string YAxisLegend 
+    {
+        get 
+        {
+            var units = aircraft.IsMetric ? "KG" : "LB";
+            var mng = aircraft.MinGross.ToString("#0");
+            var mxg = aircraft.MaxGross.ToString("#0");
+            return $"Range: {mng} - {mxg} {units}";
+        }
+    }
+
     public ChartPage(Aircraft selectedAircraft, double cog)
     {
         aircraft = selectedAircraft;

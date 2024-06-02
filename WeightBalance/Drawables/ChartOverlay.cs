@@ -66,6 +66,6 @@ internal class ChartOverlay(Aircraft aircraft, double cog) : IDrawable
         canvas.Font = Font.Default;
         canvas.Rotate(-90, point.X, point.Y + 352);
         Rect yr = new Rect(314, 280, 160, 40);
-        canvas.DrawString($"Range: {minwt} - {maxwt} {units}", yr, HorizontalAlignment.Justified, VerticalAlignment.Center);
+        canvas.DrawString($"Range: {minwt} - {maxwt} {units}", yr, HorizontalAlignment.Center, VerticalAlignment.Center);
     }
 }
