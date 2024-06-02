@@ -20,9 +20,10 @@ public partial class ChartPage : ContentPage
     {
         get 
         {
+            var units = aircraft.IsMetric ? "MM" : "Inches";
             var mncg = aircraft.MinCg.ToString("#0.00");
             var mxcg = aircraft.MaxCg.ToString("#0.00");
-            return $"Range: {mncg} - {mxcg}";
+            return $"Range: {mncg} - {mxcg} {units}";
         }
     }
     
