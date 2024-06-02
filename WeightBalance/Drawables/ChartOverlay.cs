@@ -50,12 +50,6 @@ internal class ChartOverlay(Aircraft aircraft, double cog) : IDrawable
         var acg = aircraft.CoG.ToString("#0.00");
         canvas.DrawString($"cg:{acg}", point.X + 8, point.Y + 34, HorizontalAlignment.Center);
 
-        //var mncg = aircraft.MinCg.ToString("#0.00");
-        //var mxcg = aircraft.MaxCg.ToString("#0.00");
-        //var xr = new Rect(200, 330, 120, 80);
-        ////canvas.DrawString($"Range: {mncg} - {mxcg}", xr, HorizontalAlignment.Center, VerticalAlignment.Center);
-        //canvas.DrawString($"Range: {mncg} - {mxcg}", 200, 321, HorizontalAlignment.Justified);
-
         if (!aircraft.IsWithinWeight)
         {
             canvas.FontSize = 14;
@@ -72,6 +66,5 @@ internal class ChartOverlay(Aircraft aircraft, double cog) : IDrawable
         canvas.Rotate(-90, point.X, point.Y + 352);
         Rect yr = new Rect(314, 280, 160, 40);
         canvas.DrawString($"Range: {minwt} - {maxwt}", yr, HorizontalAlignment.Justified, VerticalAlignment.Center);
-        //canvas.DrawString($"Range: {minwt} - {maxwt}", 354, 306, HorizontalAlignment.Justified);
     }
 }
