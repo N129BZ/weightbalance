@@ -16,7 +16,15 @@ public partial class ChartPage : ContentPage
         set { aircraft = value; }
     }
 
-    
+    public string XAxisLegend 
+    {
+        get 
+        {
+            var mncg = aircraft.MinCg.ToString("#0.00");
+            var mxcg = aircraft.MaxCg.ToString("#0.00");
+            return $"Range: {mncg} - {mxcg}";
+        }
+    }
     
     public ChartPage(Aircraft selectedAircraft, double cog)
     {

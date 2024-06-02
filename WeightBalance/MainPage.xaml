@@ -25,7 +25,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <Grid>
+    <Grid IgnoreSafeArea="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="90"/>

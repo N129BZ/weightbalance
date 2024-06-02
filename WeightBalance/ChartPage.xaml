@@ -21,10 +21,21 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
             <RowDefinition Height="310"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="170"/>
         </Grid.RowDefinitions>
-
-        <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Fill">
+       
+        <Label Grid.Row="2" 
+               HorizontalOptions="StartAndExpand" 
+               VerticalOptions="End" 
+               Text="{Binding XAxisLegend}"
+               FontSize="12"
+               FontAttributes="Bold"
+               WidthRequest="370"
+               HorizontalTextAlignment="Center"/>
+        
+        <HorizontalStackLayout Grid.Row="3" HorizontalOptions="EndAndExpand" VerticalOptions="Fill">
+            
             <Button Text="Station Entry" 
                     Padding="3"
                     Margin="3"
