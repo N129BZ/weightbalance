@@ -6,7 +6,7 @@
     
     <NavigationPage.TitleView>
         <Label Text="{Binding PageTitle}" 
-               FontSize="Medium"
+               FontSize="Title"
                BackgroundColor="Transparent"
                TextColor="Navy"
                HeightRequest="36"

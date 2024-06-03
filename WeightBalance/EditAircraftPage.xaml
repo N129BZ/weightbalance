@@ -5,8 +5,8 @@
              x:Class="WeightBalance.EditAircraftPage">
 
     <NavigationPage.TitleView>
-        <Label Text="{Binding PageTitle}" 
-           FontSize="Medium"
+        <Label Text="{Binding Name}" 
+           FontSize="Title"
            BackgroundColor="Transparent"
            TextColor="Navy"
            HeightRequest="36"
@@ -40,14 +40,14 @@
                 <RowDefinition Height="300"/>
             </Grid.RowDefinitions>
            
-            <Label Text="{Binding Name}"
+            <!-- <Label Text="{Binding Name}"
                    Grid.Row="0"
                    FontSize="Title"
                    FontAttributes="Bold"
                    WidthRequest="300"
                    HeightRequest="80"
                    VerticalTextAlignment="Center"
-                   HorizontalTextAlignment="Center"/>
+                   HorizontalTextAlignment="Center"/> -->
 
             <Label x:Name="Instructions" 
                    Grid.Row="1"

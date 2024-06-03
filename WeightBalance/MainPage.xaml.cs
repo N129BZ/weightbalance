@@ -33,12 +33,7 @@ public partial class MainPage : ContentPage
             {   
                 this.SelectedAircraft = aircraft;
                 AircraftListView.SelectedItem = aircraft;
-                if (Globals.IsFirstRun)
-                {
-                    Globals.IsFirstRun = false;
-                    ViewStations_Clicked(this, new EventArgs());
-                    return;
-                }
+                return;
             }
         }
 
@@ -63,21 +58,18 @@ public partial class MainPage : ContentPage
     }
     private async void SetDefault_Clicked(object sender, EventArgs e)
     {
-        bool answer = await DisplayAlert("Set Default Aircraft", 
-            "When you set a default aircraft, the application will automatically go to the Stations view when launched. Continue?", 
-            "Yes", "No");
-        if (answer)
+        SelectedAircraft.IsDefault = true;
+        foreach (Aircraft ac in HangarList)
         {
-            SelectedAircraft.IsDefault = true;
-            foreach (Aircraft ac in HangarList)
+            if (ac.ID != SelectedAircraft.ID)
             {
-                if (ac.ID != SelectedAircraft.ID)
-                {
-                    ac.IsDefault = false;
-                }
+                ac.IsDefault = false;
             }
-            Hangar.SaveHangarList();
         }
+        Hangar.SaveHangarList();
+
+        await DisplayAlert("Default Aircraft", "The default aircraft has been set!", "OK");
+
     }
 
     private void AircraftListView_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
