@@ -17,7 +17,7 @@ public partial class EditAircraftPage : ContentPage
 		Instructions.Text = "You can edit the CG limits for your aircraft here. For example, " +
 					        "if your weights and arms are Metric, you can enter the min/max " +
 					        "weight and min/max CG values in kilograms and millimeters and your " +
-					        "station entries will be correctly interpreted on the CG chart.";
+					        "station entries will then be correctly interpreted on the CG chart.";
         BindingContext = this;
     }
 

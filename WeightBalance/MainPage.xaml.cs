@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using WeightBalance.Data;
 using WeightBalance.Models;
+using wbGlobals = WeightBalance.Data.WbGlobals;
 
 
 namespace WeightBalance;
@@ -22,8 +23,8 @@ public partial class MainPage : ContentPage
         
         BindingContext = this;
         
-        if (!Globals.PreSelectDone)
-        {    
+        if (!wbGlobals.PreSelectDone)
+        {
             SearchForDefault();
         }
     }
@@ -40,9 +41,9 @@ public partial class MainPage : ContentPage
                 AircraftListView.SelectedItem = aircraft;
                 defaultFound = true;
 
-                if (aircraft.AutoLoad && !Globals.PreSelectDone)
+                if (aircraft.AutoLoad && !wbGlobals.PreSelectDone)
                 {
-                    Globals.PreSelectDone = true;
+                    wbGlobals.PreSelectDone = true;
                     ViewStations_Clicked(aircraft, new EventArgs());
                 }
             }
@@ -55,20 +56,15 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private async void ViewStations_Clicked(object sender, EventArgs e)
+    private void ViewStations_Clicked(object sender, EventArgs e)
     {
         IsBusy = true;
         var cgp = new CgPage(SelectedAircraft);
-        await Navigation.PushAsync(cgp, true);
+        Navigation.PushAsync(cgp, true);
         IsBusy = false;
     }
 
-    protected override void OnNavigatedTo(NavigatedToEventArgs args)
-    {
-        SearchForDefault();
-        base.OnNavigatedTo(args);
-    }
-    private async void SetDefault_Clicked(object sender, EventArgs e)
+    private void SetDefault_Clicked(object sender, EventArgs e)
     {
         SelectedAircraft.IsDefault = true;
         foreach (Aircraft ac in HangarList)
@@ -79,9 +75,7 @@ public partial class MainPage : ContentPage
             }
         }
         Hangar.SaveHangarList();
-
-        await DisplayAlert("Default Aircraft", "The default aircraft has been set!", "OK");
-
+        DisplayAlert("Default Aircraft", $"{SelectedAircraft.Name} is now the default aircraft!", "OK");
     }
 
     private void AircraftListView_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
@@ -89,9 +83,9 @@ public partial class MainPage : ContentPage
         SelectedAircraft = (Aircraft)e.DataItem;
     }
 
-    private async void EditLimits_Clicked(object sender, EventArgs e)
+    private void EditLimits_Clicked(object sender, EventArgs e)
     {
         var eap = new EditAircraftPage(SelectedAircraft);
-        await Navigation.PushAsync(eap, true);
+        Navigation.PushAsync(eap, true);
     }
 }

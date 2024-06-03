@@ -1,7 +1,7 @@
-namespace WeightBalance;
+namespace WeightBalance.Data;
 
 
-public static class Globals
+public static class WbGlobals
 {
     private static bool preselectDone = false;
     public static bool PreSelectDone 

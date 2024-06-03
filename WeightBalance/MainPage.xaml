@@ -8,14 +8,14 @@
 
     <NavigationPage.TitleView>
         <Label Text="Aircraft List" 
-               FontSize="Title"
+               FontSize="24"
                BackgroundColor="Transparent"
                TextColor="Navy"
                HeightRequest="36"
-               WidthRequest="195"
-               HorizontalTextAlignment="Start"
+               WidthRequest="295"
+               HorizontalTextAlignment="Center"
                FontAttributes="Bold"
-               HorizontalOptions="Fill" 
+               HorizontalOptions="CenterAndExpand" 
                VerticalOptions="Center" />  
     </NavigationPage.TitleView>
 

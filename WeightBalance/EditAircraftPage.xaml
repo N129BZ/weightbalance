@@ -6,11 +6,11 @@
 
     <NavigationPage.TitleView>
         <Label Text="{Binding Name}" 
-           FontSize="Title"
+           FontSize="24"
            BackgroundColor="Transparent"
            TextColor="Navy"
            HeightRequest="36"
-           WidthRequest="195"
+           WidthRequest="295"
            HorizontalTextAlignment="Start"
            FontAttributes="Bold"
            HorizontalOptions="Fill" 
@@ -18,7 +18,7 @@
     </NavigationPage.TitleView>
     
     <Grid HorizontalOptions="Center"
-          VerticalOptions="FillAndExpand">
+          VerticalOptions="StartAndExpand">
         <Grid.RowDefinitions>
             <RowDefinition Height="300"/>
             <RowDefinition Height="50"/>
@@ -43,8 +43,8 @@
            
             <Label x:Name="Instructions" 
                    Grid.Row="1"
-                   WidthRequest="390"
-                   HeightRequest="450"
+                   WidthRequest="340"
+                   HeightRequest="250"
                    FontSize="Default"
                    VerticalTextAlignment="Start"
                    HorizontalTextAlignment="Start"

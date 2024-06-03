@@ -1,6 +1,4 @@
 ﻿
-using WeightBalance.Data;
-
 namespace WeightBalance;
 
 public partial class App : Application
@@ -32,5 +30,3 @@ public partial class App : Application
         return await reader.ReadToEndAsync();
     }
 }
-
-

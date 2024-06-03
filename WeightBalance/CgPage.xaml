@@ -6,15 +6,15 @@
              x:Class="WeightBalance.CgPage">
 
     <NavigationPage.TitleView>
-        <Label Text="{Binding PageTitle}" 
-           FontSize="Title"
+        <Label Text="{Binding PageTitle}"  
+           FontSize="24"
            BackgroundColor="Transparent"
            TextColor="Navy"
            HeightRequest="36"
-           WidthRequest="195"
+           WidthRequest="295"
            HorizontalTextAlignment="Start"
            FontAttributes="Bold"
-           HorizontalOptions="Fill" 
+           HorizontalOptions="StartAndExpand" 
            VerticalOptions="Center" />
     </NavigationPage.TitleView>
 

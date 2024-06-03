@@ -7,9 +7,9 @@
     Shell.FlyoutBehavior="Disabled"
     Title="WeightBalance">
 
-    <ShellContent
+    <!--<ShellContent
         Title="MainPage"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="MainPage" />-->
 
 </Shell>

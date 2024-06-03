@@ -74,6 +74,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="AppShell.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\bevelchart.png" />
 	  <MauiImage Remove="Resources\Images\ch650td_dark.png" />
 	  <MauiImage Remove="Resources\Images\ch650td_light.png" />
@@ -93,6 +97,10 @@
 	  <MauiImage Remove="Resources\Images\rv9a_light.png" />
 	  <MauiImage Remove="Resources\Images\rv9_dark.png" />
 	  <MauiImage Remove="Resources\Images\rv9_light.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="AppShell.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
