@@ -80,13 +80,6 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private void AircraftList_ItemDoubleTapped(object sender, ItemDoubleTappedEventArgs e)
-    {
-        SelectedAircraft = (Aircraft)e.DataItem;
-        SetDefault_Clicked(sender, e);
-        ViewStations_Clicked(sender, e);
-    }
-
     private void AircraftListView_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
     {
         SelectedAircraft = (Aircraft)e.DataItem;

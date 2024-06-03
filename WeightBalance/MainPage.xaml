@@ -38,8 +38,7 @@
                    SelectionMode="Single"
                    ItemSize="74"
                    ItemSpacing="1"
-                   ItemTapped="AircraftListView_ItemTapped"
-                   ItemDoubleTapped="AircraftList_ItemDoubleTapped">
+                   ItemTapped="AircraftListView_ItemTapped">
             <sf:SfListView.ItemsLayout>
                 <sf:LinearLayout/>
             </sf:SfListView.ItemsLayout>
