@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
 
@@ -151,14 +151,12 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.0" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.21" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.40" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.40" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.21" />
-		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
-		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.8" />
-		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="25.2.3" />
-		<PackageReference Include="Syncfusion.Maui.ListView" Version="25.2.3" />
+		<PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.40" />
+		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="25.2.6" />
+		<PackageReference Include="Syncfusion.Maui.ListView" Version="25.2.6" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -175,7 +173,7 @@
 
 	<ItemGroup>
 	  <MauiAsset Update="Resources\Raw\aircraft.json">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </MauiAsset>
 	</ItemGroup>
 

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:WeightBalance"
              x:Class="WeightBalance.ChartPage">
-
+    
     <NavigationPage.TitleView>
         <Label Text="{Binding PageTitle}" 
                FontSize="Medium"
@@ -35,7 +35,7 @@
                Rotation="-90"/>
         
         <Label Grid.Row="2" 
-               HorizontalOptions="StartAndExpand" 
+               HorizontalOptions="CenterAndExpand" 
                VerticalOptions="End" 
                Text="{Binding XAxisLegend}"
                FontSize="12"
