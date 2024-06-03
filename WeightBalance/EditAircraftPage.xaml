@@ -29,6 +29,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -40,15 +41,6 @@
                 <RowDefinition Height="300"/>
             </Grid.RowDefinitions>
            
-            <!-- <Label Text="{Binding Name}"
-                   Grid.Row="0"
-                   FontSize="Title"
-                   FontAttributes="Bold"
-                   WidthRequest="300"
-                   HeightRequest="80"
-                   VerticalTextAlignment="Center"
-                   HorizontalTextAlignment="Center"/> -->
-
             <Label x:Name="Instructions" 
                    Grid.Row="1"
                    WidthRequest="390"
@@ -61,19 +53,33 @@
                    Padding="2"
                    VerticalOptions="Start"/>
         </Grid>
-        <Label Text="Uses Metric values:"
+
+       <Label Text="Auto Load to Stations:"
                Grid.Row="1"
                VerticalOptions="End"
                HorizontalOptions="EndAndExpand"
                Grid.Column="0"
                HeightRequest="40"/>
-        <CheckBox IsChecked="{Binding IsMetric}"
+        <CheckBox IsChecked="{Binding AutoLoad}"
                   Grid.Row="1"
                   Grid.Column="1"
                   VerticalOptions="Start"
                   HorizontalOptions="Center"/>
+
+        <Label Text="Uses Metric values:"
+               Grid.Row="2"
+               VerticalOptions="End"
+               HorizontalOptions="EndAndExpand"
+               Grid.Column="0"
+               HeightRequest="40"/>
+        <CheckBox IsChecked="{Binding IsMetric}"
+                  Grid.Row="2"
+                  Grid.Column="1"
+                  VerticalOptions="Start"
+                  HorizontalOptions="Center"/>
+
         <Label Text="Min Gross Wt:" 
-               Grid.Row="2" 
+               Grid.Row="3" 
                Grid.Column="0"
                HeightRequest="400"
                Margin="10"
@@ -81,7 +87,7 @@
                HorizontalTextAlignment="End"/>
         <Entry Text="{Binding MinGross}" 
                Placeholder="Min Gross" 
-               Grid.Row="2" 
+               Grid.Row="3" 
                Grid.Column="1"
                Keyboard="Numeric"
                WidthRequest="50"
@@ -90,14 +96,14 @@
                TextChanged="NumericText_Changed"/>
 
         <Label Text="Max Gross Wt:" 
-               Grid.Row="3" 
+               Grid.Row="4" 
                Grid.Column="0"
                Margin="10"
                VerticalTextAlignment="Center"
                HorizontalTextAlignment="End"/>
         <Entry Text="{Binding MaxGross}" 
                Placeholder="Max Gross" 
-               Grid.Row="3" 
+               Grid.Row="4" 
                Grid.Column="1"
                Keyboard="Numeric"
                WidthRequest="50"
@@ -106,14 +112,14 @@
                TextChanged="NumericText_Changed"/>
 
         <Label Text="Minimum CG:" 
-               Grid.Row="4" 
+               Grid.Row="5" 
                Grid.Column="0"
                Margin="10"
                VerticalTextAlignment="Center"
                HorizontalTextAlignment="End"/>
         <Entry Text="{Binding MinCg}" 
                Placeholder="Min CG" 
-               Grid.Row="4" 
+               Grid.Row="5" 
                Grid.Column="1"
                Keyboard="Numeric"
                WidthRequest="50"
@@ -122,14 +128,14 @@
                TextChanged="NumericText_Changed"/>
 
         <Label Text="Maximum CG:" 
-               Grid.Row="5" 
+               Grid.Row="6" 
                Grid.Column="0"
                Margin="10"
                VerticalTextAlignment="Center"
                HorizontalTextAlignment="End"/>
         <Entry Text="{Binding MaxCg}" 
                Placeholder="Max CG" 
-               Grid.Row="5" 
+               Grid.Row="6" 
                Grid.Column="1"
                Keyboard="Numeric"
                WidthRequest="50"
@@ -137,7 +143,7 @@
                HorizontalTextAlignment="Center"
                TextChanged="NumericText_Changed"/>
         
-        <HorizontalStackLayout Grid.Row="6"
+        <HorizontalStackLayout Grid.Row="7"
                                Grid.ColumnSpan="2"
                                HeightRequest="200"
                                HorizontalOptions="Center" 

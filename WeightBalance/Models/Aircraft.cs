@@ -34,6 +34,10 @@ namespace WeightBalance.Models
         public bool IsMetric { get {  return isMetric; } set {  isMetric = value; } }
 
         [field: JsonIgnore]
+        private bool autoLoad = false;
+        public bool AutoLoad { get {  return autoLoad; } set {  autoLoad = value; } }
+
+        [field: JsonIgnore]
         private double maxGross;
         public double MaxGross { get { return maxGross; } set { maxGross = value; } }
 

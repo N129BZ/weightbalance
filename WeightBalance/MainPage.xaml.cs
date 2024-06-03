@@ -22,25 +22,37 @@ public partial class MainPage : ContentPage
         
         BindingContext = this;
         
-        SearchForDefault();
+        if (!Globals.PreSelectDone)
+        {    
+            SearchForDefault();
+        }
     }
 
     private void SearchForDefault()
     {
+        bool defaultFound = false;
+
         foreach (Aircraft aircraft in HangarList)
         {
             if (aircraft.IsDefault)
             {   
                 this.SelectedAircraft = aircraft;
                 AircraftListView.SelectedItem = aircraft;
-                return;
+                defaultFound = true;
+
+                if (aircraft.AutoLoad && !Globals.PreSelectDone)
+                {
+                    Globals.PreSelectDone = true;
+                    ViewStations_Clicked(aircraft, new EventArgs());
+                }
             }
         }
 
-        // if we got here, there was no default Aircraft,
-        // so set _aircraft to the 1st item in the list
-        SelectedAircraft = HangarList[0];
-        AircraftListView.SelectedItem = SelectedAircraft;
+        if (!defaultFound)
+        {
+            SelectedAircraft = HangarList[0];
+            AircraftListView.SelectedItem = SelectedAircraft;
+        }
     }
 
     private async void ViewStations_Clicked(object sender, EventArgs e)

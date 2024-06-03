@@ -23,6 +23,19 @@ public partial class EditAircraftPage : ContentPage
 
 	public string Name { get { return $"{aircraft.Name} CG Limits"; } } 
 	
+	public bool AutoLoad
+	{ 
+		get { return aircraft.AutoLoad;	} 
+		set 
+		{
+			if (aircraft.AutoLoad != value)
+			{
+				aircraft.AutoLoad = value;
+				Hangar.SaveHangarList();
+			}
+		} 
+	}
+
 	public bool IsMetric 
 	{ 
 		get { return aircraft.IsMetric;	} 

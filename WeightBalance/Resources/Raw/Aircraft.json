@@ -10,6 +10,7 @@
     "CgRectCoordinates": [ 119, 20, 36, 100 ],
     "MinCg": 10.6,
     "MaxCg": 18,
+    "AutoLoad": false,
     "IsDefault": false,
     "CoGUnits": [
       {
@@ -70,6 +71,7 @@
     "CgRectCoordinates": [ 119, 22, 36, 100 ],
     "MinCg": 10.6,
     "MaxCg": 18,
+    "AutoLoad": false,
     "IsDefault": false,
     "CoGUnits": [
       {
@@ -130,6 +132,7 @@
     "CgRectCoordinates": [ 110, 32, 36, 100 ],
     "MinCg": 11.0,
     "MaxCg": 20.0,
+    "AutoLoad": false,
     "IsDefault": false,
     "CoGUnits": [
       {
@@ -180,6 +183,7 @@
     "CgRectCoordinates": [ 110, 32, 36, 100 ],
     "MinCg": 10.6,
     "MaxCg": 18,
+    "AutoLoad": false,
     "IsDefault": false,
     "CoGUnits": [
       {
@@ -230,6 +234,7 @@
     "CgRectCoordinates": [ 110, 36, 36, 100 ],
     "MinCg": 10.63,
     "MaxCg": 19.68,
+    "AutoLoad": false,
     "IsDefault": false,
     "CoGUnits": [
       {
@@ -280,6 +285,7 @@
     "CgRectCoordinates": [ 106, 30, 36, 100 ],
     "MinCg": 78.7,
     "MaxCg": 86.82,
+    "AutoLoad": false,
     "IsDefault": false,
     "CoGUnits": [
       {
@@ -330,6 +336,7 @@
     "CgRectCoordinates": [ 106, 30, 36, 100 ],
     "MinCg": 77.95,
     "MaxCg": 84.84,
+    "AutoLoad": false,
     "IsDefault": false,
     "CoGUnits": [
       {
@@ -380,6 +387,7 @@
     "CgRectCoordinates": [ 106, 32, 36, 100 ],
     "MinCg": 77.95,
     "MaxCg": 84.84,
+    "AutoLoad": false,
     "IsDefault": false,
     "CoGUnits": [
       {
