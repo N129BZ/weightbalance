@@ -45,7 +45,8 @@
             <sf:SfListView.ItemTemplate>
                 <DataTemplate>
                     <Border>
-                        <Grid Margin="2" >
+                        <Grid Margin="2" 
+                              BackgroundColor="{ Binding Path=IsSelected, Converter={StaticResource BoolToColorConverter }}">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
@@ -74,6 +75,7 @@
                 </DataTemplate>
             </sf:SfListView.ItemTemplate>
         </sf:SfListView>
+
         <HorizontalStackLayout Grid.Row="1" VerticalOptions="Fill" HorizontalOptions="Center">
 
             <Button Text="Set As Default"

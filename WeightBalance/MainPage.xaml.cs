@@ -21,8 +21,13 @@ public partial class MainPage : ContentPage
 
         HangarList = Hangar.HangarList;
         
-        BindingContext = this;
-        
+        BindingContext = this; 
+    }
+
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        base.OnNavigatedTo(args);
+
         if (!wbGlobals.PreSelectDone)
         {
             SearchForDefault();
