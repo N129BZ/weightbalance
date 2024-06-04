@@ -36,37 +36,30 @@ public partial class MainPage : ContentPage
 
     private void SearchForDefault()
     {
-        bool defaultFound = false;
-
         foreach (Aircraft aircraft in HangarList)
         {
             if (aircraft.IsDefault)
             {   
                 this.SelectedAircraft = aircraft;
                 AircraftListView.SelectedItem = aircraft;
-                defaultFound = true;
-
+                
                 if (aircraft.AutoLoad && !wbGlobals.PreSelectDone)
                 {
                     wbGlobals.PreSelectDone = true;
                     ViewStations_Clicked(aircraft, new EventArgs());
+                    return;
                 }
             }
         }
 
-        if (!defaultFound)
-        {
-            SelectedAircraft = HangarList[0];
-            AircraftListView.SelectedItem = SelectedAircraft;
-        }
+        SelectedAircraft = HangarList[0];
+        AircraftListView.SelectedItem = SelectedAircraft;
     }
 
     private void ViewStations_Clicked(object sender, EventArgs e)
     {
-        IsBusy = true;
         var cgp = new CgPage(SelectedAircraft);
         Navigation.PushAsync(cgp, true);
-        IsBusy = false;
     }
 
     private void SetDefault_Clicked(object sender, EventArgs e)

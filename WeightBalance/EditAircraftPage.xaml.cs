@@ -31,6 +31,7 @@ public partial class EditAircraftPage : ContentPage
 			if (aircraft.AutoLoad != value)
 			{
 				aircraft.AutoLoad = value;
+				WbGlobals.PreSelectDone = true;
 				Hangar.SaveHangarList();
 			}
 		} 
