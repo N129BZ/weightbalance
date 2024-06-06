@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:WeightBalance"
              x:Class="WeightBalance.ChartPage">
-    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:WeightBalance.Converters.IndexToColorConverter x:Key="IndexToColorConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <NavigationPage.TitleView>
         <Label Text="{Binding PageTitle}" 
                FontSize="24"

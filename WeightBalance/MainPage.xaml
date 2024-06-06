@@ -4,6 +4,7 @@
              xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:sf="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              xmlns:ac="clr-namespace:WeightBalance.Models"
+             xmlns:icc="clr-namespace:WeightBalance.Converters"
              x:Class="WeightBalance.MainPage">
 
     <NavigationPage.TitleView>
@@ -21,6 +22,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
+            <icc:IndexToColorConverter x:Key="IndexToColorConverter" />
             <mct:ImageResourceConverter x:Key="ImageResourceConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -45,9 +47,10 @@
             <sf:SfListView.ItemTemplate>
                 <DataTemplate>
                     <Border>
-                        <Grid Margin="2">
+                        <Grid x:Name="grid" 
+                              Margin="2"> 
                             <Grid.RowDefinitions>
-                                <RowDefinition/>
+                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
