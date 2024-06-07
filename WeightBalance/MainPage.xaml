@@ -22,7 +22,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <icc:IndexToColorConverter x:Key="IndexToColorConverter" />
+            <!--<icc:IndexToColorConverter x:Key="IndexToColorConverter" />-->
             <mct:ImageResourceConverter x:Key="ImageResourceConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -41,9 +41,9 @@
                    ItemSize="74"
                    ItemSpacing="1"
                    ItemTapped="AircraftListView_ItemTapped">
-            <sf:SfListView.ItemsLayout>
+            <!--<sf:SfListView.ItemsLayout>
                 <sf:LinearLayout/>
-            </sf:SfListView.ItemsLayout>
+            </sf:SfListView.ItemsLayout>-->
             <sf:SfListView.ItemTemplate>
                 <DataTemplate>
                     <Border>
