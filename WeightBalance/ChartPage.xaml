@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:WeightBalance"
              x:Class="WeightBalance.ChartPage">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <local:WeightBalance.Converters.IndexToColorConverter x:Key="IndexToColorConverter"/>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+    
     <NavigationPage.TitleView>
         <Label Text="{Binding PageTitle}" 
                FontSize="24"
@@ -33,7 +28,7 @@
                Text="{Binding YAxisLegend}"
                HorizontalOptions="StartAndExpand"
                VerticalOptions="CenterAndExpand"
-               Margin="-46"
+               Margin="-50"
                FontSize="12"
                FontAttributes="Bold"
                Rotation="-90"/>
