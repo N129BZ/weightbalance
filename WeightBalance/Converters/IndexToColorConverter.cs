@@ -6,9 +6,12 @@ namespace WeightBalance.Converters;
 
 public class IndexToColorConverter : IValueConverter
 {
-    public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        var listview = parameter as SfListView;
+        if (value == null) return null;
+        if (parameter is not SfListView listview) return null;
+        if (listview.DataSource == null) return null;
+        
         var index = listview.DataSource.DisplayItems.IndexOf(value);
         Color CornBlue = Colors.CornflowerBlue;
         Color Blue = Colors.LightBlue;
@@ -19,7 +22,7 @@ public class IndexToColorConverter : IValueConverter
         }
         else
         {
-            int row = index;
+            int? row = index;
             if (row % 2 == 0)
             {
                 return index % 2 == 0 ? CornBlue : Blue;
@@ -31,7 +34,7 @@ public class IndexToColorConverter : IValueConverter
         }
     }
 
-    public object? ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
         throw new NotImplementedException();
     }

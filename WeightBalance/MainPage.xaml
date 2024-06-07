@@ -47,8 +47,7 @@
             <sf:SfListView.ItemTemplate>
                 <DataTemplate>
                     <Border>
-                        <Grid x:Name="grid" 
-                              Margin="2"> 
+                        <Grid x:Name="grid" Margin="2"> 
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>

@@ -81,22 +81,29 @@
 	  <MauiImage Remove="Resources\Images\bevelchart.png" />
 	  <MauiImage Remove="Resources\Images\ch650td_dark.png" />
 	  <MauiImage Remove="Resources\Images\ch650td_light.png" />
+	  <MauiImage Remove="Resources\Images\ch650td_light_transparent.png" />
 	  <MauiImage Remove="Resources\Images\ch650_dark.png" />
 	  <MauiImage Remove="Resources\Images\ch650_light.png" />
+	  <MauiImage Remove="Resources\Images\ch650_light_transparent.png" />
 	  <MauiImage Remove="Resources\Images\ch701_dark.png" />
 	  <MauiImage Remove="Resources\Images\ch701_light.png" />
+	  <MauiImage Remove="Resources\Images\ch701_light_transparent.png" />
 	  <MauiImage Remove="Resources\Images\ch750_dark.png" />
 	  <MauiImage Remove="Resources\Images\ch750_light.png" />
+	  <MauiImage Remove="Resources\Images\ch750_light_transparent.png" />
 	  <MauiImage Remove="Resources\Images\chcruzer_dark.png" />
 	  <MauiImage Remove="Resources\Images\chcruzer_light.png" />
+	  <MauiImage Remove="Resources\Images\chcruzer_light_transparent.png" />
 	  <MauiImage Remove="Resources\Images\dotnet_bot.png" />
 	  <MauiImage Remove="Resources\Images\greendot.png" />
 	  <MauiImage Remove="Resources\Images\nobevelchart.png" />
 	  <MauiImage Remove="Resources\Images\reddot.png" />
 	  <MauiImage Remove="Resources\Images\rv9a_dark.png" />
 	  <MauiImage Remove="Resources\Images\rv9a_light.png" />
+	  <MauiImage Remove="Resources\Images\rv9a_light_transparent.png" />
 	  <MauiImage Remove="Resources\Images\rv9_dark.png" />
 	  <MauiImage Remove="Resources\Images\rv9_light.png" />
+	  <MauiImage Remove="Resources\Images\rv9_light_transparent.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -133,22 +140,29 @@
 	  <EmbeddedResource Include="Resources\Images\bevelchart.png" />
 	  <EmbeddedResource Include="Resources\Images\ch650td_dark.png" />
 	  <EmbeddedResource Include="Resources\Images\ch650td_light.png" />
+	  <EmbeddedResource Include="Resources\Images\ch650td_light_transparent.png" />
 	  <EmbeddedResource Include="Resources\Images\ch650_dark.png" />
 	  <EmbeddedResource Include="Resources\Images\ch650_light.png" />
+	  <EmbeddedResource Include="Resources\Images\ch650_light_transparent.png" />
 	  <EmbeddedResource Include="Resources\Images\ch701_dark.png" />
 	  <EmbeddedResource Include="Resources\Images\ch701_light.png" />
+	  <EmbeddedResource Include="Resources\Images\ch701_light_transparent.png" />
 	  <EmbeddedResource Include="Resources\Images\ch750_dark.png" />
 	  <EmbeddedResource Include="Resources\Images\ch750_light.png" />
+	  <EmbeddedResource Include="Resources\Images\ch750_light_transparent.png" />
 	  <EmbeddedResource Include="Resources\Images\chcruzer_dark.png" />
 	  <EmbeddedResource Include="Resources\Images\chcruzer_light.png" />
+	  <EmbeddedResource Include="Resources\Images\chcruzer_light_transparent.png" />
 	  <EmbeddedResource Include="Resources\Images\dotnet_bot.png" />
 	  <EmbeddedResource Include="Resources\Images\greendot.png" />
 	  <EmbeddedResource Include="Resources\Images\nobevelchart.png" />
 	  <EmbeddedResource Include="Resources\Images\reddot.png" />
 	  <EmbeddedResource Include="Resources\Images\rv9a_dark.png" />
 	  <EmbeddedResource Include="Resources\Images\rv9a_light.png" />
+	  <EmbeddedResource Include="Resources\Images\rv9a_light_transparent.png" />
 	  <EmbeddedResource Include="Resources\Images\rv9_dark.png" />
 	  <EmbeddedResource Include="Resources\Images\rv9_light.png" />
+	  <EmbeddedResource Include="Resources\Images\rv9_light_transparent.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -181,7 +195,7 @@
 
 	<ItemGroup>
 	  <MauiAsset Update="Resources\Raw\aircraft.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </MauiAsset>
 	</ItemGroup>
 
